@@ -3,14 +3,17 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+tCheck is a desktop application that helps bubble tea store managers manage the staffs’ contact information, 
+store’s inventory and historical sales data. It is optimized for CLI users to update and retrieve the information 
+more efficiently.
+
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Quick start `[Release coming soon]`
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -50,8 +53,9 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…`​ after them can be used once or multiple times.<br>
+  e.g. `sales A/NUM B/NUM C/NUM …` can be used as `sales BSBM/100` or `sales BSBM/100 BSBBT/120`.
+
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -60,12 +64,31 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
+### Sales Tracking
+
+#### Updating the number of drinks sold for the day
+Asks the user to enter the number of each type of drink sold for the current day.
+
+Format: `sales A/NUM B/NUM C/NUM ...`
+* `A`, `B`, `C` are abbreviations for the drink types.
+* `NUM` refers to the number of drinks sold
+
+Example:
+* `sales BSBM/100 BSBBT/120` Updates the sales of Brown Sugar Boba Milk `BSBM` to 100 and
+ Brown Sugar Boba Black Tea `BSBBT` to 120.
+
+#### Listing the number of drinks sold for the day
+Shows a list of all types of drinks sold for the current day.
+
+Format: `sales list`
+
+#### Employees' Contact Details
 
 ### Adding a person: `add`
 
@@ -156,19 +179,12 @@ AddressBook data are saved in the hard disk automatically after any command that
 
 _{explain the feature here}_
 
---------------------------------------------------------------------------------------------------------------------
-
-## FAQ
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
-
---------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
+### Employees' Contact Details
 Action | Format, Examples
---------|------------------
+-------|------------------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
@@ -176,3 +192,10 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+
+### Sales Tracking
+Action | Format, Examples
+-------|------------------------------
+**Update**| `sales A/NUM B/NUM C/NUM ...` <br> e.g., `sales BSBM/100 BSBBT/120`
+**List**| `sales list`
+ 
