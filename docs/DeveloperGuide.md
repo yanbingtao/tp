@@ -242,7 +242,23 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**:
+
+* To manage the employees' contact information digitally
+    * The product will provide a platform to allow the user to save his/ her employees’ contact 
+      information (eg. emergency contacts, address etc).
+    * It can manage contacts faster than a typical mouse/GUI driven app 
+* To digitise inventory keeping
+    * The product will help to digitise inventory keeping, and thus helps to save the user’s time and prevent 
+      human error in calculation. It does not ensure that the employees use the same amount of ingredients in making 
+      the drinks. The user only needs to enter the number of each type of bubble tea sold on the day. It will notify the user
+      which ingredients are running low on stock and remind him/ her to restock them soon. 
+    * The product could also help the user calculate the total cost for restocking.
+* To digitise daily revenue tracking
+    * Given the number of each type of bubble tea sold, the product can provide the user with the revenue for each day.
+    * The product also helps Amy to keep track of the daily revenue changes, and the revenue for each type of product. 
+      This would allow Amy to check which kind of bubble tea sells better and consider adopting similar ideas when 
+      making new products. 
 
 
 ### User stories
