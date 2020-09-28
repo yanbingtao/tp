@@ -262,31 +262,133 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `tCheck` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use Case: UC01 - Archive a contact detail of an employee**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User chooses to archive one employee’s contact details. 
+2. tCheck requests for details of the employee to archive.
+3. User enters the archive details.
+4. tCheck will move this corresponding contact detail into the archive and displays a success message.
+     
+     Use case ends.
 
-    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. tCheck detects an incorrect input format or is unable to find the entered data.
+        
+        * 3a1. tCheck requests for the correct data.
+        
+    	* 3a2. User enters new data.
+    	
+    	Steps 3a1-3a2 are repeated until the data entered are correct.
+    	
+    	Use case resumes from step 4.
 
-  Use case ends.
 
-* 3a. The given index is invalid.
+**Use Case: UC02 - Archive all contact details**
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
 
-      Use case resumes at step 2.
+1. User chooses to archive all employee’s contact details. 
+2. User enters the request to archive all employees’ contact details.
+3. tCheck will move all contact details into the archive and displays a success message.
 
+     Use case ends.
+
+
+**Extensions**
+
+* 2a. tCheck detects an incorrect input format.
+
+        * 2a1. tCheck requests for the input to be in the correct format.
+        
+      	* 2a2. User enters new data.
+      	
+      	Steps 2a1-2a2 are repeated until the data entered are correct.
+      	
+      	Use case resumes from step 3.
+      	
+* 2b. tCheck detects an empty contact list.
+
+   	    * 2b1. tCheck shows a warning message.
+   	    
+   	    Use case ends.
+
+**UC03 - Set ingredient level for a single ingredient**
+
+**MSS**
+
+1. User chooses to set the ingredient level for an ingredient.
+2. tCheck requests for the name of the ingredient.
+3. User enters the name of the ingredient.
+4. tCheck requests for the amount of the particular ingredient.
+5. User enters the amount of the particular ingredient.
+6. tCheck will set the ingredient level for this ingredient and displays a success message.
+
+        Use case ends.
+
+**Extensions**
+
+* 3a. tCheck is unable to find the entered name.
+
+  	    * 3a1. tCheck requests for the correct data.
+  	    
+  	    * 3a2. User enters new data.
+  	    
+        Steps 3a1-3a2 are repeated until the data entered are correct.
+        
+      	Use case resumes from step 4.
+      	
+* 5a. tCheck detects an invalid amount value
+
+   	    * 5a1. tCheck requests for the correct data.
+   	    
+   	    * 5a2. User enters new data.
+   	    
+        Steps 5a1-5a2 are repeated until the data entered are correct.
+        
+       	Use case resumes from step 6.
+
+**UC05 - Set sales level for all types of drinks**
+
+**MSS**
+
+1. User chooses to set the sales volume for a type of drink.
+2. tCheck requests for the drink name.
+3. User enters the name of the drink.
+4. tCheck requests for the number of that type of drink sold on that day.
+5. User enters the number of that type of drink sold.
+6. tCheck will set the sales level for this drink and displays a success message.
+     Steps 1-6 are repeated until the sales of all types of drinks are updated.
+     
+     Use case ends.
+
+**Extensions**
+
+* 3a. tCheck is unable to find the entered name.
+
+  	    * 3a1. tCheck requests for the correct data.
+  	    
+  	    * 3a2. User enters new data.
+  	    
+        Steps 3a1-3a2 are repeated until the data entered are correct.
+        
+      	Use case resumes from step 4.
+      	
+* 5a. tCheck detects an invalid sales amount.
+
+ 	    * 5a1. tCheck requests for the correct data.
+ 	    
+ 	    * 5a2. User enters new data.
+ 	    
+        Steps 5a1-5a2 are repeated until the data entered are correct.
+        
+     	Use case resumes from step 6.
+     	
 *{More to be added}*
 
 ### Non-Functional Requirements
