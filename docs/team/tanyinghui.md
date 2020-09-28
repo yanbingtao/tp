@@ -18,6 +18,6 @@ Given below are my contributions to the project.
   * AboutUs page:
     * Updated my information in the AboutUs page of the project website.
   * User Guide:
-    * Added documentation for the features with regard to sales tracking and welcome message.
+    * Added documentation for the features with regard to sales tracking.
   * Developer Guide:
     * Added documentation for value proposition of the product under Appendix: Requirements.
