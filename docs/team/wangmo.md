@@ -1,7 +1,7 @@
 ## Project: tCheck
 
-tCheck is a desktop application that helps bubble tea store managers manage the staffs’ contact information, 
-store’s inventory and historical sales data. It is optimized for CLI users to update and retrieve the information more 
+tCheck is a desktop application that helps bubble tea store managers manage the staffs’ contact information,
+store’s inventory and historical sales data. It is optimized for CLI users to update and retrieve the information more
 efficiently.
 
 Given below are my contributions to the project.
