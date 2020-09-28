@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+tCheck is a desktop app that helps bubble tea store managers manage the staffs’ contact information, store’s inventory and historical sales data. It is optimized for CLI users to update and retrieve the information more efficiently.
 
 * Table of Contents
 {:toc}
@@ -45,16 +45,13 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `delete NAME`, `NAME` is a parameter which can be used as `delete John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `search KEYWORD [MORE_KEYWORDS]` can be used as `search John White` or as `search John`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. `sales A/NUM B/NUM C/NUM ……​` can be used as ` ` (i.e. 0 times), `sales BSBM/100`, `sales BSBM/100 BSBBT/120` etc.
 
 </div>
 
@@ -67,19 +64,19 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a contact Number: `add`
 
-Adds a person to the address book.
+Adds a contact number to the contact list.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add NAME CONTACT [EMERGENCY_CONTACT]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-A person can have any number of tags (including 0)
+A person can have two possible contacts, one default contact and one emergency contact.
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add John 98765432`
+* `add Betsy 94601960 82324598`
 
 ### Listing all persons : `list`
 
@@ -122,25 +119,58 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
+### Deleting a contact number : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified person from the contact list.
 
-Format: `delete INDEX`
+Format: `delete NAME`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person with the specified `NAME`.
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-### Clearing all entries : `clear`
+Example:
+* `delete John` deletes any entry with the name `John` from the contact list.
 
-Clears all entries from the address book.
+### Ingredients Tracking
 
-Format: `clear`
+#### Set Ingredient Level : `set`
+
+* Users can initialise all ingredients levels to a standard default value or a desired value use a short command.
+
+Format: `set all ingredients DEFAULT`
+
+* Set all ingredient levels to the `DEFAULT` level, such as five units of the respective units.
+
+Example:
+* `set all ingredients 10`
+
+
+* Users can enter all current ingredients level in a single command by following a pre-defined sequence.
+
+Format: `set ingredients m/MILK b/BLACK_TEA s/SUGAR o/BUBBLE`
+
+* Set all the level of milk left to `MILK` , the level of black tea left to `BLACK_TEA`, the level of sugar left to `SUGAR`, the level of bubble left to `BUBBLE`.
+
+Example:
+* `set ingredients m/10 b/12 s/5 o/30`
+
+
+* Users can set the level for one type of ingredient individually.
+
+Format: `set INGREDIENT_NAME AMOUNT`
+
+* Set the `INGREDIENT_NAME` to the specified `AMOUNT`.
+
+Example:
+* `set milk 15`
+
+
+<div markdown="span" class="alert alert-primary">:bulb: **Notice:**
+Users inputs will be validated, if an invalid command is given, the program will show relevant error messages to notify the user to re-input.
+Example of Error Message:  `No ingredient called ‘suger’ found !` .
+</div>
+
+
 
 ### Exiting the program : `exit`
 
@@ -169,10 +199,14 @@ _{explain the feature here}_
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add NAME CONTACT [EMERGENCY_CONTACT]` <br> e.g., `add James 22224444` `add James 22224444 33335555`
 **Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Delete** | `delete NAME`<br> e.g., `delete James`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+**Set all**  | `set all ingredients AMOUNT` <br> e.g., `set all ingredients 5`
+**Set ingredients**  | `set ingredients m/MILK b/ BLACK_TEA s/ SUGAR o/BUBBLE` <br> e.g., `set ingredients m/19 b/20 s/5 o/0`
+**Set**  | `set INGREDIENT_NAME AMOUNT` <br> e.g., `set milk 20`
+
