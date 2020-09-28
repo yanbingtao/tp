@@ -35,7 +35,7 @@ public class RemarkCommand extends Command {
     private final Remark remark;
 
     /**
-     * @param index  of the person in the filtered person list to edit the remark
+     * @param index of the person in the filtered person list to edit the remark
      * @param remark of the person to be updated to
      */
     public RemarkCommand(Index index, Remark remark) {
@@ -75,9 +75,7 @@ public class RemarkCommand extends Command {
      * {@code personToEdit}.
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !remark.value.isEmpty()
-                ? MESSAGE_ADD_REMARK_SUCCESS
-                : MESSAGE_DELETE_REMARK_SUCCESS;
+        String message = !remark.value.isEmpty() ? MESSAGE_ADD_REMARK_SUCCESS : MESSAGE_DELETE_REMARK_SUCCESS;
         return String.format(message, personToEdit);
     }
 
@@ -98,4 +96,5 @@ public class RemarkCommand extends Command {
         return index.equals(e.index)
                 && remark.equals(e.remark);
     }
+
 }
