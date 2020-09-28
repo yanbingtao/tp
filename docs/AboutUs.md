@@ -12,7 +12,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 ### Yan BingTao
 
 <img src="images/about-us/yanbingtao.png">
-[[linkedin](https://www.linkedin.com/in/bingtaoyan/)]
 [[github](https://github.com/yanbingtao)]
 [[portfolio](team/yanbingtao.md)]
 
