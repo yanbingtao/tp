@@ -236,9 +236,18 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
+* is the store manager of a T*ger Sugar milk tea shop
+* is very busy with daily operations and has little time for manual writing or recording
+* is a fast typist
+* has many employees (both part-time and full-time) to manage
+* needs to save all the employees’ contact numbers
+* needs to forward one person’s contact to another
+  employee to let them directly communicate with each other 
+* cares about the daily revenue
+* does an inventory check daily to ensure that ingredients are sufficient
+  for the shop to operate smoothly
+* needs to keep track of the daily revenue
+* prefers desktop apps over other types
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
