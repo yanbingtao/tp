@@ -136,23 +136,6 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
-
-Exits the program.
-
-Format: `exit`
-
-### Saving the data
-
-All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
- command that changes the data. There is no need to save manually.
-
 ### Archiving employees' contact details
 #### Archiving a person : `archive`
 Archives the specified employee's contact detail from the tCheck
@@ -176,6 +159,23 @@ Format: `archive all`
 Shows a list of all archived employees' contact details in tCheck.
 
 Format: `archive list`
+
+### Clearing all entries : `clear`
+
+Clears all entries from the address book.
+
+Format: `clear`
+
+### Exiting the program : `exit`
+
+Exits the program.
+
+Format: `exit`
+
+### Saving the data
+
+All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
+ command that changes the data. There is no need to save manually.
 
 _{explain the feature here}_
 
