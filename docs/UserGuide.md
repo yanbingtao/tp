@@ -45,7 +45,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. in `ingredient NAME`, `NAME` is a parameter which can be used as `ingredient milk`.
 
 * Items in square brackets are optional.<br>
   e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
@@ -60,11 +60,28 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
+Prints the list of commands, including the name, format and purpose of each command.
 
 Format: `help`
+
+### Ingredients Tracking
+#### List Ingredient Levels : `ingredient list`
+Prints the ingredient levels for all ingredient types retrieved from the database.
+
+Format: `ingredient list`
+
+#### View a Single Ingredient Level: `ingredient single`
+Prints the ingredient level for a particular type of ingredient which is specified by the user’s command.
+
+Format: `ingredient single INGREDIENT_NAME`
+
+Example:
+* `ingredient single milk`
+
+#### Reset all to zero : `ingredient resetAll`
+Sets all ingredient levels to 0 by updating the database when the command is entered.
+
+Format: `ingredient resetAll`
 
 
 ### Adding a person: `add`
