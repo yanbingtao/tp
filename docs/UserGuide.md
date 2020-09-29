@@ -153,6 +153,30 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Archiving employees' contact details
+#### Archiving a person : `archive`
+Archives the specified employee's contact detail from the tCheck
+
+Format: `archive INDEX`
+
+* Archives the employee at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `archive 2` archives the 2nd person in the employees' contact details.
+* `find Betsy` followed by `archive 1` deletes the 1st person in the results of the `find` command.
+
+#### Archiving all employees' contact details : `archive all`
+Archives all employees' contact detail from the tCheck
+
+Format: `archive all`
+
+#### Listing all archived employees' contact details : `archive list`
+Shows a list of all archived employees' contact details in tCheck.
+
+Format: `archive list`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -167,9 +191,8 @@ Format: `exit`
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Archiving data files `[coming in v2.0]`
+All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
+ command that changes the data. There is no need to save manually.
 
 _{explain the feature here}_
 
@@ -192,4 +215,5 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
+**Archive** |  1. **Archive \(1 entry\):**  `archvie INDEX`<br> e.g., `archive 1` <br>2. **Archive \(all\):**  `archvie all` <br>3. **List all archived data:**  `archvie list`</br>
 **Help** | `help`
