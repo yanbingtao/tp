@@ -294,7 +294,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  Should be able to respond within 1 second for each operation.
-4.  Should be able to function fully without connecting to a network.
+4.  Should be able to function fully without connecting to internet.
 5.  Should be for a single user.
 6.  Should not handle the printing of the report (i.e. sales report).
 7.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
