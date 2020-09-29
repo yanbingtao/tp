@@ -198,5 +198,5 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
-**Archive** |  1. **Archive \(1 entry\):**  `archvie INDEX`<br> e.g., `archive 1` <br><br>2. **Archive \(all\):**  `archvie all`</br> <br><br>3. **List all archived data:**  `archvie list`</br>
+**Archive** |  1. **Archive \(1 entry\):**  `archvie INDEX`<br> e.g., `archive 1` <br>2. **Archive \(all\):**  `archvie all` <br>3. **List all archived data:**  `archvie list`</br>
 **Help** | `help`
