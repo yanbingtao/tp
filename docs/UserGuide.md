@@ -65,22 +65,21 @@ Prints the list of commands, including the name, format and purpose of each comm
 Format: `help`
 
 ### Ingredients Tracking
-#### List Ingredient Levels : `ingredient`
-* Prints the ingredient levels for all ingredient types retrieved from the database.
+#### List Ingredient Levels : `ingredient list`
+Prints the ingredient levels for all ingredient types retrieved from the database.
 
 Format: `ingredient list`
 
-* Prints the ingredient level for a particular type of ingredient which is specified by the user’s command.
+#### View a Single Ingredient Level: `ingredient single`
+Prints the ingredient level for a particular type of ingredient which is specified by the user’s command.
 
 Format: `ingredient single INGREDIENT_NAME`
 
 Example:
 * `ingredient single milk`
 
-* If the user enters command in a wrong format, the system will ask the user to enter command in the correct format. 
-
 #### Reset all to zero : `ingredient resetAll`
-* Sets all ingredient levels to 0 by updating the database when the command is entered.
+Sets all ingredient levels to 0 by updating the database when the command is entered.
 
 Format: `ingredient resetAll`
 
