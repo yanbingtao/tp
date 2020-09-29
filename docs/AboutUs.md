@@ -39,15 +39,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Wang Qian
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/wangqian.jpg" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/persdre)]
+[[portfolio](team/wangqian.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Code Quality Reviewer
+* Responsibilities: Check code quality and improve it
 
 ### James Doe
 
