@@ -45,8 +45,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/persdre)]
 [[portfolio](team/wangqian.md)]
 
-* Role: Code Quality Reviewer
-* Responsibilities: Check code quality and improve it
+* Role: Developer & Code Quality Reviewer
+* Responsibilities: Develop & Check code quality
 
 ### James Doe
 
