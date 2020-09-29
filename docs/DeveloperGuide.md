@@ -236,7 +236,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* is the store manager of a milk tea shop
+* is the store manager of a T*ger Sugar milk tea shop
 * is very busy with daily operations and has little time for manual writing or recording
 * is a fast typist
 * has many employees (both part-time and full-time) to manage
