@@ -31,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Wang Mo
 
-<img src="images/wangmo.png" width="200px">
+<img src="images/wm71811.png" width="200px">
 
 [[github](http://github.com/WM71811)] 
 [[portfolio](team/wangmo.md)]
