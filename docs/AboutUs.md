@@ -9,7 +9,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-
 ### Tan Ying Hui
 
 <img src="images/ureshiiYing.png" width="200px">
@@ -50,12 +49,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer & Code Quality Reviewer
 * Responsibilities: Develop & Check code quality
 
-### James Doe
+### Zhang Yi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zhangyi.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[homepage](http://www.comp.nus.edu.sg)]
+[[github](https://github.com/Diwu-Yi)]
+[[portfolio](team/zhangyi.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Project Tester and Contributor
