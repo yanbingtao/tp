@@ -236,64 +236,222 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
+* is the store manager of a T*ger Sugar milk tea shop
+* is very busy with daily operations and has little time for manual writing or recording
+* is a fast typist
+* has many employees (both part-time and full-time) to manage
+* needs to save all the employees’ contact numbers
+* needs to forward one person’s contact to another
+  employee to let them directly communicate with each other 
+* cares about the daily revenue
+* does an inventory check daily to ensure that ingredients are sufficient
+  for the shop to operate smoothly
+* needs to keep track of the daily revenue
+* prefers desktop apps over other types
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**:
+
+* To manage the employees' contact information digitally
+    * The product will provide a platform to allow the user to save his/ her employees’ contact 
+      information (eg. emergency contacts, address etc).
+    * It can manage contacts faster than a typical mouse/GUI driven app 
+* To digitise inventory keeping
+    * The product will help to digitise inventory keeping, and thus helps to save the user’s time and prevent 
+      human error in calculation. It does not ensure that the employees use the same amount of ingredients in making 
+      the drinks. The user only needs to enter the number of each type of bubble tea sold on the day. It will notify the user
+      which ingredients are running low on stock and remind him/ her to restock them soon. 
+    * The product could also help the user calculate the total cost for restocking.
+* To digitise daily revenue tracking
+    * Given the number of each type of bubble tea sold, the product can provide the user with the revenue for each day.
+    * The product also helps Amy to keep track of the daily revenue changes, and the revenue for each type of product. 
+      This would allow Amy to check which kind of bubble tea sells better and consider adopting similar ideas when 
+      making new products. 
 
 
 ### User stories
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+Priorities: 1 (must have), 2 (nice to have), 3 (unlikely to have)
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| As a/an                           | I can/I want to (features that are going to be implemented)                                                                  | So that (benefit gained)                                                                                 | Priority |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Store manager                     | have a centralised system that helps me keep track of my employees’ contact numbers                                          | I don't need to organize working contacts on my personal phone                                           | 1                                                             |
+| Store manager                     | have a software that helps me on daily inventory checking                                                                    | I can reduce the amount of human errors that may be involved and track the shop's inventory conveniently | 1                                                             |
+| Busy store manager                | receive reminders to restock                                                                                                 | I won't lose revenue because of unexpected ingredient shortage during operation                          | 1                                                             |
+| First-time user                   | be able to download the app                                                                                                  | I can play around and check out what it can do before actual usage                                       | 1                                                             |
+| First-time user                   | use the help feature                                                                                                         | I can get more familiar with the app features                                                            | 1                                                             |
+| First-time user                   | find out if the app is running smoothly and bug-free                                                                         | I can decide if using this app will indeed help me run a store                                           | 1                                                             |
+| Concerned manager                 | check the employees's contact number if they are absent without stating any reasons                                          | I can easily contact them in a short time                                                                | 1                                                             |
+| Second-time user                  | initialize the ingredients level in the app                                                                                  | I need not remember the amount of inventories, and only need to update when I do a restock               | 1                                                             |
+| Second-time user                  | find the emergency contacts of my employees quickly if they are injured                                                      | I can find the person to contact and know what action to take in the shortest time possible              | 1                                                             |
+| Intermediate user                 | input the number of each type of drinks sold into tCheck at the end of the day, and know the amount of remaining ingredients | I can document the amount of ingredients left                                                            | 1                                                             |
+| Expert user                       | to delete some of the employees' data who are no longer working at the shop                                                  | they are no longer tracked by the app.                                                                   | 1                                                             |
+| Second-time user                  | view the revenue from the last day                                                                                           | I can predict how much demand it would likely to be for today                                            | 1                                                             |
+| Store manager                     | have a software to help me calculate my daily revenue                                                                        | I don't need to manually calculate them and it will become less troublesome to do so                     | 2                                                             |
+| Busy and concenrned store manager | have a software to remind me on check my employees' health condition for each shift                                          | I won't forget to check, espcially when I'm busy                                                         | 2                                                             |
+| First-time user                   | read the "About" page in the app                                                                                             | I know how to use this software to help my business                                                      | 2                                                             |
+| First-time user                   | register for a password-protected account                                                                                    | I can be sure that my user data will not be viewed by non-users                                          | 2                                                             |
+| First-time user                   | be able to navigate the app easily                                                                                           | I only need basic intuition to use the navigation bar (For GUI)                                          | 2                                                             |
+| Impatient first-time user         | have a fast-response inventory keeping application                                                                           | I don't waste time waiting for the app to load                                                           | 2                                                             |
+| Second-time user                  | only use the software and access my data if I enter the correct login information                                            | it prevents unauthorised users from viewing the shop's information                                       | 2                                                             |
+| Second-time user                  | be reminded of the task of checking the employee's health condition                                                          | I would not forget to check the employees' health status each day before the shop opens                  | 2                                                             |
+| Concerned manager                 | check and record the health conditions of my employees                                                                       | I can do my best to ensure the safety of food is guanranteed                                             | 2                                                             |
+| Second-time user                  | view the inventory from the last day                                                                                         | I can restock before the ingredients ran out of stock and affect my business                             | 2                                                             |
+| Intermediate user                 | input the number of each type of drinks sold into tCheck at the end of the day,and find out the total revenue of the day     | I can document the daily revenue                                                                         | 2                                                             |
+| Intermediate user                 | do closing duties according to a check list shown on the app                                                                 | I will not forget important things                                                                       | 2                                                             |
+| Intermediate user                 | use the ingredient data                                                                                                      | I can prepare for next day's ingredients                                                                 | 2                                                             |
+| Busy store manager                | use shortcut commands                                                                                                        | it makes my input process into tCheck faster and more convenient.                                        | 2                                                             |
+| Expert user                       | my data to be saved reliably                                                                                                 | my data won't be lost even if my computer crashes                                                        | 2                                                             |
+| Expert user                       | have fast responses after a long usage period                                                                                | I will not waste time waiting for the app even after extensive usage                                     | 2                                                             |
+| Expert user                       | export my data from the application                                                                                          | the performace of the store can be analyzed easily by using other third-party softwares                  | 2                                                             |
+| Intermediate user                 | to look through my employees' health condition data of the last 10 days                                                      | I can roughly gauge the conditions of my employees                                                       | 3                                                             |                                              |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `tCheck` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use Case: UC01 - Archive a contact detail of an employee**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User chooses to archive one employee’s contact details. 
+2. tCheck requests for details of the employee to archive.
+3. User enters the archive details.
+4. tCheck will move this corresponding contact detail into the archive and displays a success message.
+     
+     Use case ends.
 
-    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 3a. tCheck detects an incorrect input format or is unable to find the entered data.
+        
+        * 3a1. tCheck requests for the correct data.
+        
+    	* 3a2. User enters new data.
+    	
+    	Steps 3a1-3a2 are repeated until the data entered are correct.
+    	
+    	Use case resumes from step 4.
 
-  Use case ends.
 
-* 3a. The given index is invalid.
+**Use Case: UC02 - Archive all contact details**
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
 
-      Use case resumes at step 2.
+1. User chooses to archive all employee’s contact details. 
+2. User enters the request to archive all employees’ contact details.
+3. tCheck will move all contact details into the archive and displays a success message.
 
+     Use case ends.
+
+
+**Extensions**
+
+* 2a. tCheck detects an incorrect input format.
+
+        * 2a1. tCheck requests for the input to be in the correct format.
+        
+      	* 2a2. User enters new data.
+      	
+      	Steps 2a1-2a2 are repeated until the data entered are correct.
+      	
+      	Use case resumes from step 3.
+      	
+* 2b. tCheck detects an empty contact list.
+
+   	    * 2b1. tCheck shows a warning message.
+   	    
+   	    Use case ends.
+
+**UC03 - Set ingredient level for a single ingredient**
+
+**MSS**
+
+1. User chooses to set the ingredient level for an ingredient.
+2. tCheck requests for the name of the ingredient.
+3. User enters the name of the ingredient.
+4. tCheck requests for the amount of the particular ingredient.
+5. User enters the amount of the particular ingredient.
+6. tCheck will set the ingredient level for this ingredient and displays a success message.
+
+        Use case ends.
+
+**Extensions**
+
+* 3a. tCheck is unable to find the entered name.
+
+  	    * 3a1. tCheck requests for the correct data.
+  	    
+  	    * 3a2. User enters new data.
+  	    
+        Steps 3a1-3a2 are repeated until the data entered are correct.
+        
+      	Use case resumes from step 4.
+      	
+* 5a. tCheck detects an invalid amount value
+
+   	    * 5a1. tCheck requests for the correct data.
+   	    
+   	    * 5a2. User enters new data.
+   	    
+        Steps 5a1-5a2 are repeated until the data entered are correct.
+        
+       	Use case resumes from step 6.
+
+**UC05 - Set sales level for all types of drinks**
+
+**MSS**
+
+1. User chooses to set the sales volume for a type of drink.
+2. tCheck requests for the drink name.
+3. User enters the name of the drink.
+4. tCheck requests for the number of that type of drink sold on that day.
+5. User enters the number of that type of drink sold.
+6. tCheck will set the sales level for this drink and displays a success message.
+     Steps 1-6 are repeated until the sales of all types of drinks are updated.
+     
+     Use case ends.
+
+**Extensions**
+
+* 3a. tCheck is unable to find the entered name.
+
+  	    * 3a1. tCheck requests for the correct data.
+  	    
+  	    * 3a2. User enters new data.
+  	    
+        Steps 3a1-3a2 are repeated until the data entered are correct.
+        
+      	Use case resumes from step 4.
+      	
+* 5a. tCheck detects an invalid sales amount.
+
+ 	    * 5a1. tCheck requests for the correct data.
+ 	    
+ 	    * 5a2. User enters new data.
+ 	    
+        Steps 5a1-5a2 are repeated until the data entered are correct.
+        
+     	Use case resumes from step 6.
+     	
 *{More to be added}*
 
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  Should be able to respond within 1 second for each operation.
+4.  Should be able to function fully without connecting to internet.
+5.  Should be for a single user.
+6.  Should not handle the printing of the report (i.e. sales report).
+7.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should
+ be able to accomplish most of the tasks faster using commands than using the mouse.
+8.  A user without prior experience on inventory management system should be able to accomplish most of the tasks
+ using commands. 
 
 *{More to be added}*
 

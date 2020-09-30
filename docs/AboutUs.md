@@ -19,41 +19,44 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Documentation
 
-### Jane Doe
+### Yan BingTao
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/yanbingtao.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](https://github.com/yanbingtao)]
+[[portfolio](team/yanbingtao.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Integration - In charge of versioning of the code, maintaining the code repository, integrating various parts of the software to create a whole.
 
-### Jean Doe
+### Wang Mo
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/wm71811.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/WM71811)] 
+[[portfolio](team/wangmo.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Code Quality
+
+### Wang Qian
+
+<img src="images/wangqian.jpg" width="200px">
+
+[[github](http://github.com/persdre)]
+[[portfolio](team/wangqian.md)]
+
+* Role: Developer & Code Quality Reviewer
+* Responsibilities: Develop & Check code quality
+
+### Zhang Yi
+
+
+<img src="images/diwu-yi.png" width="200px">
+
+
+[[homepage](http://www.comp.nus.edu.sg)]
+[[github](https://github.com/Diwu-Yi)]
+[[portfolio](team/zhangyi.md)]
+
+* Role: Project Tester and Contributor
