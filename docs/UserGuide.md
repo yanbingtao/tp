@@ -35,7 +35,7 @@ more efficiently.
 
    * **`list`** : Lists all contacts.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds an employee's contact
+   * **`add`**`n/John Doe p/98765432 e/81234567 t/part time` : Adds an employee's contact
     named `John Doe` to tCheck.
 
    * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
@@ -93,15 +93,15 @@ All tCheck data (i.e. contact details, ingredient data, sales data) are saved in
 
 Adds a person to the contact list.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMERGENCY_CONTACT [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/John Doe p/98765432 e/81234567`
+* `add n/Betsy Crowe e/81234567 p/1234567 t/morning shift t/part-time`
 
 #### 2.2 Listing all persons : `list`
 
@@ -109,11 +109,13 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  
 #### 2.3 Editing a person : `edit`
 
 Edits the corresponding contact information in the contact list.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMERGENCY_CONTACT] [t/TAG] …​​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -123,7 +125,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​​`
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 1 p/91234567 e/81234567` Edits the phone number and emergency contact of the 1st person to be `91234567` and
+ `81234567` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 
@@ -143,7 +146,7 @@ Format: `search KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+
 
 #### 2.5 Deleting a person : `delete`
 
@@ -291,9 +294,9 @@ Action | Format, Examples
 ### Employees' Contact Details
 Action | Format, Examples
 -------|------------------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMERGENCY_CONTACT [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/81234567 t/morning shift`
 **List** | `list`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [e/EMERGENCY_CONTACT] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/81234567`
 **Search** | `search KEYWORD [MORE_KEYWORDS]`<br> e.g., `search James Jake`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Clear** | `clear`
