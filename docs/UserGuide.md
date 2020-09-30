@@ -63,25 +63,25 @@ more efficiently.
 
 </div>
 
-## 1. Commands - General 
-### Viewing help : `help`
+### 1. Commands - General 
+#### Viewing help : `help`
 
 Prints the list of commands, including the name, format and purpose of each command.
 
 Format: `help`
 
-### Exiting the program : `exit`
+#### Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+#### Saving the data
 
 All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
  command that changes the data. There is no need to save manually.
 
-## 2. Commands - Contact details
+### 2. Commands - Contact details
 
 #### Adding a person : `add`
 
@@ -121,7 +121,7 @@ Examples:
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 
-### Locating persons by keywords: `search`
+#### Locating persons by keywords: `search`
 
 Finds all contacts that contain the KEYWORD(s)
 
@@ -153,13 +153,13 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the contact list.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-### Clearing all entries : `clear`
+#### Clearing all entries : `clear`
 
 Clears all entries from the contact list.
 
 Format: `clear`
 
-### Archiving a person : `archive`
+#### Archiving a person : `archive`
 Archives the specified employee's contact detail from the tCheck
 
 Format: `archive INDEX`
@@ -172,19 +172,19 @@ Examples:
 * `list` followed by `archive 2` archives the 2nd person in the employees' contact details.
 * `find Betsy` followed by `archive 1` deletes the 1st person in the results of the `find` command.
 
-### Archiving all employees : `archive all`
+#### Archiving all employees : `archive all`
 Archives all employees' contact detail from the tCheck
 
 Format: `archive all`
 
-### Listing all archived employees : `archive list`
+#### Listing all archived employees : `archive list`
 Shows a list of all archived employees' contact details in tCheck.
 
 Format: `archive list`
 
-## 3. Commands - Ingredients Tracking
+### 3. Commands - Ingredients Tracking
 
-### Setting one ingredient to initial level : `set`
+#### Setting one ingredient to initial level : `set`
 
 * Users can set the level for one type of ingredient individually.
 
@@ -195,7 +195,7 @@ Format: `set INGREDIENT_NAME AMOUNT`
 Example:
 * `set milk 15`
 
-### Setting all ingredients to the same initial level : `set all ingredients`
+#### Setting all ingredients to the same initial level : `set all ingredients`
 
 * Users can initialise all ingredients levels to a standard default value or a desired value use a short command.
 
@@ -206,7 +206,7 @@ Format: `set all ingredients DEFAULT`
 Example:
 * `set all ingredients 10`
 
-### Setting all ingredients to different levels : `set ingredients`
+#### Setting all ingredients to different levels : `set ingredients`
 
 * Users can enter all current ingredients level in a single command by following a pre-defined sequence.
 
@@ -223,7 +223,7 @@ Users inputs will be validated, if an invalid command is given, the program will
 Example of Error Message:  `No ingredient called ‘suger’ found !` .
 </div>
 
-### View a Single Ingredient Level: `ingredient single`
+#### View a Single Ingredient Level: `ingredient single`
 Prints the ingredient level for a particular type of ingredient which is specified by the user’s command.
 
 Format: `ingredient single INGREDIENT_NAME`
@@ -231,19 +231,19 @@ Format: `ingredient single INGREDIENT_NAME`
 Example:
 * `ingredient single milk`
 
-### Reset all to zero : `ingredient resetAll`
+#### Resetting all to zero : `ingredient resetAll`
 Sets all ingredient levels to 0 by updating the database when the command is entered.
 
 Format: `ingredient resetAll`
 
-### List Ingredient Levels : `ingredient list`
+#### Listing Ingredient Levels : `ingredient list`
 Prints the ingredient levels for all ingredient types retrieved from the database.
 
 Format: `ingredient list`
 
-## 4. Commands - Sales Tracking
+### 4. Commands - Sales Tracking
 
-### Updating the number of drinks sold for the day
+#### Updating the number of drinks sold for the day
 Asks the user to enter the number of each type of drink sold for the current day.
 
 Format: `sales A/NUM B/NUM C/NUM ...`
@@ -254,7 +254,7 @@ Example:
 * `sales BSBM/100 BSBBT/120` Updates the sales of Brown Sugar Boba Milk `BSBM` to 100 and
  Brown Sugar Boba Black Tea `BSBBT` to 120.
 
-### Listing the number of drinks sold for the day
+#### Listing the number of drinks sold for the day
 Shows a list of all types of drinks sold for the current day.
 
 Format: `sales list`
