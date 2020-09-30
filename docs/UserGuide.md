@@ -23,7 +23,7 @@ more efficiently.
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `tCheck.jar` from [here] (^^^).
+1. Download the latest `tCheck.jar` from [here](https://github.com/AY2021S1-CS2103T-T12-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your tCheck.
 
@@ -82,7 +82,7 @@ Exits the program.
 
 Format: `exit`
 
-#### 1.3 Saving the data
+#### 1.3 Saving the data :
 
 All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
  command that changes the data. There is no need to save manually.
