@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Zhang Yi
 
-<img src="images/Diwu-Yi.png" width="200px">
+<img src="images/diwu-yi.png" width="200px">
 
 [[homepage](http://www.comp.nus.edu.sg)]
 [[github](https://github.com/Diwu-Yi)]
