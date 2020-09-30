@@ -40,7 +40,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Wang Qian
 
-<img src="images/wangqian.jpg" width="200px">
+<img src="images/persdre.jpg" width="200px">
 
 [[github](http://github.com/persdre)]
 [[portfolio](team/wangqian.md)]
