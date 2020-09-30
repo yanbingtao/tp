@@ -72,7 +72,7 @@ more efficiently.
 ### 1. Commands - General <a name="commands-general"></a>
 #### 1.1 Viewing help : `help`
 
-Prints the list of commands, including the name, format and purpose of each command.
+Show a message explaining how to access the help page, which is the user guide.
 
 Format: `help`
 
@@ -190,9 +190,13 @@ Format: `archive list`
 
 ### 3. Commands - Ingredients Tracking <a name="commands-ingredients-tracking"></a>
 
+* Unit of measurement for ingredients: 
+    * Unit for solid items / jelly : **KG**
+    * Unit for liquids : **L**
+    
 #### 3.1 Setting one ingredient to initial level : `set`
 
-* Users can set the level for one type of ingredient individually.
+Users can set the level for one type of ingredient individually.
 
 Format: `set INGREDIENT_NAME AMOUNT`
 
@@ -203,7 +207,7 @@ Example:
 
 #### 3.2 Setting all ingredients to the same initial level : `set all ingredients`
 
-* Users can initialise all ingredients levels to a standard default value or a desired value use a short command.
+Users can initialise all ingredients levels to a standard default value or a desired value use a short command.
 
 Format: `set all ingredients DEFAULT`
 
@@ -214,7 +218,7 @@ Example:
 
 #### 3.3 Setting all ingredients to different levels : `set ingredients`
 
-* Users can enter all current ingredients level in a single command by following a pre-defined sequence.
+Users can enter all current ingredients level in a single command by following a pre-defined sequence.
 
 Format: `set ingredients m/MILK b/BLACK_TEA s/SUGAR o/BUBBLE`
 
@@ -254,7 +258,7 @@ Asks the user to enter the number of each type of drink sold for the current day
 
 Format: `sales A/NUM B/NUM C/NUM ...`
 * `A`, `B`, `C` are abbreviations for the drink types.
-* `NUM` refers to the number of drinks sold
+* `NUM` refers to the number of drinks sold.
 
 Example:
 * `sales BSBM/100 BSBBT/120` Updates the sales of Brown Sugar Boba Milk `BSBM` to 100 and
@@ -265,7 +269,15 @@ Shows a list of all types of drinks sold for the current day.
 
 Format: `sales list`
 
+#### 4.3 Listing the sales record for a specific day
+Shows a sales record for each type of mile tea on a specific date.
 
+Format: `sales YYYY-MM-DD`
+* `YYYY-MM-DD` refers to date in YYYY-MM-DD format.
+
+Example:
+* `sales 2020-08-01` returns the sales record for each type of milk tea on 2020-08-01.
+ 
 _{explain the feature here}_
 
 
@@ -302,4 +314,5 @@ Action | Format, Examples
 -------|------------------------------
 **Update**| `sales A/NUM B/NUM C/NUM ...` <br> e.g., `sales BSBM/100 BSBBT/120`
 **List**| `sales list`
+**Find**| `sales YYYY-MM-DD`
  
