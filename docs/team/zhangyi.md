@@ -6,8 +6,16 @@ title: Zhang Yi's Project Portfolio Page
 ## Project: tCheck
 
 tCheck is a desktop application used by bubble tea store managers for keeping inventories and keep information of his/her employees. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Currently, tCheck is at an early stage of development.
 
+* **Done so far**:
+Documentation updates.
+  * Update User Guide.
+  * Update Developer Guide.
+  * Update AboutUs Page.
+  
 Given below are my contributions to the project.
+
 * **New Feature**:
 Coming soon
 
