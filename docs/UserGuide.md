@@ -9,11 +9,17 @@ more efficiently.
 
 
 * Table of Contents
-{:toc}
+    * [Quick start](#quick-start)
+    * [Features](#features)
+        * [Commands - General](#commands-general)
+        * [Commands - Contact details](#commands-contact-details) 
+        * [Commands - Ingredients Tracking](#commands-ingredients-tracking)
+        * [Commands - Sales Tracking](#commands-sales-tracking) 
+    * [Command summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start `[Release coming soon]`
+## Quick start `[Release coming soon]` <a name="quick-start"></a>
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -42,7 +48,7 @@ more efficiently.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Features <a name="features"></a>
 
 <div markdown="block" class="alert alert-info">
 
@@ -63,7 +69,7 @@ more efficiently.
 
 </div>
 
-### 1. Commands - General 
+### 1. Commands - General <a name="commands-general"></a>
 #### Viewing help : `help`
 
 Prints the list of commands, including the name, format and purpose of each command.
@@ -81,7 +87,7 @@ Format: `exit`
 All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
  command that changes the data. There is no need to save manually.
 
-### 2. Commands - Contact details
+### 2. Commands - Contact details <a name="commands-contact-details"></a>
 
 #### Adding a person : `add`
 
@@ -182,7 +188,7 @@ Shows a list of all archived employees' contact details in tCheck.
 
 Format: `archive list`
 
-### 3. Commands - Ingredients Tracking
+### 3. Commands - Ingredients Tracking <a name="commands-ingredients-tracking"></a>
 
 #### Setting one ingredient to initial level : `set`
 
@@ -241,7 +247,7 @@ Prints the ingredient levels for all ingredient types retrieved from the databas
 
 Format: `ingredient list`
 
-### 4. Commands - Sales Tracking
+### 4. Commands - Sales Tracking <a name="commands-sales-tracking"></a>
 
 #### Updating the number of drinks sold for the day
 Asks the user to enter the number of each type of drink sold for the current day.
@@ -263,7 +269,7 @@ Format: `sales list`
 _{explain the feature here}_
 
 
-## Command summary
+## Command summary <a name="command-summary"></a>
 ### General
 Action | Format, Examples
 -------|------------------------------
