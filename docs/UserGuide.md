@@ -70,26 +70,26 @@ more efficiently.
 </div>
 
 ### 1. Commands - General <a name="commands-general"></a>
-#### Viewing help : `help`
+#### 1.1 Viewing help : `help`
 
 Prints the list of commands, including the name, format and purpose of each command.
 
 Format: `help`
 
-#### Exiting the program : `exit`
+#### 1.2 Exiting the program : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-#### Saving the data
+#### 1.3 Saving the data
 
 All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
  command that changes the data. There is no need to save manually.
 
 ### 2. Commands - Contact details <a name="commands-contact-details"></a>
 
-#### Adding a person : `add`
+#### 2.1 Adding a person : `add`
 
 Adds a person to the contact list.
 
@@ -103,13 +103,13 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
-#### Listing all persons : `list`
+#### 2.2 Listing all persons : `list`
 
 Shows a list of all persons in the address book.
 
 Format: `list`
 
-#### Editing a person : `edit`
+#### 2.3 Editing a person : `edit`
 
 Edits the corresponding contact information in the contact list.
 
@@ -127,7 +127,7 @@ Examples:
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
 
-#### Locating persons by keywords: `search`
+#### 2.4 Locating persons by keywords: `search`
 
 Finds all contacts that contain the KEYWORD(s)
 
@@ -145,7 +145,7 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-#### Deleting a person : `delete`
+#### 2.5 Deleting a person : `delete`
 
 Deletes the specified person from the address book.
 
@@ -159,13 +159,13 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the contact list.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
-#### Clearing all entries : `clear`
+#### 2.6 Clearing all entries : `clear`
 
 Clears all entries from the contact list.
 
 Format: `clear`
 
-#### Archiving a person : `archive`
+#### 2.7 Archiving a person : `archive`
 Archives the specified employee's contact detail from the tCheck
 
 Format: `archive INDEX`
@@ -178,19 +178,19 @@ Examples:
 * `list` followed by `archive 2` archives the 2nd person in the employees' contact details.
 * `find Betsy` followed by `archive 1` deletes the 1st person in the results of the `find` command.
 
-#### Archiving all employees : `archive all`
+#### 2.8 Archiving all employees : `archive all`
 Archives all employees' contact detail from the tCheck
 
 Format: `archive all`
 
-#### Listing all archived employees : `archive list`
+#### 2.9 Listing all archived employees : `archive list`
 Shows a list of all archived employees' contact details in tCheck.
 
 Format: `archive list`
 
 ### 3. Commands - Ingredients Tracking <a name="commands-ingredients-tracking"></a>
 
-#### Setting one ingredient to initial level : `set`
+#### 3.1 Setting one ingredient to initial level : `set`
 
 * Users can set the level for one type of ingredient individually.
 
@@ -201,7 +201,7 @@ Format: `set INGREDIENT_NAME AMOUNT`
 Example:
 * `set milk 15`
 
-#### Setting all ingredients to the same initial level : `set all ingredients`
+#### 3.2 Setting all ingredients to the same initial level : `set all ingredients`
 
 * Users can initialise all ingredients levels to a standard default value or a desired value use a short command.
 
@@ -212,7 +212,7 @@ Format: `set all ingredients DEFAULT`
 Example:
 * `set all ingredients 10`
 
-#### Setting all ingredients to different levels : `set ingredients`
+#### 3.3 Setting all ingredients to different levels : `set ingredients`
 
 * Users can enter all current ingredients level in a single command by following a pre-defined sequence.
 
@@ -229,7 +229,7 @@ Users inputs will be validated, if an invalid command is given, the program will
 Example of Error Message:  `No ingredient called ‘suger’ found !` .
 </div>
 
-#### View a Single Ingredient Level: `ingredient single`
+#### 3.4 View a Single Ingredient Level: `ingredient single`
 Prints the ingredient level for a particular type of ingredient which is specified by the user’s command.
 
 Format: `ingredient single INGREDIENT_NAME`
@@ -237,19 +237,19 @@ Format: `ingredient single INGREDIENT_NAME`
 Example:
 * `ingredient single milk`
 
-#### Resetting all to zero : `ingredient resetAll`
+#### 3.5 Resetting all to zero : `ingredient resetAll`
 Sets all ingredient levels to 0 by updating the database when the command is entered.
 
 Format: `ingredient resetAll`
 
-#### Listing Ingredient Levels : `ingredient list`
+#### 3.6 Listing Ingredient Levels : `ingredient list`
 Prints the ingredient levels for all ingredient types retrieved from the database.
 
 Format: `ingredient list`
 
 ### 4. Commands - Sales Tracking <a name="commands-sales-tracking"></a>
 
-#### Updating the number of drinks sold for the day
+#### 4.1 Updating the number of drinks sold for the day
 Asks the user to enter the number of each type of drink sold for the current day.
 
 Format: `sales A/NUM B/NUM C/NUM ...`
@@ -260,7 +260,7 @@ Example:
 * `sales BSBM/100 BSBBT/120` Updates the sales of Brown Sugar Boba Milk `BSBM` to 100 and
  Brown Sugar Boba Black Tea `BSBBT` to 120.
 
-#### Listing the number of drinks sold for the day
+#### 4.2 Listing the number of drinks sold for the day
 Shows a list of all types of drinks sold for the current day.
 
 Format: `sales list`
