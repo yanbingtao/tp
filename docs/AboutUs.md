@@ -9,10 +9,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-
 ### Tan Ying Hui
 
-<img src="images/ureshiiYing.png" width="200px">
+<img src="images/ureshiiying.png" width="200px">
 
 [[github](https://github.com/ureshiiYing)]
 [[portfolio](team/tanyinghui.md)]
@@ -22,7 +21,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Yan BingTao
 
-<img src="images/about-us/yanbingtao.png" width="200px">
+<img src="images/yanbingtao.png" width="200px">
 
 [[github](https://github.com/yanbingtao)]
 [[portfolio](team/yanbingtao.md)]
@@ -32,7 +31,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Wang Mo
 
-<img src="images/wangmo.png" width="200px">
+<img src="images/wm71811.png" width="200px">
 
 [[github](http://github.com/WM71811)] 
 [[portfolio](team/wangmo.md)]
@@ -50,12 +49,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer & Code Quality Reviewer
 * Responsibilities: Develop & Check code quality
 
-### James Doe
+### Zhang Yi
 
-<img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+<img src="images/diwu-yi.png" width="200px">
 
-* Role: Developer
-* Responsibilities: UI
+
+[[homepage](http://www.comp.nus.edu.sg)]
+[[github](https://github.com/Diwu-Yi)]
+[[portfolio](team/zhangyi.md)]
+
+* Role: Project Tester and Contributor
