@@ -17,11 +17,13 @@ public class ArchiveCommand extends Command {
 
     public static final String COMMAND_WORD = "archive";
 
-//    public static final String MESSAGE_USAGE = COMMAND_WORD
-//            + ": Deletes the person identified by the index number used in the displayed person list.\n"
-//            + "Parameters: INDEX (must be a positive integer)\n"
-//            + "Example: " + COMMAND_WORD + " 1";
-//
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Archives the person identified by the index number used in the displayed person list.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
+
+    public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Archive command not implemented yet";
+
 //    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 //
 //    private final Index targetIndex;
@@ -32,7 +34,7 @@ public class ArchiveCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        return new CommandResult("Hello from archive");
+        return new CommandResult(MESSAGE_NOT_IMPLEMENTED_YET);
 //        requireNonNull(model);
 //        List<Person> lastShownList = model.getFilteredPersonList();
 //
