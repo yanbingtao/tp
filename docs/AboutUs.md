@@ -41,7 +41,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Wang Qian
 
-<img src="images/wangqian.jpg" width="200px">
+<img src="images/persdre.png" width="200px">
 
 [[github](http://github.com/persdre)]
 [[portfolio](team/wangqian.md)]
@@ -54,8 +54,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/diwu-yi.png" width="200px">
 
-
-[[homepage](http://www.comp.nus.edu.sg)]
 [[github](https://github.com/Diwu-Yi)]
 [[portfolio](team/zhangyi.md)]
 

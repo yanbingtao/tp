@@ -23,7 +23,7 @@ more efficiently.
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `tCheck.jar` from [here] (^^^).
+1. Download the latest `tCheck.jar` from [here](https://github.com/AY2021S1-CS2103T-T12-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your tCheck.
 
@@ -82,7 +82,7 @@ Exits the program.
 
 Format: `exit`
 
-#### 1.3 Saving the data
+#### 1.3 Saving the data :
 
 All tCheck data (i.e. contact details, ingredient data, sales data) are saved in the hard disk automatically after any
  command that changes the data. There is no need to save manually.
@@ -100,16 +100,14 @@ A person can have any number of tags (including 0)
 </div>
 
 Examples:
-* `add n/John Doe p/98765432 e/81234567`
-* `add n/Betsy Crowe e/81234567 p/1234567 t/morning shift t/part-time`
+* `add n/John Doe p/98765432 e/81234567`.
+* `add n/Betsy Crowe e/81234567 p/1234567 t/morning shift t/part-time`.
 
 #### 2.2 Listing all persons : `list`
 
 Shows a list of all persons in the address book.
 
 Format: `list`
-
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
   
 #### 2.3 Editing a person : `edit`
 
@@ -132,21 +130,20 @@ Examples:
 
 #### 2.4 Locating persons by keywords: `search`
 
-Finds all contacts that contain the KEYWORD(s)
+Finds all contacts that contain the KEYWORD(s).
 
 Format: `search KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`.
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* Only full words will be matched e.g. `Han` will not match `Hans`.
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-
+* `find John` returns `john` and `John Doe`.
+* `find alex david` returns `Alex Yeoh`, `David Li`.<br>
 
 #### 2.5 Deleting a person : `delete`
 
@@ -169,7 +166,7 @@ Clears all entries from the contact list.
 Format: `clear`
 
 #### 2.7 Archiving a person : `archive`
-Archives the specified employee's contact detail from the tCheck
+Archives the specified employee's contact detail from the tCheck.
 
 Format: `archive INDEX`
 
@@ -182,7 +179,7 @@ Examples:
 * `find Betsy` followed by `archive 1` deletes the 1st person in the results of the `find` command.
 
 #### 2.8 Archiving all employees : `archive all`
-Archives all employees' contact detail from the tCheck
+Archives all employees' contact detail from the tCheck.
 
 Format: `archive all`
 
@@ -256,7 +253,7 @@ Format: `ingredient list`
 
 ### 4. Commands - Sales Tracking <a name="commands-sales-tracking"></a>
 
-#### 4.1 Updating the number of drinks sold for the day
+#### 4.1 Updating the number of drinks sold for the day :
 Asks the user to enter the number of each type of drink sold for the current day.
 
 Format: `sales A/NUM B/NUM C/NUM ...`
@@ -267,12 +264,12 @@ Example:
 * `sales BSBM/100 BSBBT/120` Updates the sales of Brown Sugar Boba Milk `BSBM` to 100 and
  Brown Sugar Boba Black Tea `BSBBT` to 120.
 
-#### 4.2 Listing the number of drinks sold for the day
+#### 4.2 Listing the number of drinks sold for the day :
 Shows a list of all types of drinks sold for the current day.
 
 Format: `sales list`
 
-#### 4.3 Listing the sales record for a specific day
+#### 4.3 Listing the sales record for a specific day :
 Shows a sales record for each type of mile tea on a specific date.
 
 Format: `sales YYYY-MM-DD`
@@ -281,17 +278,19 @@ Format: `sales YYYY-MM-DD`
 Example:
 * `sales 2020-08-01` returns the sales record for each type of milk tea on 2020-08-01.
  
-_{explain the feature here}_
 
 
 ## Command summary <a name="command-summary"></a>
+
 ### General
+
 Action | Format, Examples
 -------|------------------------------
 **Help** | `help`
 **Exit** | `exit`
 
 ### Employees' Contact Details
+
 Action | Format, Examples
 -------|------------------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMERGENCY_CONTACT [t/TAG]…` <br> e.g., `add n/James Ho p/22224444 e/81234567 t/morning shift`
@@ -303,6 +302,7 @@ Action | Format, Examples
 **Archive** |  1. **Archive \(1 entry\):**  `archvie INDEX`<br> e.g., `archive 1` <br>2. **Archive \(all\):**  `archvie all` <br>3. **List all archived data:**  `archvie list`</br>
 
 ### Ingredients  Tracking
+
 Action | Format, Examples
 -------|------------------------------
 **Set**  | `set INGREDIENT_NAME AMOUNT` <br> e.g., `set milk 20`
@@ -313,6 +313,7 @@ Action | Format, Examples
 **List**| `ingredient list`
 
 ### Sales Tracking
+
 Action | Format, Examples
 -------|------------------------------
 **Update**| `sales A/NUM B/NUM C/NUM ...` <br> e.g., `sales BSBM/100 BSBBT/120`
