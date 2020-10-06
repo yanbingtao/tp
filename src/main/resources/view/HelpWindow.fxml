@@ -12,6 +12,7 @@
     <icons>
         <Image url="@/images/help_icon.png" />
     </icons>
+    <scene>
         <Scene stylesheets="@DarkTheme.css">
             <StackPane minWidth="850.0" prefWidth="900.0">
                 <children>
