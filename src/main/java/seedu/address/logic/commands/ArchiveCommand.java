@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
@@ -9,7 +10,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 /**
  * Archives a person identified using it's displayed index from the address book.
@@ -26,7 +26,6 @@ public class ArchiveCommand extends Command {
     public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Archived Person: %1$s";
 
     private final Index targetIndex;
-
 
     public ArchiveCommand(Index targetIndex) {
         requireAllNonNull(targetIndex);
