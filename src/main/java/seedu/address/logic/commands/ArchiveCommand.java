@@ -23,13 +23,11 @@ public class ArchiveCommand extends Command {
             + ": Archives the person identified by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
-//
-//    public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Archive command not implemented yet";
-//    public static final String MESSAGE_ARGUMENTS = "Archive Index: %1$d";
+
+    public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Archived Person: %1$s";
 
     private final Index targetIndex;
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Archived Person: %1$s";
 
     public ArchiveCommand(Index targetIndex) {
         requireAllNonNull(targetIndex);
@@ -38,7 +36,6 @@ public class ArchiveCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-//        return new CommandResult(String.format(MESSAGE_ARGUMENTS, targetIndex.getOneBased()));
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -48,7 +45,7 @@ public class ArchiveCommand extends Command {
 
         Person personToArchive = lastShownList.get(targetIndex.getZeroBased());
         model.archivePerson(personToArchive);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToArchive));
+        return new CommandResult(String.format(MESSAGE_ARCHIVE_PERSON_SUCCESS, personToArchive));
     }
 
     @Override
