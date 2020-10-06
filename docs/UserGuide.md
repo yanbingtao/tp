@@ -72,7 +72,7 @@ more efficiently.
 ### 1. Commands - General <a name="commands-general"></a>
 #### 1.1 Viewing help : `help`
 
-Display a brief explanation of the list of commands, and a link to the help page, which is the user guide.
+Displays a brief explanation of the list of commands, and a link to the help page, which is the user guide.
 
 Format: `help`
 

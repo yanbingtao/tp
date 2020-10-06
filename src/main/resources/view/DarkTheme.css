@@ -3,10 +3,23 @@
     background-color: #383838; /* Used in the default.html file */
 }
 
+.help-window-anchorpane {
+    -fx-background-color: #393939;
+    -fx-border-color: transparent;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, #1d1d1d, 20, 0.2, 0, 10);
+    -fx-grid-lines-visible: false;
+}
+
+.help-window.label {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 14;
+    -fx-text-fill: #cacaca;
+}
+
 .label {
-    -fx-font-family: Calibri;
-    -fx-font-weight: 100;
-    -fx-font-size: 15;
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #555555;
     -fx-opacity: 0.9;
 }

@@ -14,9 +14,9 @@
     </icons>
     <scene>
         <Scene stylesheets="@DarkTheme.css">
-            <StackPane minWidth="850.0" prefWidth="900.0">
+            <StackPane minWidth="850.0" prefWidth="900.0"  styleClass="help-window-anchorpane">
                 <children>
-                    <Label fx:id="helpMessage" text="Label">
+                    <Label fx:id="helpMessage" text="Label" styleClass="help-window">
                         <padding>
                             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                         </padding>

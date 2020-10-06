@@ -16,7 +16,7 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-t12-2.github.io/tp/UserGuide.html";
-    public static final String BRIEF_COMMAND_EXPLANATION =  "The list of commands that tCheck can recognize are"
+    public static final String BRIEF_COMMAND_EXPLANATION = "The list of commands that tCheck can recognize are"
             + " as follows:\n"
             + "add n/NAME p/PHONE_NUMBER e/EMERGENCY_CONTACT [t/TAG]…: Adds a person to the contact list. \n"
             + "list: Shows a list of all persons in the address book.\n"
@@ -28,13 +28,10 @@ public class HelpWindow extends UiPart<Stage> {
             + "archvie INDEX: Archives the specified employee’s contact detail from tCheck.\n"
             + "archvie archive ALL: Archives all employees’ contact detail from tCheck.\n"
             + "archive list: Shows a list of all archived employees’ contact details in tCheck.\n"
-            + "set INGREDIENT_NAME AMOUNT: Users can set the level for one type of ingredient individually.\n"
-            + "set all ingredients AMOUNT: Users can initialise all ingredients levels to a standard default "
-            + "value or a desired value use a short command.\n"
-            + "set ingredients m/MILK b/BLACK_TEA s/SUGAR o/BUBBLE: Users can enter all current ingredients level "
-            + "in a single command by following a pre-defined sequence.\n"
-            + "ingredient single INGREDIENT_NAME: Prints the ingredient level for a particular type of ingredient "
-            + "which is specified by the user’s command.\n"
+            + "set INGREDIENT_NAME AMOUNT: Sets the level for one type of ingredient individually.\n"
+            + "set all ingredients AMOUNT: Sets all ingredient levels to a standard default amount.\n"
+            + "set ingredients m/MILK b/BLACK_TEA s/SUGAR o/BUBBLE: Enters all current ingredient levels.\n "
+            + "ingredient single INGREDIENT_NAME: Prints a particular type of ingredient's ingredient level. \n"
             + "ingredient resetAll: Sets all ingredient levels to 0 by updating the database when the command is "
             + "entered.\n"
             + "ingredient list: Prints the ingredient levels for all ingredient types retrieved from the database.\n"
@@ -42,7 +39,7 @@ public class HelpWindow extends UiPart<Stage> {
             + "sales YYYY-MM-DD: Shows a sales record for each type of mile tea on a specific date.\n"
             + "sales A/NUM B/NUM C/NUM ...: Asks the user to enter the number of each type of drink sold for the "
             + "current day.\n"
-            + "help: Display a brief explanation of the list of commands, and a link to the help page, "
+            + "help: Displays a brief explanation of the list of commands, and a link to the help page, "
             + "which is the user guide.\n"
             + "exit: Exits the program.\n";
 
