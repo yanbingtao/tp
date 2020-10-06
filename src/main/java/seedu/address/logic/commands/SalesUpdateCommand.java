@@ -1,13 +1,17 @@
 package seedu.address.logic.commands;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BSBM;
+
+import java.util.Map;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Drink;
 import seedu.address.model.Model;
 
-import java.util.Map;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_BSBM;
-
+/**
+ * Updates the sales of the drink items provided by the user.
+ */
 public class SalesUpdateCommand extends Command {
 
     public static final String COMMAND_WORD = "sales";
@@ -19,7 +23,7 @@ public class SalesUpdateCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_BSBM + "100";
 
-    public final static String MESSAGE_ARGUMENTS = "Current Record = %s";
+    public static final String MESSAGE_ARGUMENTS = "Current Record = %s";
 
     private final Map<Drink, Integer> sales;
 

@@ -8,11 +8,11 @@ public enum Drink {
     BSPBT ("Brown Sugar Pearl Black Tea"),
     BSPGT ("Brown Sugar Pearl Green Tea");
 
-    // drink ingredients
-
-   private final String name;
+    // TODO: drink ingredients?
+    private final String name;
 
     Drink(String name) {
         this.name = name;
     }
+
 }
