@@ -1,5 +1,8 @@
 package seedu.address.model;
 
+/**
+ * Represents the types of drink items available.
+ */
 public enum Drink {
     BSBM ("Brown Sugar Boba Milk"),
     BSBBT ("Brown Sugar Boba Black Tea"),
