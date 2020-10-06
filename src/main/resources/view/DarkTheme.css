@@ -227,11 +227,11 @@
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 .button {
-        -fx-background-radius: 0;
-         -fx-background-color: #1d1d1d;
-         -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-         -fx-font-size: 11pt;
-         -fx-text-fill: #d8d8d8;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
 }
 
 .button:hover {
