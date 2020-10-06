@@ -36,7 +36,7 @@ public class SalesUpdateCommandParserTest {
 
         // have two item
         sales.put(Drink.BSBBT, numBsbbtSold);
-        userInput = SalesUpdateCommand.COMMAND_WORD + " " + PREFIX_BSBM + numBsbbtSold
+        userInput = SalesUpdateCommand.COMMAND_WORD + " " + PREFIX_BSBM + numBsbmSold
                 + " " + PREFIX_BSBBT + numBsbbtSold;
         expectedCommand = new SalesUpdateCommand(sales);
         assertParseSuccess(parser, userInput, expectedCommand);
