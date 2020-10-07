@@ -47,7 +47,7 @@ public class AddressBookParser {
 
         if (userInput.equals(ArchiveListCommand.COMMAND_WORD)) {
             commandWord = ArchiveListCommand.COMMAND_WORD;
-            arguments="";
+            arguments = "";
         }
         switch (commandWord) {
 
