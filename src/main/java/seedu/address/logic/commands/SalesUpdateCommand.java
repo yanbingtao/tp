@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BSBM;
 
 import java.util.Map;
@@ -23,7 +24,8 @@ public class SalesUpdateCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_BSBM + "100";
 
-    public static final String MESSAGE_ARGUMENTS = "Current Record = %s";
+    public static final String MESSAGE_ADD_SALES_SUCCESS = "Added sales to the record. \n This is the current "
+            + "record now = %s";
 
     private final Map<Drink, Integer> sales;
 
@@ -40,7 +42,9 @@ public class SalesUpdateCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        throw new CommandException(String.format(MESSAGE_ARGUMENTS, sales.toString()));
+        requireNonNull(model);
+        model.overwrite(sales);
+        return new CommandResult(String.format(MESSAGE_ADD_SALES_SUCCESS, model.getSalesBook()));
     }
 
     @Override
