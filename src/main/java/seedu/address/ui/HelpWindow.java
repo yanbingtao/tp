@@ -15,14 +15,46 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class HelpWindow extends UiPart<Stage> {
 
-    public static final String USERGUIDE_URL = "https://se-education.org/addressbook-level3/UserGuide.html";
-    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
+    public static final String USERGUIDE_URL = "https://ay2021s1-cs2103t-t12-2.github.io/tp/UserGuide.html";
+    public static final String BRIEF_COMMAND_EXPLANATION = "The list of commands that tCheck can recognize are"
+            + " as follows:\n"
+            + "add n/NAME p/PHONE_NUMBER e/EMERGENCY_CONTACT [t/TAG]…: Adds a person to the contact list. \n"
+            + "list: Shows a list of all persons in the address book.\n"
+            + "edit INDEX [n/NAME] [e/EMERGENCY_CONTACT] [t/TAG]…: Edits the corresponding contact information in"
+            + " the contact list.\n"
+            + "search KEYWORD [MORE_KEYWORDS]: Finds all contacts that contain the KEYWORD(s).\n"
+            + "delete INDEX: Deletes the specified person from the address book.\n"
+            + "clear: Clears all entries from the contact list.\n"
+            + "archvie INDEX: Archives the specified employee’s contact detail from tCheck.\n"
+            + "archvie archive ALL: Archives all employees’ contact detail from tCheck.\n"
+            + "archive list: Shows a list of all archived employees’ contact details in tCheck.\n"
+            + "set INGREDIENT_NAME AMOUNT: Sets the level for one type of ingredient individually.\n"
+            + "set all ingredients AMOUNT: Sets all ingredient levels to a standard default amount.\n"
+            + "set ingredients m/MILK b/BLACK_TEA s/SUGAR o/BUBBLE: Enters all current ingredient levels.\n "
+            + "ingredient single INGREDIENT_NAME: Prints a particular type of ingredient's ingredient level. \n"
+            + "ingredient resetAll: Sets all ingredient levels to 0 by updating the database when the command is "
+            + "entered.\n"
+            + "ingredient list: Prints the ingredient levels for all ingredient types retrieved from the database.\n"
+            + "sales list.: Shows a list of all types of drinks sold for the current day.\n"
+            + "sales YYYY-MM-DD: Shows a sales record for each type of mile tea on a specific date.\n"
+            + "sales A/NUM B/NUM C/NUM ...: Asks the user to enter the number of each type of drink sold for the "
+            + "current day.\n"
+            + "help: Displays a brief explanation of the list of commands, and a link to the help page, "
+            + "which is the user guide.\n"
+            + "exit: Exits the program.\n";
+
+    public static final String HELP_MESSAGE = BRIEF_COMMAND_EXPLANATION + "To explore more details, "
+            + "please refer to the user guide: " + USERGUIDE_URL;
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
 
+
     @FXML
     private Button copyButton;
+
+    @FXML
+    private Label commandList;
 
     @FXML
     private Label helpMessage;
@@ -35,6 +67,7 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        //commandList.setText(BRIEF_COMMAND_EXPLANATION);
     }
 
     /**

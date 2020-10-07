@@ -3,6 +3,20 @@
     background-color: #383838; /* Used in the default.html file */
 }
 
+.help-window-anchorpane {
+    -fx-background-color: #393939;
+    -fx-border-color: transparent;
+    -fx-border-style: solid;
+    -fx-effect: dropshadow(gaussian, #1d1d1d, 20, 0.2, 0, 10);
+    -fx-grid-lines-visible: false;
+}
+
+.help-window.label {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 14;
+    -fx-text-fill: #cacaca;
+}
+
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -213,15 +227,11 @@
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 .button {
-    -fx-padding: 5 22 5 22;
-    -fx-border-color: #e2e2e2;
-    -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #1d1d1d;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover {
