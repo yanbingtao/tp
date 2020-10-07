@@ -146,6 +146,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Ingredient> getIngredientList() {
         return ingredients.asUnmodifiableObservableList();
+    }
+    
     public ObservableList<Person> getArchivedList() {
         return archivedPersons.asUnmodifiableObservableList();
     }
