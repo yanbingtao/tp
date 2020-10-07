@@ -2,28 +2,42 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.SalesUpdateCommand.MESSAGE_ARGUMENTS;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.AddressBook;
 import seedu.address.model.Drink;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.SalesBook;
 import seedu.address.model.UserPrefs;
 
 public class SalesUpdateCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), new SalesBook(), new UserPrefs());
 
     @Test
-    public void execute() {
-        final HashMap<Drink, Integer> sales = new HashMap<>();
+    public void execute_updateOneDrinkItem_success() {
+        final int numBsbmSold = 80;
+        HashMap<Drink, Integer> sales = new HashMap<>();
+        sales.put(Drink.BSBM, numBsbmSold);
+        sales.put(Drink.BSBBT, 0);
+        sales.put(Drink.BSBGT, 0);
+        sales.put(Drink.BSPM, 0);
+        sales.put(Drink.BSPBT, 0);
+        sales.put(Drink.BSPGT, 0);
 
-        assertCommandFailure(new SalesUpdateCommand(sales), model,
-                String.format(MESSAGE_ARGUMENTS, sales.toString()));
+        SalesUpdateCommand command = new SalesUpdateCommand(sales);
+
+        String expectedMessage = String.format(SalesUpdateCommand.MESSAGE_ADD_SALES_SUCCESS, sales.toString());
+        Model expectedModel =
+                new ModelManager(new AddressBook(model.getAddressBook()), model.getSalesBook(), new UserPrefs());
+        expectedModel.overwrite(sales);
+
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -49,6 +63,5 @@ public class SalesUpdateCommandTest {
         final HashMap<Drink, Integer> differentSales = new HashMap<>();
         differentSales.put(Drink.BSBBT, 10);
         assertFalse(standardCommand.equals(new SalesUpdateCommand(differentSales)));
-
     }
 }
