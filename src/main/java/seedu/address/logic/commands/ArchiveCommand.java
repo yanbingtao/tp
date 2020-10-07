@@ -5,6 +5,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -24,6 +25,7 @@ public class ArchiveCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Archived Person: %1$s";
+    public static final String MESSAGE_PERSON_ALREADY_ARCHIVED = "This person is already archived!";
 
     private final Index targetIndex;
 
@@ -42,13 +44,25 @@ public class ArchiveCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
+
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
         Person personToArchive = lastShownList.get(targetIndex.getZeroBased());
+
+        if (isAlrArchived(personToArchive, model)) {
+            return new CommandResult(String.format(MESSAGE_PERSON_ALREADY_ARCHIVED, personToArchive));
+        }
+
         model.archivePerson(personToArchive);
         return new CommandResult(String.format(MESSAGE_ARCHIVE_PERSON_SUCCESS, personToArchive));
+    }
+
+    private boolean isAlrArchived (Person personToCheck, Model model) {
+        ObservableList<Person> currentArchivedList = model.getAddressBook().getArchivedList();
+        boolean b = currentArchivedList.contains(personToCheck);
+        return b;
     }
 
     @Override
