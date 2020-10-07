@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.Map;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -21,28 +20,25 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
-    private final SalesBook salesBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, SalesBook salesBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, salesBook, userPrefs);
+        requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " sales book: " + salesBook
-                + " and user prefs" + " " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
-        this.salesBook = new SalesBook(salesBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new SalesBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -114,26 +110,6 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
-    }
-    //=========== SalesBook ==================================================================================
-
-    @Override
-    public void setSalesBook(SalesBook salesBook) {
-        this.salesBook.resetData(salesBook);
-    }
-
-    @Override
-    public SalesBook getSalesBook() {
-        return salesBook;
-    }
-
-    @Override
-    public void overwrite(Map<Drink, Integer> salesInput) {
-        if (salesBook.isEmptySalesBook()) {
-            salesBook.setRecord(salesInput);
-        } else {
-            salesBook.overwriteSales(salesInput);
-        }
     }
 
     //=========== Filtered Person List Accessors =============================================================

@@ -20,7 +20,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.SalesBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
@@ -91,10 +90,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        // salesBook not saved in storage yet. An empty salesBook will be used instead.
-        SalesBook record = new SalesBook();
-
-        return new ModelManager(initialData, record, userPrefs);
+        return new ModelManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {

@@ -37,7 +37,7 @@ public class SalesUpdateCommandParser implements Parser<SalesUpdateCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, drinkPrefixes);
 
         int drinkCounter = 0;
-        HashMap<Drink, Integer> sales = new HashMap<>();
+        HashMap<Drink, Integer> record = new HashMap<>();
         // populate the map with argmultimap's values
         for (int i = 0; i < drinkPrefixes.length; i++) {
             Optional<String> numSold = argMultimap.getValue(drinkPrefixes[i]);
@@ -48,13 +48,13 @@ public class SalesUpdateCommandParser implements Parser<SalesUpdateCommand> {
             }
 
             Drink drink = Drink.valueOf(drinkPrefixes[i].toString().replace("/", ""));
-            sales.put(drink, value);
+            record.put(drink, value);
         }
 
         if (drinkCounter == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SalesUpdateCommand.MESSAGE_USAGE));
         }
 
-        return new SalesUpdateCommand(sales);
+        return new SalesUpdateCommand(record);
     }
 }
