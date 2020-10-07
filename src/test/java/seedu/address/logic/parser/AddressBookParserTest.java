@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BSBM;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +24,9 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SalesUpdateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Drink;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -86,6 +90,21 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_salesUpdate() throws Exception {
+        final int numBsbmSold = 80;
+        final String userInput = SalesUpdateCommand.COMMAND_WORD + " " + PREFIX_BSBM + numBsbmSold;
+        SalesUpdateCommand command = (SalesUpdateCommand) parser.parseCommand(userInput);
+        HashMap<Drink, Integer> sales = new HashMap<>();
+        sales.put(Drink.BSBM, numBsbmSold);
+        sales.put(Drink.BSBBT, 0);
+        sales.put(Drink.BSBGT, 0);
+        sales.put(Drink.BSPM, 0);
+        sales.put(Drink.BSPBT, 0);
+        sales.put(Drink.BSPGT, 0);
+        assertEquals(new SalesUpdateCommand(sales), command);
     }
 
     @Test
