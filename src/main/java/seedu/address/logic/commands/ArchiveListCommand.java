@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import seedu.address.model.Model;
 
 /**
- * Archives a person identified using it's displayed index from the address book.
+ * Shows all archived persons.
  */
 public class ArchiveListCommand extends Command {
 
