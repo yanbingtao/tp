@@ -9,6 +9,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -17,10 +18,12 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
+import seedu.address.model.Drink;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.SalesBook;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -140,12 +143,31 @@ public class AddCommandTest {
         }
 
         @Override
+        public void archivePerson(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setPerson(Person target, Person editedPerson) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setIngredient(Ingredient target, Ingredient newAmount) {
+        }
+
+        public void setSalesBook(SalesBook salesBook) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public SalesBook getSalesBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void overwrite(Map<Drink, Integer> salesInput) {
+            throw new AssertionError("This method should not be called.");
 
         }
 

@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -71,6 +72,12 @@ public interface Model {
     void deletePerson(Person target);
 
     /**
+     * Archives the given person.
+     * The person must exist in the address book.
+     */
+    void archivePerson(Person target);
+
+    /**
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */
@@ -85,9 +92,15 @@ public interface Model {
 
     void setIngredient(Ingredient target, Ingredient newAmount);
 
-    /**
-     * Returns an unmodifiable view of the filtered person list
-     */
+
+    void setSalesBook(SalesBook salesBook);
+
+    SalesBook getSalesBook();
+
+    void overwrite(Map<Drink, Integer> salesInput);
+
+    /** Returns an unmodifiable view of the filtered person list */
+
     ObservableList<Person> getFilteredPersonList();
 
     /**

@@ -17,4 +17,6 @@ public interface ReadOnlyAddressBook {
 
     ObservableList<Ingredient> getIngredientList();
 
+    ObservableList<Person> getArchivedList();
+
 }

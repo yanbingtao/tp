@@ -103,6 +103,11 @@ public class AddressBookTest {
         public ObservableList<Ingredient> getIngredientList() {
             return null;
         }
+
+        public ObservableList<Person> getArchivedList() {
+
+            return null;
+        }
     }
 
 }
