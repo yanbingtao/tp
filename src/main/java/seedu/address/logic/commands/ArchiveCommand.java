@@ -27,6 +27,11 @@ public class ArchiveCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Constructs an ArchiveCommand.
+     *
+     * @param targetIndex the index number shown in the displayed person list.
+     */
     public ArchiveCommand(Index targetIndex) {
         requireAllNonNull(targetIndex);
         this.targetIndex = targetIndex;
