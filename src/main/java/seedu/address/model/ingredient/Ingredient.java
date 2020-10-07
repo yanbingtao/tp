@@ -1,22 +1,21 @@
 package seedu.address.model.ingredient;
 
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+import java.util.Objects;
+
 /**
  * Represents ALL ingredient that is tracked by tCheck.
  * OOP development plan : Each ingredient can be extracted out to make the design more OOP.
  */
 public class Ingredient {
 
-    /**
-     * All ingredients featured in mock GUI are tracked by tCheck.
-     */
-    public static final String MILK = "Milk";
-    public static final String PEARL = "Pearl";
-    public static final String BOBA = "Boba";
-    public static final String OOLONG_TEA = "Oolong Tea";
-    public static final String BROWN_SUGAR = "Brown Sugar";
+    // Identity field
+    private final IngredientName ingredientName;
 
-    private int amount;
-    private String ingredientName;
+    // Data field
+    private final Amount amount;
+
 
     /**
      * Constructs an ingredient with the given amount and ingredient name.
@@ -26,7 +25,8 @@ public class Ingredient {
      * @param amount         an integer representing the level of the ingredient
      * @param ingredientName name of the ingredient
      */
-    public Ingredient(int amount, String ingredientName) {
+    public Ingredient(IngredientName ingredientName, Amount amount) {
+        requireAllNonNull(ingredientName, amount);
         this.amount = amount;
         this.ingredientName = ingredientName;
     }
@@ -37,38 +37,65 @@ public class Ingredient {
      *
      * @param ingredientName name of the ingredient
      */
-    public Ingredient(String ingredientName) {
-        this.amount = 0;
+    public Ingredient(IngredientName ingredientName) {
+        this.amount = new Amount("0");
         this.ingredientName = ingredientName;
     }
 
-    public int getAmount() {
+    public Amount getAmount() {
         return this.amount;
     }
 
-    public String getIngredientName() {
+    public IngredientName getIngredientName() {
         return this.ingredientName;
+    }
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     */
+    public boolean isSameIngredient(Ingredient otherIngredient) {
+        if (otherIngredient == this) {
+            return true;
+        }
+
+        return otherIngredient != null
+                && otherIngredient.getIngredientName().equals(getIngredientName())
+                && otherIngredient.getAmount().equals(getAmount());
+    }
+
+    /**
+     * Returns true if both ingredients have the same identity and data fields.
+     * This defines a stronger notion of equality between two ingredients.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Ingredient)) {
+            return false;
+        }
+
+        Ingredient otherIngredient = (Ingredient) other;
+        return otherIngredient.getIngredientName().equals(getIngredientName())
+                && otherIngredient.getAmount().equals(getAmount());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ingredientName, amount);
     }
 
     @Override
     public String toString() {
-        if (this.ingredientName.equals(MILK)) {
-            return MILK + ": " + this.amount;
-        }
-        if (this.ingredientName.equals(PEARL)) {
-            return PEARL + ": " + this.amount;
-        }
-        if (this.ingredientName.equals(BOBA)) {
-            return BOBA + ": " + this.amount;
-        }
-        if (this.ingredientName.equals(OOLONG_TEA)) {
-            return OOLONG_TEA + ": " + this.amount;
-        }
-        if (this.ingredientName.equals(BROWN_SUGAR)) {
-            return BROWN_SUGAR + ": " + this.amount;
-        }
 
-        return "Unknown ingredient !";
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getIngredientName())
+                .append(" Ingredient: ")
+                .append(getAmount())
+                .append(" Amount: ");
+        return builder.toString();
 
     }
 }

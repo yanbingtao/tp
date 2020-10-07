@@ -11,17 +11,20 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.person.Person;
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Ingredient> filteredIngredients;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -35,6 +38,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredIngredients = new FilteredList<>(this.addressBook.getIngredientList());
     }
 
     public ModelManager() {
@@ -94,6 +98,13 @@ public class ModelManager implements Model {
         return addressBook.hasPerson(person);
     }
 
+    //Added here
+    @Override
+    public boolean hasIngredient(Ingredient ingredient) {
+        requireNonNull(ingredient);
+        return addressBook.hasIngredient(ingredient);
+    }
+
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
@@ -112,6 +123,13 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public void setIngredient(Ingredient target, Ingredient newAmount) {
+        requireAllNonNull(target, newAmount);
+
+        addressBook.setIngredient(target, newAmount);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -121,6 +139,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
+    }
+
+    @Override
+    public ObservableList<Ingredient> getFilteredIngredientList() {
+        return filteredIngredients;
     }
 
     @Override
