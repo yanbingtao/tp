@@ -154,6 +154,7 @@ public class AddCommandTest {
 
         @Override
         public void setIngredient(Ingredient target, Ingredient newAmount) {
+            return null;
         }
 
         public void setSalesBook(SalesBook salesBook) {
