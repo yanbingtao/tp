@@ -32,7 +32,6 @@ public class ArchiveCommand extends Command {
      * @param targetIndex the index number shown in the displayed person list.
      */
     public ArchiveCommand(Index targetIndex) {
-        requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
     }
 
