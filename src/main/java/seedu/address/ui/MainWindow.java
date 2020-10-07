@@ -135,6 +135,18 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    @FXML
+    private void handleShowArchivedTasks() {
+        personListPanel = new PersonListPanel(logic.getFilteredArchivedPersonList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
+    @FXML
+    private void handleShowActiveTasks() {
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
     /**
      * Opens the help window or focuses on it if it's already opened.
      */
@@ -184,6 +196,14 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isShowArchive()) {
+                handleShowArchivedTasks();
+            }
+
+            if (commandResult.isShowActive()) {
+                handleShowActiveTasks();
             }
 
             return commandResult;
