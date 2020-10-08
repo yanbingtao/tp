@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +10,9 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ingredient.Amount;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -20,6 +24,9 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_AMOUNT = "Amount has to be a non-negative integer.";
+    public static final String MESSAGE_INVALID_INGREDIENT_NAME = "The ingredient is not found, it " +
+            "has to be chosen from : " + Arrays.toString(IngredientName.INGREDIENTS);
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -109,14 +116,25 @@ public class ParserUtil {
     }
 
     /**
-     * Parse a string representing amount into an integer.
+     * Parse a string representing amount into an amount.
      */
-    public static int parseAmount(String amount) throws ParseException {
+    public static Amount parseAmount(String amount) throws ParseException {
         requireNonNull(amount);
         String trimmedAmount = amount.trim();
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedAmount)) {
-            throw new ParseException(MESSAGE_INVALID_INDEX);
+            throw new ParseException(MESSAGE_INVALID_AMOUNT);
         }
-        return Integer.parseInt(trimmedAmount);
+        return new Amount(trimmedAmount);
+    }
+    /**
+     * Parse a string representing ingredient into an ingredient.
+     */
+    public static Ingredient parseIngredient(String ingredient) throws ParseException {
+        requireNonNull(ingredient);
+        String trimmedIngredient = ingredient.trim();
+        if(!IngredientName.isValidIngredientName(trimmedIngredient)){
+            throw new ParseException(MESSAGE_INVALID_INGREDIENT_NAME);
+        }
+        return new Ingredient(new IngredientName(trimmedIngredient));
     }
 }

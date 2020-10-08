@@ -49,7 +49,6 @@ public class Ingredient {
     public IngredientName getIngredientName() {
         return this.ingredientName;
     }
-
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
