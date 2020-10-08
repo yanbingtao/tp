@@ -175,7 +175,7 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
-    public IngredientListPanel getIngredientListPanel(){
+    public IngredientListPanel getIngredientListPanel() {
         return ingredientListPanel;
     }
 

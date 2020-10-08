@@ -25,8 +25,8 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_AMOUNT = "Amount has to be a non-negative integer.";
-    public static final String MESSAGE_INVALID_INGREDIENT_NAME = "The ingredient is not found, it " +
-            "has to be chosen from : " + Arrays.toString(IngredientName.INGREDIENTS);
+    public static final String MESSAGE_INVALID_INGREDIENT_NAME = "The ingredient is not found, it "
+            + "has to be chosen from : " + Arrays.toString(IngredientName.INGREDIENTS);
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -132,7 +132,7 @@ public class ParserUtil {
     public static Ingredient parseIngredient(String ingredient) throws ParseException {
         requireNonNull(ingredient);
         String trimmedIngredient = ingredient.trim();
-        if(!IngredientName.isValidIngredientName(trimmedIngredient)){
+        if (!IngredientName.isValidIngredientName(trimmedIngredient)) {
             throw new ParseException(MESSAGE_INVALID_INGREDIENT_NAME);
         }
         return new Ingredient(new IngredientName(trimmedIngredient));

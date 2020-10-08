@@ -5,14 +5,12 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INGREDIENT;
 
+import java.util.stream.Stream;
+
 import seedu.address.logic.commands.SetCommand;
 import seedu.address.logic.commands.SetCommand.SetIngredientDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ingredient.Amount;
 import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.IngredientName;
-
-import java.util.stream.Stream;
 
 /**
  * Parses input arguments and creates a new {@code RemarkCommand} object
@@ -30,8 +28,8 @@ public class SetCommandParser implements Parser<SetCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_INGREDIENT, PREFIX_AMOUNT);
 
-        if(!arePrefixesPresent(argMultimap, PREFIX_INGREDIENT, PREFIX_AMOUNT)
-                || !argMultimap.getPreamble().isEmpty()){
+        if (!arePrefixesPresent(argMultimap, PREFIX_INGREDIENT, PREFIX_AMOUNT)
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SetCommand.MESSAGE_USAGE));
         }
 
@@ -39,11 +37,11 @@ public class SetCommandParser implements Parser<SetCommand> {
 
         SetCommand.SetIngredientDescriptor descriptor = new SetIngredientDescriptor();
 
-        if(argMultimap.getValue(PREFIX_AMOUNT).isPresent()){
+        if (argMultimap.getValue(PREFIX_AMOUNT).isPresent()) {
             descriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get()));
         }
 
-        if(!descriptor.isAnyFieldEdited()){
+        if (!descriptor.isAnyFieldEdited()) {
             throw new ParseException(SetCommand.MESSAGE_NO_CHANGE);
         }
 
