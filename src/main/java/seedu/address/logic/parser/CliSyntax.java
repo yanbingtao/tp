@@ -12,4 +12,12 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    // for the drinks
+    public static final Prefix PREFIX_BSBM = new Prefix("BSBM/");
+    public static final Prefix PREFIX_BSBBT = new Prefix("BSBBT/");
+    public static final Prefix PREFIX_BSBGT = new Prefix("BSBGT/");
+    public static final Prefix PREFIX_BSPM = new Prefix("BSPM/");
+    public static final Prefix PREFIX_BSPBT = new Prefix("BSPBT/");
+    public static final Prefix PREFIX_BSPGT = new Prefix("BSPGT/");
+
 }
