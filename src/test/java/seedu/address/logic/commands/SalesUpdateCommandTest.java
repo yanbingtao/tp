@@ -9,7 +9,13 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.*;
+import seedu.address.model.AddressBook;
+import seedu.address.model.Drink;
+import seedu.address.model.IngredientBook;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.SalesBook;
+import seedu.address.model.UserPrefs;
 
 public class SalesUpdateCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new SalesBook(),
