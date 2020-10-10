@@ -46,9 +46,6 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane ingredientListPanelPlaceholder;
-
-    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
@@ -111,16 +108,6 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        //!!! Panel for ingredients,the problem of Ui is with the following two lines,
-        //if it is like this (i.e. commented) , the Ui works fine
-        //if uncomment the following two line, Ui crash with a NullPointerException
-        //For fxml files, I checked multiple times to ensure the ids corresponds to those
-        //defined in IngredientCard and IngredientListPanel, but still do check again and verify
-        //Currently zy is really confused of behaviour of the Ui !!!
-
-        //ingredientListPanel = new IngredientListPanel(logic.getFilteredIngredientList());
-        //ingredientListPanelPlaceholder.getChildren().add(ingredientListPanel.getRoot());
-
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -173,10 +160,6 @@ public class MainWindow extends UiPart<Stage> {
 
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
-    }
-
-    public IngredientListPanel getIngredientListPanel() {
-        return ingredientListPanel;
     }
 
     /**
