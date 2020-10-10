@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,34 +12,49 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.person.Person;
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final SalesBook salesBook;
+    private final IngredientBook ingredientBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Ingredient> filteredIngredients;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, SalesBook salesBook,
+                        ReadOnlyIngredientBook ingredientBook, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(addressBook, salesBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + addressBook + " sales book: " + salesBook
+                + " Ingredients book: " + ingredientBook
+                + " and user prefs" + " " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
+        this.salesBook = new SalesBook(salesBook);
+        this.ingredientBook = new IngredientBook(ingredientBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
     }
 
+    /**
+     * Initializes a ModelManager with the given addressBook and userPrefs.
+     */
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new SalesBook(),
+                new IngredientBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -84,8 +100,18 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setIngredientBook(ReadOnlyIngredientBook ingredientBook) {
+        this.ingredientBook.setData(ingredientBook);
+    }
+
+    @Override
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
+    }
+
+    @Override
+    public ReadOnlyIngredientBook getIngredientBook() {
+        return ingredientBook;
     }
 
     @Override
@@ -94,9 +120,23 @@ public class ModelManager implements Model {
         return addressBook.hasPerson(person);
     }
 
+    //Added here
+    @Override
+    public boolean hasIngredient(Ingredient ingredient) {
+        requireNonNull(ingredient);
+        return ingredientBook.hasIngredient(ingredient);
+    }
+
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+    }
+
+    @Override
+    public void archivePerson(Person target) {
+        addressBook.removePerson(target);
+        addressBook.archivedPerson(target);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
@@ -111,6 +151,33 @@ public class ModelManager implements Model {
 
         addressBook.setPerson(target, editedPerson);
     }
+    //=========== SalesBook ==================================================================================
+
+    @Override
+    public void setSalesBook(SalesBook salesBook) {
+        this.salesBook.resetData(salesBook);
+    }
+
+    @Override
+    public SalesBook getSalesBook() {
+        return salesBook;
+    }
+
+    @Override
+    public void overwrite(Map<Drink, Integer> salesInput) {
+        if (salesBook.isEmptySalesBook()) {
+            salesBook.setRecord(salesInput);
+        } else {
+            salesBook.overwriteSales(salesInput);
+        }
+    }
+
+    @Override
+    public void setIngredient(Ingredient target, Ingredient newAmount) {
+        requireAllNonNull(target, newAmount);
+
+        ingredientBook.setIngredient(target, newAmount);
+    }
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -121,6 +188,14 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
+    }
+    /**
+     * Returns an unmodifiable view of the list of {@code Ingredient} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Ingredient> getFilteredIngredientList() {
+        return filteredIngredients;
     }
 
     @Override
@@ -144,6 +219,8 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
+                && salesBook.equals(other.salesBook)
+                && ingredientBook.equals(other.ingredientBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }

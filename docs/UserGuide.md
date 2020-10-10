@@ -72,7 +72,7 @@ more efficiently.
 ### 1. Commands - General <a name="commands-general"></a>
 #### 1.1 Viewing help : `help`
 
-Show a message explaining how to access the help page, which is the user guide.
+Displays a brief explanation of the list of commands, and a link to the help page, which is the user guide.
 
 Format: `help`
 
@@ -299,7 +299,7 @@ Action | Format, Examples
 **Search** | `search KEYWORD [MORE_KEYWORDS]`<br> e.g., `search James Jake`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Clear** | `clear`
-**Archive** |  1. **Archive \(1 entry\):**  `archvie INDEX`<br> e.g., `archive 1` <br>2. **Archive \(all\):**  `archvie all` <br>3. **List all archived data:**  `archvie list`</br>
+**Archive** |  1. **Archive \(1 entry\):**  `archive INDEX`<br> e.g., `archive 1` <br>2. **Archive \(all\):**  `archvie all` <br>3. **List all archived data:**  `archvie list`</br>
 
 ### Ingredients  Tracking
 
@@ -308,7 +308,7 @@ Action | Format, Examples
 **Set**  | `set INGREDIENT_NAME AMOUNT` <br> e.g., `set milk 20`
 **Set all**  | `set all ingredients AMOUNT` <br> e.g., `set all ingredients 5`
 **Set ingredients**  | `set ingredients m/MILK b/BLACK_TEA s/SUGAR o/BUBBLE` <br> e.g., `set ingredients m/19 b/20 s/5 o/0`
-**Get**| `ingredient singel`  <br> e.g., `ingredient single milk`
+**Get**| `ingredient single INGREDIENT_NAME`  <br> e.g., `ingredient single milk`
 **Reset**| `ingredient resetAll`
 **List**| `ingredient list`
 

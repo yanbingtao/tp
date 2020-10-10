@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,8 +10,10 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.ingredient.Amount;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -21,10 +24,14 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_AMOUNT = "Amount has to be a non-negative integer.";
+    public static final String MESSAGE_INVALID_INGREDIENT_NAME = "The ingredient is not found, it "
+            + "has to be chosen from : " + Arrays.toString(IngredientName.INGREDIENTS);
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -80,20 +87,6 @@ public class ParserUtil {
         return new Address(trimmedAddress);
     }
 
-    /**
-     * Parses a {@code String email} into an {@code Email}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code email} is invalid.
-     */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
-        }
-        return new Email(trimmedEmail);
-    }
 
     /**
      * Parses a {@code String tag} into a {@code Tag}.
@@ -120,5 +113,28 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parse a string representing amount into an amount.
+     */
+    public static Amount parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        String trimmedAmount = amount.trim();
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedAmount)) {
+            throw new ParseException(MESSAGE_INVALID_AMOUNT);
+        }
+        return new Amount(trimmedAmount);
+    }
+    /**
+     * Parse a string representing ingredient into an ingredient.
+     */
+    public static Ingredient parseIngredient(String ingredient) throws ParseException {
+        requireNonNull(ingredient);
+        String trimmedIngredient = ingredient.trim();
+        if (!IngredientName.isValidIngredientName(trimmedIngredient)) {
+            throw new ParseException(MESSAGE_INVALID_INGREDIENT_NAME);
+        }
+        return new Ingredient(new IngredientName(trimmedIngredient));
     }
 }
