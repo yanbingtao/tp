@@ -118,8 +118,8 @@ public class MainWindow extends UiPart<Stage> {
         //defined in IngredientCard and IngredientListPanel, but still do check again and verify
         //Currently zy is really confused of behaviour of the Ui !!!
 
-        //        ingredientListPanel = new IngredientListPanel(logic.getFilteredIngredientList());
-        //        ingredientListPanelPlaceholder.getChildren().add(ingredientListPanel.getRoot());
+        //ingredientListPanel = new IngredientListPanel(logic.getFilteredIngredientList());
+        //ingredientListPanelPlaceholder.getChildren().add(ingredientListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

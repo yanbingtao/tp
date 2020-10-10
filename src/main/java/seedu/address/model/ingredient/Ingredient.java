@@ -90,10 +90,10 @@ public class Ingredient {
     public String toString() {
 
         final StringBuilder builder = new StringBuilder();
-        builder.append(getIngredientName())
-                .append(" Ingredient: ")
-                .append(getAmount())
-                .append(" Amount: ");
+        builder.append(" Ingredient: ")
+                .append(getIngredientName())
+                .append(" Amount: ")
+                .append(getAmount());
         return builder.toString();
 
     }
