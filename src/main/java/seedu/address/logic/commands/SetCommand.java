@@ -21,7 +21,7 @@ public class SetCommand extends Command {
 
     public static final String COMMAND_WORD = "set";
 
-    public static final String MESSAGE_ARGUMENTS = "Ingredient: %s, Amount: %2$s";
+    public static final String MESSAGE_ARGUMENTS = "Ingredient- %s, Amount- %2$s";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + " :set the ingredient in tCheck."
             + "Parameters: "
@@ -62,7 +62,7 @@ public class SetCommand extends Command {
         }
 
         model.setIngredient(ingredientToEdit, updatedIngredient);
-        return new CommandResult(String.format(MESSAGE_SUCCESS));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, updatedIngredient));
     }
 
     private static Ingredient createSetIngredient(Ingredient target,
@@ -86,7 +86,7 @@ public class SetCommand extends Command {
         SetCommand e = (SetCommand) other;
 
         return target.equals(e.target)
-                && setIngredientDescriptor == e.setIngredientDescriptor;
+                && setIngredientDescriptor.equals(e.setIngredientDescriptor);
     }
 
     public static class SetIngredientDescriptor {
