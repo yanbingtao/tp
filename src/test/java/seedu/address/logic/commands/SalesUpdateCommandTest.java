@@ -9,15 +9,11 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.Drink;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.SalesBook;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 
 public class SalesUpdateCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new SalesBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), new SalesBook(),
+            new IngredientBook(), new UserPrefs());
 
     @Test
     public void execute_updateOneDrinkItem_success() {
@@ -34,7 +30,8 @@ public class SalesUpdateCommandTest {
 
         String expectedMessage = String.format(SalesUpdateCommand.MESSAGE_ADD_SALES_SUCCESS, sales.toString());
         Model expectedModel =
-                new ModelManager(new AddressBook(model.getAddressBook()), model.getSalesBook(), new UserPrefs());
+                new ModelManager(new AddressBook(model.getAddressBook()), model.getSalesBook(),
+                        new IngredientBook(), new UserPrefs());
         expectedModel.overwrite(sales);
 
         assertCommandSuccess(command, model, expectedMessage, expectedModel);

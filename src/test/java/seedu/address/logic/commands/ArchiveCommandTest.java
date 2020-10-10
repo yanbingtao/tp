@@ -13,15 +13,13 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.SalesBook;
-import seedu.address.model.UserPrefs;
+import seedu.address.model.*;
 import seedu.address.model.person.Person;
 
 
 public class ArchiveCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new SalesBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalAddressBook(), new SalesBook(),
+            new IngredientBook(), new UserPrefs());
     @Test
     public void execute_validIndexUnfilteredList_success() {
         Person personToArchive = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
@@ -29,7 +27,8 @@ public class ArchiveCommandTest {
 
         String expectedMessage = String.format(ArchiveCommand.MESSAGE_ARCHIVE_PERSON_SUCCESS, personToArchive);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new SalesBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new SalesBook(),
+                new IngredientBook(), new UserPrefs());
         expectedModel.archivePerson(personToArchive);
 
         assertCommandSuccess(archiveCommand, model, expectedMessage, expectedModel);
@@ -52,7 +51,8 @@ public class ArchiveCommandTest {
 
         String expectedMessage = String.format(ArchiveCommand.MESSAGE_ARCHIVE_PERSON_SUCCESS, personToArchive);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new SalesBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new SalesBook(),
+                new IngredientBook(), new UserPrefs());
         expectedModel.archivePerson(personToArchive);
 
         assertCommandSuccess(archiveCommand, model, expectedMessage, expectedModel);
