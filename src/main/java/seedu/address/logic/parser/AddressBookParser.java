@@ -17,10 +17,10 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SalesUpdateCommand;
-import seedu.address.logic.commands.ingredientCommands.IngredientResetAllCommand;
-import seedu.address.logic.commands.ingredientCommands.SetCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientResetAllCommand;
+import seedu.address.logic.commands.ingredientcommands.SetCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.ingredientParser.SetCommandParser;
+import seedu.address.logic.parser.ingredientparser.SetCommandParser;
 
 /**
  * Parses user input.
