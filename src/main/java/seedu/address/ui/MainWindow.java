@@ -32,7 +32,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
-    private IngredientListPanel ingredientListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
