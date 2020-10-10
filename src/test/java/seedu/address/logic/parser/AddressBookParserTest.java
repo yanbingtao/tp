@@ -90,7 +90,8 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_resetAllIngredients() throws Exception {
         assertTrue(parser.parseCommand(IngredientResetAllCommand.COMMAND_WORD) instanceof IngredientResetAllCommand);
-        assertTrue(parser.parseCommand(IngredientResetAllCommand.COMMAND_WORD + " 3") instanceof IngredientResetAllCommand);
+        assertTrue(parser.parseCommand(IngredientResetAllCommand.COMMAND_WORD + " 3")
+                instanceof IngredientResetAllCommand);
     }
 
     @Test
