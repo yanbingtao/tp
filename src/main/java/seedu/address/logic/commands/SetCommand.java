@@ -86,7 +86,7 @@ public class SetCommand extends Command {
         SetCommand e = (SetCommand) other;
 
         return target.equals(e.target)
-                && setIngredientDescriptor == e.setIngredientDescriptor;
+                && setIngredientDescriptor.equals(e.setIngredientDescriptor);
     }
 
     public static class SetIngredientDescriptor {
