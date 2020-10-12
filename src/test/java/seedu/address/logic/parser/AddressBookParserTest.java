@@ -29,7 +29,6 @@ import seedu.address.logic.commands.SalesUpdateCommand;
 import seedu.address.logic.commands.ingredientcommands.IngredientViewSingleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Drink;
-import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
