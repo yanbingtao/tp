@@ -15,12 +15,12 @@ import seedu.address.model.Model;
  */
 public class SalesUpdateCommand extends Command {
 
-    public static final String COMMAND_WORD = "sales";
+    public static final String COMMAND_WORD = "sales-update";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the sales of the drinks as entered. "
             + "Existing sales record will be overwritten by the input.\n"
             + "Parameters: A/NUM B/NUM ... where A, B refers to the drink abbreviation. "
-            + "You must record at least one sales item.\n"
+            + "You must record the sales of at least one item, which is a non-negative integer.\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_BSBM + "100";
 

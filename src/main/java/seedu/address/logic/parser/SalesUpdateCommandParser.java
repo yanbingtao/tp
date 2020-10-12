@@ -45,6 +45,9 @@ public class SalesUpdateCommandParser implements Parser<SalesUpdateCommand> {
 
             if (value > 0) {
                 drinkCounter++;
+            } else {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, SalesUpdateCommand.MESSAGE_USAGE));
             }
 
             Drink drink = Drink.valueOf(drinkPrefixes[i].toString().replace("/", ""));
