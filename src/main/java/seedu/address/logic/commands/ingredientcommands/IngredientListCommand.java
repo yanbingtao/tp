@@ -1,20 +1,20 @@
 package seedu.address.logic.commands.ingredientcommands;
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import seedu.address.model.ingredient.Amount;
 import seedu.address.model.ingredient.Ingredient;
-
-import java.util.List;
 
 /**
  * Set the level of one specific ingredient to a specific level.
  */
 public class IngredientListCommand extends Command {
+
+    public static final char LINE_SEPARATOR = '\n';
 
     public static final String COMMAND_WORD = "i-list";
 
@@ -22,11 +22,10 @@ public class IngredientListCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Here is the list of all ingredients: \n";
-    public String INGREDIENT_LIST = "";
-    public static final char LINE_SEPARATOR = '\n';
+    private String ingredientList = "";
 
     /**
-     * Constructs a Ingredient List command.
+     * Constructs an Ingredient List command.
      */
     public IngredientListCommand() {
         super();
@@ -44,9 +43,9 @@ public class IngredientListCommand extends Command {
         requireNonNull(model);
         List<Ingredient> lastShownList = model.getFilteredIngredientList();
         for (Ingredient i : lastShownList) {
-            INGREDIENT_LIST += i.toString() + LINE_SEPARATOR;
+            ingredientList += i.toString() + LINE_SEPARATOR;
         }
-        return new CommandResult(MESSAGE_SUCCESS + INGREDIENT_LIST);
+        return new CommandResult(MESSAGE_SUCCESS + ingredientList);
     }
 
     @Override
