@@ -21,7 +21,7 @@ public class IngredientListCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + " :list the ingredient levels in tCheck."
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Listed all ingredients: ";
+    public static final String MESSAGE_SUCCESS = "Here is the list of all ingredients: \n";
     public String INGREDIENT_LIST = "";
     public static final char LINE_SEPARATOR = '\n';
 

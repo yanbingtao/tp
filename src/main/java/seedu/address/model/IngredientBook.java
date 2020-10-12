@@ -70,14 +70,6 @@ public class IngredientBook implements ReadOnlyIngredientBook {
         ingredients.setIngredient(target, newAmount);
     }
 
-    /**
-     * Adds an ingredient to the ingredient book.
-     * The ingredient must not already exist in the ingredient book.
-     */
-    public void addIngredient(Ingredient i) {
-        ingredients.add(i);
-    }
-
     //// util methods
 
     @Override
