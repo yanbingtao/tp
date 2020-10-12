@@ -8,8 +8,11 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 import seedu.address.model.ingredient.exceptions.NoChangeIngredientException;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
 
 public class UniqueIngredientList implements Iterable<Ingredient> {
 
@@ -55,6 +58,18 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             throw new NoChangeIngredientException();
         }
         internalList.setAll(ingredients);
+    }
+
+    /**
+     * Adds an ingredient to the list.
+     * The ingredient must not already exist in the list.
+     */
+    public void add(Ingredient toAdd) {
+        requireNonNull(toAdd);
+        if (contains(toAdd)) {
+            throw new DuplicateIngredientException();
+        }
+        internalList.add(toAdd);
     }
 
     public ObservableList<Ingredient> asUnmodifiableObservableList() {

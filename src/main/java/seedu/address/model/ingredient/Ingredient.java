@@ -1,5 +1,7 @@
 package seedu.address.model.ingredient;
 
+import seedu.address.model.person.Person;
+
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
