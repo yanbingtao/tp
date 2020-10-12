@@ -26,7 +26,7 @@ public class IngredientResetAllCommand extends Command {
     public static final String MESSAGE_NO_CHANGE = "All Ingredient levels are already at 0.";
 
     /**
-     * Constructs a set command with the given ingredient name and amount.
+     * Constructs an IngredientResetAll command.
      */
     public IngredientResetAllCommand() {
         super();
