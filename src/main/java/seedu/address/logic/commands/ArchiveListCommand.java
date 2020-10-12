@@ -7,7 +7,7 @@ import seedu.address.model.Model;
  */
 public class ArchiveListCommand extends Command {
 
-    public static final String COMMAND_WORD = "archive list";
+    public static final String COMMAND_WORD = "c-archive-list";
 
     public static final String MESSAGE_SUCCESS = "Listed all archived persons.";
 

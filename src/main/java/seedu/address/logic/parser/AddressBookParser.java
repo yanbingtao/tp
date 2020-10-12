@@ -43,13 +43,9 @@ public class AddressBookParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
-        String commandWord = matcher.group("commandWord");
-        String arguments = matcher.group("arguments");
+        final String commandWord = matcher.group("commandWord");
+        final String arguments = matcher.group("arguments");
 
-        if (userInput.equals(ArchiveListCommand.COMMAND_WORD)) {
-            commandWord = ArchiveListCommand.COMMAND_WORD;
-            arguments = "";
-        }
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
