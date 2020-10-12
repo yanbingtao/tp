@@ -25,6 +25,7 @@ import seedu.address.model.ReadOnlyIngredientBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SalesBook;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -197,6 +198,12 @@ public class AddCommandTest {
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public Ingredient findIngredientByName(IngredientName ingredientName) {
+            throw new AssertionError("This method should not be called.");
+        }
+
     }
 
     /**

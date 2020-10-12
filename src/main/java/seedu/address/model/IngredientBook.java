@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.ingredient.UniqueIngredientList;
 
 /**
@@ -67,6 +68,12 @@ public class IngredientBook implements ReadOnlyIngredientBook {
         requireNonNull(newAmount);
 
         ingredients.setIngredient(target, newAmount);
+    }
+
+    public Ingredient findIngredientByName(IngredientName ingredientName) {
+        requireNonNull(ingredientName);
+
+        return ingredients.findIngredientByName(ingredientName);
     }
 
     //// util methods

@@ -57,6 +57,16 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         internalList.setAll(ingredients);
     }
 
+    public Ingredient findIngredientByName(IngredientName ingredientName) {
+        requireNonNull(ingredientName);
+        for (int i = 0; i < internalList.size() - 1; i++) {
+            if (internalList.get(i).getIngredientName().equals(ingredientName)) {
+                return internalList.get(i);
+            }
+        }
+        return null;
+    }
+
     public ObservableList<Ingredient> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
     }
