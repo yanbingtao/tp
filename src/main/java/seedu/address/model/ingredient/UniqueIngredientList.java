@@ -57,6 +57,13 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         internalList.setAll(ingredients);
     }
 
+    /**
+     * Returns the ingredient with the input ingredient name, if
+     * not found, return null.
+     *
+     * @param ingredientName ingredient name
+     * @return ingredient with the input ingredient name
+     */
     public Ingredient findIngredientByName(IngredientName ingredientName) {
         requireNonNull(ingredientName);
         for (int i = 0; i < internalList.size() - 1; i++) {

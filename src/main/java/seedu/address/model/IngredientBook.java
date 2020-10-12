@@ -70,6 +70,13 @@ public class IngredientBook implements ReadOnlyIngredientBook {
         ingredients.setIngredient(target, newAmount);
     }
 
+    /**
+     * Returns the ingredient with the input ingredient name, if
+     * not found, return null.
+     *
+     * @param ingredientName ingredient name
+     * @return ingredient with the input ingredient name
+     */
     public Ingredient findIngredientByName(IngredientName ingredientName) {
         requireNonNull(ingredientName);
 
