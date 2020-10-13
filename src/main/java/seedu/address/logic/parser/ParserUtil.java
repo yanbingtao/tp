@@ -140,6 +140,12 @@ public class ParserUtil {
         return new Ingredient(new IngredientName(trimmedIngredient));
     }
 
+    /**
+     * Parses a {@code String numberSold} into an {@code Integer}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code numberSold} is invalid.
+     */
     public static Integer parseNumberSold(String numberSold) throws ParseException {
         requireNonNull(numberSold);
         String trimmedNumberSold = numberSold.trim();
