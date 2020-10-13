@@ -12,8 +12,9 @@ import seedu.address.model.person.ArchiveStatus;
 import seedu.address.model.person.Person;
 
 
-
-
+/**
+ * Unarchives a person identified using it's displayed index from the address book.
+ */
 public class UnarchiveCommand extends Command {
 
     public static final String COMMAND_WORD = "c-unarchive";

@@ -2,6 +2,9 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * Represents a Person's archive status in the address book.
+ */
 public class ArchiveStatus {
     public static final String MESSAGE_CONSTRAINTS = "Archive status should only be true or false";
 
