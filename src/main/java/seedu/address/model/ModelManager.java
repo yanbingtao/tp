@@ -24,7 +24,6 @@ public class ModelManager implements Model {
     private final SalesBook salesBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
-    private final FilteredList<Person> filteredArchivedPersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -39,8 +38,8 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.salesBook = new SalesBook(salesBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        filteredArchivedPersons = new FilteredList<>(this.addressBook.getArchivedList());
+        filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
+                Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
     }
 
     public ModelManager() {
@@ -82,10 +81,6 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    @Override
-    public ObservableList<Person> getFilteredArchivedPersonList() {
-        return filteredArchivedPersons;
-    }
     //=========== AddressBook ================================================================================
 
     @Override
@@ -110,16 +105,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void archivePerson(Person target) {
-        addressBook.removePerson(target);
-        addressBook.archivedPerson(target);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
     }
 
     @Override
@@ -183,8 +171,7 @@ public class ModelManager implements Model {
         return addressBook.equals(other.addressBook)
                 && salesBook.equals(other.salesBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons)
-                && filteredArchivedPersons.equals(other.filteredArchivedPersons);
+                && filteredPersons.equals(other.filteredPersons);
     }
 
 }

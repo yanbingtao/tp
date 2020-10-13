@@ -1,6 +1,11 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ARCHIVED_PERSONS;
+
 import seedu.address.model.Model;
+
+
 
 /**
  * Shows all archived persons.
@@ -13,7 +18,9 @@ public class ArchiveListCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(MESSAGE_SUCCESS, false, false, true, false);
+        requireNonNull(model);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_ARCHIVED_PERSONS);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
 }

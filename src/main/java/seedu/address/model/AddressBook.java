@@ -15,7 +15,6 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-    private final UniquePersonList archivedPersons;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,7 +25,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
-        archivedPersons = new UniquePersonList();
     }
 
     public AddressBook() {}
@@ -49,9 +47,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
-    public void setArchivedPersons(List<Person> aPersons) {
-        this.archivedPersons.setPersons(aPersons);
-    }
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -59,7 +54,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
-        setArchivedPersons(newData.getArchivedList());
     }
 
     //// person-level operations
@@ -80,13 +74,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(p);
     }
 
-    /**
-     * Adds an archived person to the address book.
-     * The person must not already exist in the address book.
-     */
-    public void archivedPerson(Person p) {
-        archivedPersons.add(p);
-    }
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
@@ -118,11 +105,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
-    }
-
-    @Override
-    public ObservableList<Person> getArchivedList() {
-        return archivedPersons.asUnmodifiableObservableList();
     }
 
     @Override

@@ -17,23 +17,14 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
-    /** The archived person list should be shown to the user. */
-    private final boolean showArchive;
-
-    /** The active person list should be shown to the user. */
-    private final boolean showActive;
-
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
-                         boolean showArchive, boolean showActive) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
-        this.showArchive = showArchive;
-        this.showActive = showActive;
     }
 
     /**
@@ -41,7 +32,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false, false, true);
+        this(feedbackToUser, false, false);
     }
 
     public String getFeedbackToUser() {
@@ -54,14 +45,6 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
-    }
-
-    public boolean isShowArchive() {
-        return showArchive;
-    }
-
-    public boolean isShowActive() {
-        return showActive;
     }
 
     @Override
@@ -78,14 +61,12 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit
-                && showArchive == otherCommandResult.showArchive
-                && showActive == otherCommandResult.showActive;
+                && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit, showArchive, showActive);
+        return Objects.hash(feedbackToUser, showHelp, exit);
     }
 
 }

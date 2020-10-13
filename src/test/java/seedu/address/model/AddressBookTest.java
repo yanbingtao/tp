@@ -98,10 +98,6 @@ public class AddressBookTest {
             return persons;
         }
 
-        @Override
-        public ObservableList<Person> getArchivedList() {
-            return null;
-        }
     }
 
 }
