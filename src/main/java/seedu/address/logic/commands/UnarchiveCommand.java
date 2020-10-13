@@ -23,7 +23,7 @@ public class UnarchiveCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Unarchived Person: %1$s";
+    public static final String MESSAGE_UNARCHIVE_PERSON_SUCCESS = "Unarchived Person: %1$s";
     public static final String MESSAGE_PERSON_ALREADY_ACTIVE = "This person is already in the active list!";
 
     private final Index targetIndex;
@@ -57,7 +57,7 @@ public class UnarchiveCommand extends Command {
         Person unarchivedPerson = personToUnarchive.unarchive();
         model.setPerson(personToUnarchive, unarchivedPerson);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
-        return new CommandResult(String.format(MESSAGE_ARCHIVE_PERSON_SUCCESS, personToUnarchive.getName()));
+        return new CommandResult(String.format(MESSAGE_UNARCHIVE_PERSON_SUCCESS, personToUnarchive.getName()));
     }
 
 
