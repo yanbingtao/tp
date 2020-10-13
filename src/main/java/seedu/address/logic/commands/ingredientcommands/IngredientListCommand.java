@@ -56,6 +56,9 @@ public class IngredientListCommand extends Command {
         if (!(other instanceof IngredientListCommand)) {
             return false;
         }
+        if (other instanceof IngredientListCommand) {
+            return true;
+        }
         return false;
     }
 
