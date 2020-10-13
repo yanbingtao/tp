@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class ArchiveCommand extends Command {
      * @param targetIndex the index number shown in the displayed person list.
      */
     public ArchiveCommand(Index targetIndex) {
-        requireAllNonNull(targetIndex);
+        requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
     }
 
@@ -52,7 +51,7 @@ public class ArchiveCommand extends Command {
         Person personToArchive = lastShownList.get(targetIndex.getZeroBased());
         ArchiveStatus currentStateOfPerson = personToArchive.getArchiveStatus();
 
-        if (Boolean.valueOf(currentStateOfPerson.toString())) {
+        if (currentStateOfPerson.archiveStatus) {
             throw new CommandException(String.format(MESSAGE_PERSON_ALREADY_ARCHIVED,
                     personToArchive));
         }
