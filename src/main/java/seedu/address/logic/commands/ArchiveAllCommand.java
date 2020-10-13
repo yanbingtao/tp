@@ -1,0 +1,46 @@
+package seedu.address.logic.commands;
+
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.ArchiveStatus;
+import seedu.address.model.person.Person;
+
+import java.util.List;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
+public class ArchiveAllCommand extends Command {
+
+    public static final String COMMAND_WORD = "c-archive-all";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Archives all persons in the displayed person list.\n";
+
+    public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Archived all persons in the displayed person list";
+
+    public static final String MESSAGE_NOTHING_TO_ARCHIVE = "There is nothing in the current displayed list";
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+
+        requireNonNull(model);
+
+        List<Person> lastShownList = model.getFilteredPersonList();
+
+
+        int listSize = lastShownList.size();
+        if (listSize == 0) {
+            throw new CommandException(String.format(MESSAGE_NOTHING_TO_ARCHIVE));
+        }
+        for (int i = 0; i < listSize; i++) {
+            Person personToArchive = lastShownList.get(0);
+            Person archivedPerson = personToArchive.archive();
+            model.setPerson(personToArchive, archivedPerson);
+        }
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
+        return new CommandResult(MESSAGE_ARCHIVE_PERSON_SUCCESS);
+    }
+}
