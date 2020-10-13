@@ -171,10 +171,10 @@ public class EditCommand extends Command {
             this.emergency = emergency;
         }
         
-        public Optional<Phone> getEmergency()   {
+        public Optional<Phone> getEmergency()     {
             return Optional.ofNullable(emergency);
         }
-
+        
         public void setAddress(Address address) {
             this.address = address;
         }
