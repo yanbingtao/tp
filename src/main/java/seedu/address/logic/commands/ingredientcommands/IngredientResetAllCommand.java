@@ -81,7 +81,7 @@ public class IngredientResetAllCommand extends Command {
         if (!(other instanceof IngredientResetAllCommand)) {
             return false;
         }
-        return false;
+        return true;
     }
 
 }
