@@ -6,17 +6,18 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.person.Person;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_ACTIVE_PERSONS = person ->
             !(Boolean.valueOf(person.getArchiveStatus().toString()));
     Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
             Boolean.valueOf(person.getArchiveStatus().toString()));
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -52,13 +53,27 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Replaces ingredient book data with the data in {@code ingredientBook}.
+     */
+    void setIngredientBook(ReadOnlyIngredientBook ingredientBook);
+
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
+
+    /**
+     * Returns the IngredientBook
+     */
+    ReadOnlyIngredientBook getIngredientBook();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
     boolean hasPerson(Person person);
+
+    boolean hasIngredient(Ingredient ingredient);
 
     /**
      * Deletes the given person.
@@ -79,6 +94,9 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+    void setIngredient(Ingredient target, Ingredient newAmount);
+
+
     void setSalesBook(SalesBook salesBook);
 
     SalesBook getSalesBook();
@@ -86,10 +104,17 @@ public interface Model {
     void overwrite(Map<Drink, Integer> salesInput);
 
     /** Returns an unmodifiable view of the filtered person list */
+
     ObservableList<Person> getFilteredPersonList();
 
     /**
+     * Returns an unmodifiable view of the filtered ingredient list
+     */
+    ObservableList<Ingredient> getFilteredIngredientList();
+
+    /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
