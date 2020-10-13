@@ -172,6 +172,8 @@ public class ModelManager implements Model {
         }
     }
 
+    //=========== IngredientBook ==================================================================================
+
     @Override
     public void setIngredient(Ingredient target, Ingredient newAmount) {
         requireAllNonNull(target, newAmount);

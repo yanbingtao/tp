@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BSBM;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BSPM;
 
 import java.util.Map;
 
@@ -20,9 +21,8 @@ public class SalesUpdateCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the sales of the drinks as entered. "
             + "Existing sales record will be overwritten by the input.\n"
             + "Parameters: A/NUM B/NUM ... where A, B refers to the drink abbreviation. "
-            + "You must record the sales of at least one item, which is a non-negative integer.\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_BSBM + "100";
+            + "You must record the sales of at least one item, as a positive integer.\n"
+            + "Example: " + COMMAND_WORD + " " + PREFIX_BSBM + "100" + " " + PREFIX_BSPM + "0";
 
     public static final String MESSAGE_ADD_SALES_SUCCESS = "Added sales to the record. \n This is the current "
             + "record now = %s";
