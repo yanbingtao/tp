@@ -16,7 +16,7 @@ import seedu.address.model.person.Person;
  */
 public class ArchiveCommand extends Command {
 
-    public static final String COMMAND_WORD = "archive";
+    public static final String COMMAND_WORD = "c-archive";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Archives the person identified by the index number used in the displayed person list.\n"
