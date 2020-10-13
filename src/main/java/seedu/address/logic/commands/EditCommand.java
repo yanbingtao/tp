@@ -38,7 +38,7 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMERGENCY + "EMERGENCY_CONTACT "
+            + "[" + PREFIX_EMERGENCY + "EMERGENCY_CONTACT] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
@@ -167,9 +167,13 @@ public class EditCommand extends Command {
             return Optional.ofNullable(phone);
         }
         
-        public void setEmergency(Phone emergency) { this.emergency = emergency; }
+        public void setEmergency(Phone emergency)  {
+            this.emergency = emergency;
+        }
         
-        public Optional<Phone> getEmergency() { return Optional.ofNullable(emergency); }
+        public Optional<Phone> getEmergency()   {
+            return Optional.ofNullable(emergency);
+        }
 
         public void setAddress(Address address) {
             this.address = address;
