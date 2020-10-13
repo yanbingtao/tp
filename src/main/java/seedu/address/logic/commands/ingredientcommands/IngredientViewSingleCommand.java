@@ -62,7 +62,7 @@ public class IngredientViewSingleCommand extends Command {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof SetCommand)) {
+        if (!(other instanceof IngredientViewSingleCommand)) {
             return false;
         }
 
