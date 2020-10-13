@@ -14,13 +14,14 @@ import seedu.address.model.ingredient.IngredientName;
  */
 public class SetDefaultCommand extends Command {
 
+    public static final String LINE_SEPARATOR = "\n";
     public static final String COMMAND_WORD = "i-set-default";
-    public static final String MESSAGE_SUCCESS = "All ingredients have been set to the default level"
-            + "Milk : 50 L"
-            + "Pearl : 20 KG"
-            + "Boba : 20 KG"
-            + "Oolong Tea : 50 L"
-            + "Brown Sugar : 20 KG";
+    public static final String MESSAGE_SUCCESS = "All ingredients have been set to the default level:" + LINE_SEPARATOR
+            + "Milk : 50 L\n" + LINE_SEPARATOR
+            + "Pearl : 20 KG\n" + LINE_SEPARATOR
+            + "Boba : 20 KG\n" + LINE_SEPARATOR
+            + "Oolong Tea : 50 L\n" + LINE_SEPARATOR
+            + "Brown Sugar : 20 KG\n" + LINE_SEPARATOR;
 
     @Override
     public CommandResult execute(Model model) {
