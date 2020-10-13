@@ -16,6 +16,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
 
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -27,7 +28,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
     }
 
-    public AddressBook() {}
+    public AddressBook() {
+    }
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
@@ -66,6 +68,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.contains(person);
     }
 
+
     /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
@@ -85,6 +88,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         persons.setPerson(target, editedPerson);
     }
+
 
     /**
      * Removes {@code key} from this {@code AddressBook}.

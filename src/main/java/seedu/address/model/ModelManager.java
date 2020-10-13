@@ -12,38 +12,50 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.person.Person;
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
     private final SalesBook salesBook;
+    private final IngredientBook ingredientBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Ingredient> filteredIngredients;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, SalesBook salesBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, SalesBook salesBook,
+                        ReadOnlyIngredientBook ingredientBook, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(addressBook, salesBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " sales book: " + salesBook
+                + " Ingredients book: " + ingredientBook
                 + " and user prefs" + " " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.salesBook = new SalesBook(salesBook);
+        this.ingredientBook = new IngredientBook(ingredientBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
                 Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
+        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
     }
 
+    /**
+     * Initializes a ModelManager with the given addressBook and userPrefs.
+     */
     public ModelManager() {
-        this(new AddressBook(), new SalesBook(), new UserPrefs());
+        this(new AddressBook(), new SalesBook(),
+                new IngredientBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -89,14 +101,31 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setIngredientBook(ReadOnlyIngredientBook ingredientBook) {
+        this.ingredientBook.setData(ingredientBook);
+    }
+
+    @Override
     public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
+    }
+
+    @Override
+    public ReadOnlyIngredientBook getIngredientBook() {
+        return ingredientBook;
     }
 
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return addressBook.hasPerson(person);
+    }
+
+    //Added here
+    @Override
+    public boolean hasIngredient(Ingredient ingredient) {
+        requireNonNull(ingredient);
+        return ingredientBook.hasIngredient(ingredient);
     }
 
     @Override
@@ -137,6 +166,13 @@ public class ModelManager implements Model {
         }
     }
 
+    @Override
+    public void setIngredient(Ingredient target, Ingredient newAmount) {
+        requireAllNonNull(target, newAmount);
+
+        ingredientBook.setIngredient(target, newAmount);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -146,6 +182,14 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
+    }
+    /**
+     * Returns an unmodifiable view of the list of {@code Ingredient} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Ingredient> getFilteredIngredientList() {
+        return filteredIngredients;
     }
 
     @Override
@@ -170,6 +214,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && salesBook.equals(other.salesBook)
+                && ingredientBook.equals(other.ingredientBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }

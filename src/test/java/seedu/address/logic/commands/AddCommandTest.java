@@ -21,8 +21,10 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Drink;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyIngredientBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SalesBook;
+import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -122,13 +124,28 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setIngredientBook(ReadOnlyIngredientBook newDara) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyIngredientBook getIngredientBook() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public boolean hasPerson(Person person) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasIngredient(Ingredient ingredient) {
+            return false;
         }
 
         @Override
@@ -142,6 +159,10 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setIngredient(Ingredient target, Ingredient newAmount) {
+            throw new AssertionError("This method should not be called.");
+        }
+
         public void setSalesBook(SalesBook salesBook) {
             throw new AssertionError("This method should not be called.");
         }
@@ -154,10 +175,16 @@ public class AddCommandTest {
         @Override
         public void overwrite(Map<Drink, Integer> salesInput) {
             throw new AssertionError("This method should not be called.");
+
         }
 
         @Override
         public ObservableList<Person> getFilteredPersonList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Ingredient> getFilteredIngredientList() {
             throw new AssertionError("This method should not be called.");
         }
 

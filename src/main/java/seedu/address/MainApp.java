@@ -16,6 +16,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
 import seedu.address.model.AddressBook;
+import seedu.address.model.IngredientBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -94,7 +95,9 @@ public class MainApp extends Application {
         // salesBook not saved in storage yet. An empty salesBook will be used instead.
         SalesBook record = new SalesBook();
 
-        return new ModelManager(initialData, record, userPrefs);
+        IngredientBook sample = new IngredientBook();
+
+        return new ModelManager(initialData, record, sample, userPrefs);
     }
 
     private void initLogging(Config config) {

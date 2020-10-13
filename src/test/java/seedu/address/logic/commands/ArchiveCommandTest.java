@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.model.IngredientBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.SalesBook;
@@ -21,7 +22,6 @@ import seedu.address.testutil.TypicalPersons;
 public class ArchiveCommandTest {
     private Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new SalesBook(), new UserPrefs());
 
-
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
@@ -31,6 +31,7 @@ public class ArchiveCommandTest {
     }
 
     @Test
+
     public void execute_invalidIndexFilteredList_throwsCommandException() {
         showPersonAtIndex(model, TypicalIndexes.INDEX_FIRST_PERSON);
 
