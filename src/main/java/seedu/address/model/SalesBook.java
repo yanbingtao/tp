@@ -95,7 +95,12 @@ public class SalesBook {
 
     @Override
     public String toString() {
-        return record.toString();
+        //return record.toString();
+        StringBuilder display = new StringBuilder();
+
+        record.forEach((k,v) -> display.append(k.getName() + " (" + k + ") : " + v + "\n"));
+
+        return display.toString();
     }
 
     @Override

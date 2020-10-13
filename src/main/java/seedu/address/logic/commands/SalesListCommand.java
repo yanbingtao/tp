@@ -17,7 +17,7 @@ public class SalesListCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Listed the sales that has been recorded.\n"
-            + "This is the current record now = %s";
+            + "This is the current record now: \n\n%s";
 
     /**
      * Executes the command and returns the result message.
