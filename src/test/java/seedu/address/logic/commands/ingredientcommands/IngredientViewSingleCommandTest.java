@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.SalesUpdateCommand;
 import seedu.address.model.IngredientBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -17,8 +16,6 @@ import seedu.address.model.ingredient.IngredientName;
 public class IngredientViewSingleCommandTest {
     @Test
     public void equals() {
-        String outcomeString = " Ingredient: Milk Amount: 50";
-        Model model = new ModelManager();
 
         Model expectedModel = new ModelManager();
 
