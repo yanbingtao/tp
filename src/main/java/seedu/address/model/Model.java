@@ -54,9 +54,19 @@ public interface Model {
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
     /**
+     * Replaces ingredient book data with the data in {@code ingredientBook}.
+     */
+    void setIngredientBook(ReadOnlyIngredientBook ingredientBook);
+
+    /**
      * Returns the AddressBook
      */
     ReadOnlyAddressBook getAddressBook();
+
+    /**
+     * Returns the IngredientBook
+     */
+    ReadOnlyIngredientBook getIngredientBook();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.

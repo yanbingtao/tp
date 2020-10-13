@@ -49,7 +49,6 @@ public class Ingredient {
     public IngredientName getIngredientName() {
         return this.ingredientName;
     }
-
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
@@ -91,10 +90,10 @@ public class Ingredient {
     public String toString() {
 
         final StringBuilder builder = new StringBuilder();
-        builder.append(getIngredientName())
-                .append(" Ingredient: ")
-                .append(getAmount())
-                .append(" Amount: ");
+        builder.append(" Ingredient: ")
+                .append(getIngredientName())
+                .append(" Amount: ")
+                .append(getAmount());
         return builder.toString();
 
     }

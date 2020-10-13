@@ -34,7 +34,7 @@ public class IngredientName {
      * @param ingredientName a given string of ingredient name
      */
     public static boolean isValidIngredientName(String ingredientName) {
-        return Arrays.stream(INGREDIENTS).anyMatch(ingredientName:: equals);
+        return Arrays.asList(INGREDIENTS).contains(ingredientName);
     }
 
     @Override

@@ -5,8 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.UniqueIngredientList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -17,7 +15,6 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-    private final UniqueIngredientList ingredients;
     private final UniquePersonList archivedPersons;
 
 
@@ -31,10 +28,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         archivedPersons = new UniquePersonList();
-    }
-
-    {
-        ingredients = new UniqueIngredientList();
     }
 
     public AddressBook() {
@@ -81,13 +74,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.contains(person);
     }
 
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public boolean hasIngredient(Ingredient ingredient) {
-        requireNonNull(ingredient);
-        return ingredients.contains(ingredient);
-    }
 
     /**
      * Adds a person to the address book.
@@ -116,11 +102,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.setPerson(target, editedPerson);
     }
 
-    public void setIngredient(Ingredient target, Ingredient newAmount) {
-        requireNonNull(newAmount);
-
-        ingredients.setIngredient(target, newAmount);
-    }
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
@@ -143,10 +124,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asUnmodifiableObservableList();
     }
 
-    @Override
-    public ObservableList<Ingredient> getIngredientList() {
-        return ingredients.asUnmodifiableObservableList();
-    }
+
     public ObservableList<Person> getArchivedList() {
         return archivedPersons.asUnmodifiableObservableList();
     }
