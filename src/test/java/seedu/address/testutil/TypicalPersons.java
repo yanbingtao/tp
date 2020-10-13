@@ -43,6 +43,14 @@ public class TypicalPersons {
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withAddress("4th street").withArchiveStatus("false").build();
 
+    // Archived person
+    public static final Person ZANE = new PersonBuilder().withName("Zane Smith").withPhone("98887222")
+            .withAddress("5th street").withArchiveStatus("true").build();
+    public static final Person YUSUF = new PersonBuilder().withName("Yusuf Smith").withPhone("98847222")
+            .withAddress("7th street").withArchiveStatus("true").build();
+    public static final Person WILLIAM = new PersonBuilder().withName("William Jones").withPhone("98887232")
+            .withAddress("6th street").withArchiveStatus("true").build();
+
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
             .withAddress("little india").withArchiveStatus("false").build();
@@ -72,6 +80,7 @@ public class TypicalPersons {
     }
 
     public static List<Person> getTypicalPersons() {
-        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE, WILLIAM, YUSUF, ZANE));
+//        return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
 }
