@@ -20,7 +20,8 @@ import seedu.address.testutil.TypicalIndexes;
 import seedu.address.testutil.TypicalPersons;
 
 public class ArchiveCommandTest {
-    private Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new SalesBook(), new UserPrefs());
+    private Model model = new ModelManager(TypicalPersons.getTypicalAddressBook(), new SalesBook(),
+            new IngredientBook(), new UserPrefs());
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
