@@ -12,11 +12,13 @@ import seedu.address.model.person.Person;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /** {@code Predicate} that evaluates to true if person's archive status is false. */
     Predicate<Person> PREDICATE_SHOW_ALL_ACTIVE_PERSONS = person ->
-            !(Boolean.valueOf(person.getArchiveStatus().toString()));
+            !(person.getArchiveStatus().archiveStatus);
+    /** {@code Predicate} that evaluates to true if person's archive status is true. */
     Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
-            Boolean.valueOf(person.getArchiveStatus().toString()));
+            person.getArchiveStatus().archiveStatus);
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */

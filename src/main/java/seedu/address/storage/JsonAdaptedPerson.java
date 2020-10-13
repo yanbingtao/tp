@@ -97,7 +97,7 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        if (!ArchiveStatus.isValidState(archiveStatus)) {
+        if (!ArchiveStatus.isValidArchiveStatus(archiveStatus)) {
             throw new IllegalValueException(ArchiveStatus.MESSAGE_CONSTRAINTS);
         }
         final ArchiveStatus modelArchiveStatus = new ArchiveStatus(Boolean.parseBoolean(archiveStatus));

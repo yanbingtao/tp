@@ -3,34 +3,34 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 public class ArchiveStatus {
-    public static final String MESSAGE_CONSTRAINTS = "Archive state should only be true or false";
+    public static final String MESSAGE_CONSTRAINTS = "Archive status should only be true or false";
 
     public static final String VALIDATION_REGEX = "^(true|false)$";
 
-    public final boolean state;
+    public final boolean archiveStatus;
 
 
     /**
-     * Constructs a false {@code state} of archival.
+     * Constructs a false {@code archiveStatus} of archival if no parameter passed in.
      */
     public ArchiveStatus() {
-        this.state = false;
+        this.archiveStatus = false;
     }
 
     /**
-     * Constructs a {@code state} of {@code Archived}.
+     * Constructs a {@code archiveStatus} based on the archiveStatus passed in.
      *
-     * @param state A valid state of archival.
+     * @param archiveStatus A valid archiveStatus of archival.
      */
-    public ArchiveStatus(boolean state) {
-        requireNonNull(state);
-        this.state = state;
+    public ArchiveStatus(boolean archiveStatus) {
+        requireNonNull(archiveStatus);
+        this.archiveStatus = archiveStatus;
     }
 
     /**
-     * Returns true if a given string is a valid state of archival.
+     * Returns true if a given string is a valid archiveStatus.
      */
-    public static boolean isValidState(String test) {
+    public static boolean isValidArchiveStatus(String test) {
         if (test == null) {
             return true;
         }
@@ -39,18 +39,18 @@ public class ArchiveStatus {
 
     @Override
     public String toString() {
-        return String.valueOf(state);
+        return String.valueOf(archiveStatus);
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this
                 || (other instanceof ArchiveStatus
-                && state == ((ArchiveStatus) other).state);
+                && archiveStatus == ((ArchiveStatus) other).archiveStatus);
     }
 
     @Override
     public int hashCode() {
-        return String.valueOf(state).hashCode();
+        return String.valueOf(archiveStatus).hashCode();
     }
 }
