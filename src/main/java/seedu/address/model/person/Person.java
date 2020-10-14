@@ -29,7 +29,8 @@ public class Person {
      * Every field must be present and not null.
      */
 
-    public Person(Name name, Phone phone, Phone emergency, Address address, ArchiveStatus archiveStatus, Set<Tag> tags) {
+    public Person(Name name, Phone phone, Phone emergency, Address address, ArchiveStatus archiveStatus,
+                  Set<Tag> tags) {
         requireAllNonNull(name, phone, emergency, address, tags, archiveStatus);
 
         this.name = name;
@@ -87,7 +88,7 @@ public class Person {
      * @return A Person type with "true" archive status.
      */
     public Person archive() {
-        return new Person(this.name, this.phone, this.address, new ArchiveStatus(true),
+        return new Person(this.name, this.phone, this.emergency, this.address, new ArchiveStatus(true),
                 this.tags);
     }
     /**

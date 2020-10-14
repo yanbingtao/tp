@@ -102,7 +102,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, address, emergency, archiveStatus, tags);
+        return new Person(name, phone, emergency, address, archiveStatus, tags);
     }
 
 }
