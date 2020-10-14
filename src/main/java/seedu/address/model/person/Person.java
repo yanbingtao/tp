@@ -99,7 +99,7 @@ public class Person {
      * @return A Person whose archive status is false.
      */
     public Person unarchive() {
-        return new Person(this.name, this.phone, this.address, new ArchiveStatus(false),
+        return new Person(this.name, this.phone, this.emergency, this.address, new ArchiveStatus(false),
                 this.tags);
     }
 
