@@ -24,6 +24,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SalesListCommand;
 import seedu.address.logic.commands.SalesUpdateCommand;
 import seedu.address.logic.commands.ingredientcommands.IngredientListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -112,6 +113,12 @@ public class AddressBookParserTest {
         sales.put(Drink.BSPBT, 0);
         sales.put(Drink.BSPGT, 0);
         assertEquals(new SalesUpdateCommand(sales), command);
+    }
+
+    @Test
+    public void parseCommand_salesList() throws Exception {
+        assertTrue(parser.parseCommand(SalesListCommand.COMMAND_WORD) instanceof SalesListCommand);
+        assertTrue(parser.parseCommand(SalesListCommand.COMMAND_WORD + " 3") instanceof SalesListCommand);
     }
 
     @Test
