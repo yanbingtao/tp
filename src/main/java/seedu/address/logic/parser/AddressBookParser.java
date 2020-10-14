@@ -85,8 +85,7 @@ public class AddressBookParser {
         case SetCommand.COMMAND_WORD:
             return new SetCommandParser().parse(arguments);
 
-        case IngredientListCommand
-                .COMMAND_WORD:
+        case IngredientListCommand.COMMAND_WORD:
             return new IngredientListCommand();
 
         case SetAllCommand.COMMAND_WORD:
@@ -102,8 +101,7 @@ public class AddressBookParser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-        case IngredientResetAllCommand
-                .COMMAND_WORD:
+        case IngredientResetAllCommand.COMMAND_WORD:
             return new IngredientResetAllCommand();
 
         case SalesUpdateCommand.COMMAND_WORD:
