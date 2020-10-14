@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.person.Person;
 
 /**
@@ -174,6 +175,14 @@ public class ModelManager implements Model {
 
         ingredientBook.setIngredient(target, newAmount);
     }
+
+    @Override
+    public Ingredient findIngredientByName(IngredientName ingredientName) {
+        requireNonNull(ingredientName);
+
+        return ingredientBook.findIngredientByName(ingredientName);
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 

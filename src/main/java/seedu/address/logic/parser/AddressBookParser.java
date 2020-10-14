@@ -23,7 +23,10 @@ import seedu.address.logic.commands.SalesUpdateCommand;
 import seedu.address.logic.commands.SetAllCommand;
 import seedu.address.logic.commands.SetCommand;
 import seedu.address.logic.commands.SetDefaultCommand;
+import seedu.address.logic.commands.UnarchiveCommand;
 import seedu.address.logic.commands.ingredientcommands.IngredientListCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientResetAllCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientViewSingleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -66,6 +69,9 @@ public class AddressBookParser {
         case ArchiveCommand.COMMAND_WORD:
             return new ArchiveCommandParser().parse(arguments);
 
+        case UnarchiveCommand.COMMAND_WORD:
+            return new UnarchiveCommandParser().parse(arguments);
+
         case ArchiveListCommand.COMMAND_WORD:
             return new ArchiveListCommand();
 
@@ -84,8 +90,10 @@ public class AddressBookParser {
         case SetCommand.COMMAND_WORD:
             return new SetCommandParser().parse(arguments);
 
-        case IngredientListCommand
-                .COMMAND_WORD:
+        case IngredientViewSingleCommand.COMMAND_WORD:
+            return new IngredientViewSingleCommandParser().parse(arguments);
+
+        case IngredientListCommand.COMMAND_WORD:
             return new IngredientListCommand();
 
         case SetAllCommand.COMMAND_WORD:
@@ -94,12 +102,14 @@ public class AddressBookParser {
         case SetDefaultCommand.COMMAND_WORD:
             return new SetDefaultCommand();
 
-
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+        case IngredientResetAllCommand.COMMAND_WORD:
+            return new IngredientResetAllCommand();
 
         case SalesUpdateCommand.COMMAND_WORD:
             return new SalesUpdateCommandParser().parse(arguments);
@@ -110,6 +120,7 @@ public class AddressBookParser {
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
+
     }
 
 }

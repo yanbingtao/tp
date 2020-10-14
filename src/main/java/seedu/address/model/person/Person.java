@@ -84,14 +84,25 @@ public class Person {
     }
 
     /**
-     * Sets the person's archive status to true. It's equivalent to archive the person.
+     * Sets the person's archive status to true. It's equivalent to having archived the person.
      *
-     * @return A Person type with "true" archive status.
+     * @return A Person whose archive status is true.
      */
     public Person archive() {
         return new Person(this.name, this.phone, this.emergency, this.address, new ArchiveStatus(true),
                 this.tags);
     }
+
+    /**
+     * Sets the person's archive status to false. It's equivalent to unarchive the person.
+     *
+     * @return A Person whose archive status is false.
+     */
+    public Person unarchive() {
+        return new Person(this.name, this.phone, this.address, new ArchiveStatus(false),
+                this.tags);
+    }
+
     /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
