@@ -17,8 +17,8 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SalesUpdateCommand;
+import seedu.address.logic.commands.SetCommand;
 import seedu.address.logic.commands.ingredientcommands.IngredientViewSingleCommand;
-import seedu.address.logic.commands.ingredientcommands.SetCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
