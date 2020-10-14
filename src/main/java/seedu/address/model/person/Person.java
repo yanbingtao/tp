@@ -23,14 +23,16 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
+    private final ArchiveStatus archiveStatus;
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, address, tags);
+    public Person(Name name, Phone phone, Address address, ArchiveStatus archiveStatus, Set<Tag> tags) {
+        requireAllNonNull(name, phone, address, tags, archiveStatus);
         this.name = name;
         this.phone = phone;
         this.address = address;
+        this.archiveStatus = archiveStatus;
         this.tags.addAll(tags);
     }
 
@@ -44,6 +46,10 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public ArchiveStatus getArchiveStatus() {
+        return archiveStatus;
     }
 
     /**
@@ -69,6 +75,26 @@ public class Person {
     }
 
     /**
+     * Sets the person's archive status to true. It's equivalent to having archived the person.
+     *
+     * @return A Person whose archive status is true.
+     */
+    public Person archive() {
+        return new Person(this.name, this.phone, this.address, new ArchiveStatus(true),
+                this.tags);
+    }
+
+    /**
+     * Sets the person's archive status to false. It's equivalent to unarchive the person.
+     *
+     * @return A Person whose archive status is false.
+     */
+    public Person unarchive() {
+        return new Person(this.name, this.phone, this.address, new ArchiveStatus(false),
+                this.tags);
+    }
+
+    /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
      */
@@ -83,16 +109,23 @@ public class Person {
         }
 
         Person otherPerson = (Person) other;
+
+        if (other == null || Boolean.valueOf(archiveStatus.toString())
+                || Boolean.valueOf(otherPerson.archiveStatus.toString())) {
+            return false;
+        }
+
         return otherPerson.getName().equals(getName())
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getTags().equals(getTags());
+                && otherPerson.getTags().equals(getTags())
+                && otherPerson.getArchiveStatus().equals(getArchiveStatus());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, address, tags);
+        return Objects.hash(name, phone, address, archiveStatus, tags);
     }
 
     @Override

@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.person.Person;
 
 /**
@@ -45,7 +46,8 @@ public class ModelManager implements Model {
         this.salesBook = new SalesBook(salesBook);
         this.ingredientBook = new IngredientBook(ingredientBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
+                Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
         filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
     }
 
@@ -133,16 +135,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void archivePerson(Person target) {
-        addressBook.removePerson(target);
-        addressBook.archivedPerson(target);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
     }
 
     @Override
@@ -172,12 +167,22 @@ public class ModelManager implements Model {
         }
     }
 
+    //=========== IngredientBook ==================================================================================
+
     @Override
     public void setIngredient(Ingredient target, Ingredient newAmount) {
         requireAllNonNull(target, newAmount);
 
         ingredientBook.setIngredient(target, newAmount);
     }
+
+    @Override
+    public Ingredient findIngredientByName(IngredientName ingredientName) {
+        requireNonNull(ingredientName);
+
+        return ingredientBook.findIngredientByName(ingredientName);
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 
