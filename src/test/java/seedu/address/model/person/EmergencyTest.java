@@ -47,7 +47,6 @@ public class EmergencyTest {
         editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
-        
         // same name, same phone, different attributes -> returns true
         editedAlice = new PersonBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
@@ -82,7 +81,6 @@ public class EmergencyTest {
         // different emergency contact ->return false
         editedAlice = new PersonBuilder(ALICE).withEmergency(VALID_PHONE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
-        
         // different address -> returns false
         editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
