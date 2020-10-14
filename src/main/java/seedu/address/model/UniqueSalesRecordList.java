@@ -30,6 +30,12 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
             FXCollections.unmodifiableObservableList(internalList);
 
 
+    /**
+     * Returns true if the list contains an equivalent record entry of {@Code SalesRecordEntry toCheck}.
+     *
+     * @param toCheck the sales record entry to check for
+     * @return true if the list contains an equivalent record entry
+     */
     public boolean contains(SalesRecordEntry toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameRecord);
