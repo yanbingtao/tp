@@ -46,7 +46,8 @@ public class ModelManager implements Model {
         this.salesBook = new SalesBook(salesBook);
         this.ingredientBook = new IngredientBook(ingredientBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
+                Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
         filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
     }
 
@@ -134,16 +135,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void archivePerson(Person target) {
-        addressBook.removePerson(target);
-        addressBook.archivedPerson(target);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
     }
 
     @Override
@@ -172,6 +166,8 @@ public class ModelManager implements Model {
             salesBook.overwriteSales(salesInput);
         }
     }
+
+    //=========== IngredientBook ==================================================================================
 
     @Override
     public void setIngredient(Ingredient target, Ingredient newAmount) {
