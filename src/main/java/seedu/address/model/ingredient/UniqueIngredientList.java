@@ -20,10 +20,12 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             new Ingredient(new IngredientName("Oolong Tea")),
             new Ingredient(new IngredientName("Brown Sugar"))
     );
+
     private final ObservableList<Ingredient> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if an ingredient with the same identity as {@code ingredient} exists in the ingredient book.
      */
     public boolean contains(Ingredient toCheck) {
         requireNonNull(toCheck);
@@ -38,6 +40,10 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
 
         if (index == -1) {
             throw new IngredientNotFoundException();
+        }
+
+        if (internalList.contains(newAmount)) {
+            throw new NoChangeIngredientException();
         }
 
         internalList.set(index, newAmount);
@@ -61,6 +67,13 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         return internalUnmodifiableList;
     }
 
+    public int size() {
+        return internalList.size();
+    }
+
+    public Ingredient get(int index) {
+        return internalList.get(index);
+    }
 
     @Override
     public Iterator<Ingredient> iterator() {
