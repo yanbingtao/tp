@@ -20,6 +20,10 @@ public class SalesRecordEntry {
         return drink;
     }
 
+    public int getNumberSold() {
+        return numberSold;
+    }
+
     /**
      * A record entry is the same as another record entry if they record the same Drink item.
      *
@@ -32,6 +36,11 @@ public class SalesRecordEntry {
         }
 
         return this.drink.equals(otherEntry.drink);
+    }
+
+    @Override
+    public String toString() {
+        return drink.getName() + " (" + drink + ") : " + numberSold;
     }
 
     @Override

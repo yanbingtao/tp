@@ -103,7 +103,7 @@ public interface Model {
     void setIngredient(Ingredient target, Ingredient newAmount);
 
 
-    void setSalesBook(SalesBook salesBook);
+    void setSalesBook(ReadOnlySalesBook salesBook);
 
     SalesBook getSalesBook();
 

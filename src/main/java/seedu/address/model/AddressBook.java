@@ -54,6 +54,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setArchivedPersons(List<Person> aPersons) {
         this.archivedPersons.setPersons(aPersons);
     }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */

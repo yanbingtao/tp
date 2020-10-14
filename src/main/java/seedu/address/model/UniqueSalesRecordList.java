@@ -1,14 +1,16 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
+import seedu.address.model.sales.exception.DuplicateSalesRecordException;
 import seedu.address.model.sales.exception.SalesRecordNotFoundException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -64,6 +66,15 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
         internalList.set(index, newEntry); // replace with the new entry
     }
 
+    public SalesRecordEntry getSalesEntry(Drink drink) {
+        int index = indexOf(drink);
+        if (index == -1) {
+            throw new SalesRecordNotFoundException();
+        }
+
+        return internalList.get(index);
+    }
+
     /**
      * Returns the index of the sales record which stores the {@Code Drink drink}.
      * Otherwise, returns -1 if the {@Code drink} cannot be found.
@@ -95,6 +106,14 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
         }
     }
 
+    public boolean isEmpty() {
+        return internalList.isEmpty();
+    }
+
+    public int size() {
+        return internalList.size();
+    }
+
     /**
      * Replaces the content of the list with a {@Code UniqueSalesRecordList replacement}.
      *
@@ -103,6 +122,29 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
     public void setSalesRecord(UniqueSalesRecordList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
+    }
+
+    public void setSalesRecord(List<SalesRecordEntry> sales) {
+        requireAllNonNull(sales);
+        if (!salesRecordEntriesAreUnique(sales)) {
+            throw new DuplicateSalesRecordException();
+        }
+
+        internalList.setAll(sales);
+    }
+
+    /**
+     * Returns true if {@code sales} contains only unique sales record entries.
+     */
+    private boolean salesRecordEntriesAreUnique(List<SalesRecordEntry> sales) {
+        for (int i = 0; i < sales.size() - 1; i++) {
+            for (int j = i + 1; j < sales.size(); j++) {
+                if (sales.get(i).isSameRecord(sales.get(j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**

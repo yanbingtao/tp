@@ -154,7 +154,7 @@ public class ModelManager implements Model {
     //=========== SalesBook ==================================================================================
 
     @Override
-    public void setSalesBook(SalesBook salesBook) {
+    public void setSalesBook(ReadOnlySalesBook salesBook) {
         this.salesBook.resetData(salesBook);
     }
 
