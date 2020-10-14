@@ -122,12 +122,6 @@ public class EditCommandParserTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-//        // emergency
-//        userInput = targetIndex.getOneBased() + EMERGENCY_DESC_AMY;
-//        descriptor = new EditPersonDescriptorBuilder().withEmergency(VALID_EMERGENCY_AMY).build();
-//        expectedCommand = new EditCommand(targetIndex, descriptor);
-//        assertParseSuccess(parser, userInput, expectedCommand);        
-
         // address
         userInput = targetIndex.getOneBased() + ADDRESS_DESC_AMY;
         descriptor = new EditPersonDescriptorBuilder().withAddress(VALID_ADDRESS_AMY).build();
