@@ -24,7 +24,9 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.SalesListCommand;
 import seedu.address.logic.commands.SalesUpdateCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Drink;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -93,6 +95,12 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_ingredientList() throws Exception {
+        assertTrue(parser.parseCommand(IngredientListCommand.COMMAND_WORD) instanceof IngredientListCommand);
+        assertTrue(parser.parseCommand(IngredientListCommand.COMMAND_WORD + " 3") instanceof IngredientListCommand);
+    }
+
+    @Test
     public void parseCommand_salesUpdate() throws Exception {
         final int numBsbmSold = 80;
         final String userInput = SalesUpdateCommand.COMMAND_WORD + " " + PREFIX_BSBM + numBsbmSold;
@@ -105,6 +113,12 @@ public class AddressBookParserTest {
         sales.put(Drink.BSPBT, 0);
         sales.put(Drink.BSPGT, 0);
         assertEquals(new SalesUpdateCommand(sales), command);
+    }
+
+    @Test
+    public void parseCommand_salesList() throws Exception {
+        assertTrue(parser.parseCommand(SalesListCommand.COMMAND_WORD) instanceof SalesListCommand);
+        assertTrue(parser.parseCommand(SalesListCommand.COMMAND_WORD + " 3") instanceof SalesListCommand);
     }
 
     @Test

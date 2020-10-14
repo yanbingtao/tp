@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.List;
 
@@ -64,8 +65,7 @@ public class IngredientBook implements ReadOnlyIngredientBook {
 
 
     public void setIngredient(Ingredient target, Ingredient newAmount) {
-        requireNonNull(newAmount);
-
+        requireAllNonNull(target, newAmount);
         ingredients.setIngredient(target, newAmount);
     }
 
@@ -73,8 +73,15 @@ public class IngredientBook implements ReadOnlyIngredientBook {
 
     @Override
     public String toString() {
-        return ingredients.asUnmodifiableObservableList().size() + " ingredients";
-        // TODO: refine later
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < ingredients.size(); i++) {
+            builder.append(ingredients.get(i).toString()).append("\n");
+        }
+        return ingredients.asUnmodifiableObservableList().size()
+                + " ingredients\n"
+                + builder;
     }
 
     @Override
