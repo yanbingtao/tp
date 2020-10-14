@@ -164,8 +164,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean isEmptySalesBook() {
+        return salesBook.isEmptySalesRecord();
+    }
+
+    @Override
     public void overwrite(Map<Drink, Integer> salesInput) {
-        if (salesBook.isEmptySalesBook()) {
+        if (isEmptySalesBook()) {
             salesBook.setRecord(salesInput);
         } else {
             salesBook.overwriteSales(salesInput);

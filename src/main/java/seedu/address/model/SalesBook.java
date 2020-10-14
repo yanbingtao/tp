@@ -41,6 +41,7 @@ public class SalesBook implements ReadOnlySalesBook {
     }
 
     public void setRecord(List<SalesRecordEntry> sales) {
+        requireNonNull(sales);
         record.setSalesRecord(sales);
     }
 
@@ -84,7 +85,7 @@ public class SalesBook implements ReadOnlySalesBook {
      *
      * @return true if the sales record is empty, false otherwise.
      */
-    public boolean isEmptySalesBook() {
+    public boolean isEmptySalesRecord() {
         return record.isEmpty();
     }
 

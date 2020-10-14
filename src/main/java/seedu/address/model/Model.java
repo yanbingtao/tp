@@ -107,6 +107,8 @@ public interface Model {
 
     SalesBook getSalesBook();
 
+    boolean isEmptySalesBook();
+
     void overwrite(Map<Drink, Integer> salesInput);
 
     /** Returns an unmodifiable view of the filtered person list */

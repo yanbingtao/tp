@@ -130,6 +130,11 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
         internalList.setAll(replacement.internalList);
     }
 
+    /**
+     * Replaces the content of the list with the {@Code sales} as a List.
+     *
+     * @param sales a List containing sales record entries
+     */
     public void setSalesRecord(List<SalesRecordEntry> sales) {
         requireAllNonNull(sales);
         if (!salesRecordEntriesAreUnique(sales)) {
@@ -154,7 +159,7 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
     }
 
     /**
-     * Replaces the current list with the {@Code record}.
+     * Replaces the content of the list with the {@Code sales} as a Map.
      *
      * @param sales a Map containing sales information of drinks sold
      */
