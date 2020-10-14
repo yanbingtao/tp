@@ -9,6 +9,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.ArchiveStatus;
 import seedu.address.model.person.Person;
 
 /**
@@ -24,6 +25,7 @@ public class ArchiveCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Archived Person: %1$s";
+    public static final String MESSAGE_PERSON_ALREADY_ARCHIVED = "This person has already been archived!";
 
     private final Index targetIndex;
 
@@ -42,14 +44,25 @@ public class ArchiveCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
+
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
         Person personToArchive = lastShownList.get(targetIndex.getZeroBased());
-        model.archivePerson(personToArchive);
-        return new CommandResult(String.format(MESSAGE_ARCHIVE_PERSON_SUCCESS, personToArchive));
+        ArchiveStatus currentStateOfPerson = personToArchive.getArchiveStatus();
+
+        if (Boolean.valueOf(currentStateOfPerson.toString())) {
+            throw new CommandException(String.format(MESSAGE_PERSON_ALREADY_ARCHIVED,
+                    personToArchive));
+        }
+
+        Person archivedPerson = personToArchive.archive();
+        model.setPerson(personToArchive, archivedPerson);
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
+        return new CommandResult(String.format(MESSAGE_ARCHIVE_PERSON_SUCCESS, personToArchive.getName()));
     }
+
 
     @Override
     public boolean equals(Object other) {
