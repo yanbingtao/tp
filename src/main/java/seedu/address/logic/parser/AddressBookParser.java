@@ -20,7 +20,6 @@ import seedu.address.logic.commands.SalesUpdateCommand;
 import seedu.address.logic.commands.SetCommand;
 import seedu.address.logic.commands.ingredientcommands.IngredientResetAllCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.ingredientparser.SetCommandParser;
 
 /**
  * Parses user input.

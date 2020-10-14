@@ -1,4 +1,4 @@
-package seedu.address.logic.parser.ingredientparser;
+package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -9,11 +9,6 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.SetCommand;
 import seedu.address.logic.commands.SetCommand.SetIngredientDescriptor;
-import seedu.address.logic.parser.ArgumentMultimap;
-import seedu.address.logic.parser.ArgumentTokenizer;
-import seedu.address.logic.parser.Parser;
-import seedu.address.logic.parser.ParserUtil;
-import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ingredient.Ingredient;
 
