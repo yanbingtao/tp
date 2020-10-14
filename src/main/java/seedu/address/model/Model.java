@@ -13,10 +13,13 @@ import seedu.address.model.person.Person;
  * The API of the Model component.
  */
 public interface Model {
-    /**
-     * {@code Predicate} that always evaluate to true
-     */
-    Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    /** {@code Predicate} that evaluates to true if person's archive status is false. */
+    Predicate<Person> PREDICATE_SHOW_ALL_ACTIVE_PERSONS = person ->
+            !(person.getArchiveStatus().archiveStatus);
+    /** {@code Predicate} that evaluates to true if person's archive status is true. */
+    Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
+            person.getArchiveStatus().archiveStatus);
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -80,12 +83,6 @@ public interface Model {
      * The person must exist in the address book.
      */
     void deletePerson(Person target);
-
-    /**
-     * Archives the given person.
-     * The person must exist in the address book.
-     */
-    void archivePerson(Person target);
 
     /**
      * Adds the given person.
