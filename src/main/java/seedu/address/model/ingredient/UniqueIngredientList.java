@@ -20,6 +20,7 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
             new Ingredient(new IngredientName("Oolong Tea")),
             new Ingredient(new IngredientName("Brown Sugar"))
     );
+
     private final ObservableList<Ingredient> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
     /**
@@ -61,6 +62,13 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         return internalUnmodifiableList;
     }
 
+    public int size() {
+        return internalList.size();
+    }
+
+    public Ingredient get(int index) {
+        return internalList.get(index);
+    }
 
     @Override
     public Iterator<Ingredient> iterator() {

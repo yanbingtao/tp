@@ -73,8 +73,15 @@ public class IngredientBook implements ReadOnlyIngredientBook {
 
     @Override
     public String toString() {
-        return ingredients.asUnmodifiableObservableList().size() + " ingredients";
-        // TODO: refine later
+
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < ingredients.size(); i++) {
+            builder.append(ingredients.get(i).toString()).append("\n");
+        }
+        return ingredients.asUnmodifiableObservableList().size()
+                + " ingredients\n"
+                + builder;
     }
 
     @Override
