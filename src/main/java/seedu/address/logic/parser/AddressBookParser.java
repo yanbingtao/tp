@@ -94,7 +94,6 @@ public class AddressBookParser {
         case SetDefaultCommand.COMMAND_WORD:
             return new SetDefaultCommand();
 
-
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
