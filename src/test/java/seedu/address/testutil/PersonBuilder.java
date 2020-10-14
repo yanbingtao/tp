@@ -87,7 +87,6 @@ public class PersonBuilder {
         this.emergency = new Phone(emergency);
         return this;
     }
-    
     public Person build() {
         return new Person(name, phone, emergency, address, tags);
     }
