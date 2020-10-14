@@ -85,7 +85,6 @@ public class IngredientViewSingleCommand extends Command {
         public ViewIngredientDescriptor(ViewIngredientDescriptor toCopy) {
         }
 
-
         public Optional<IngredientName> getIngredientName() {
             return Optional.ofNullable(ingredientName);
         }
