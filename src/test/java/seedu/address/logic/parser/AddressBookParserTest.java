@@ -27,6 +27,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SalesListCommand;
 import seedu.address.logic.commands.SalesUpdateCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientListCommand;
 import seedu.address.logic.commands.ingredientcommands.IngredientViewSingleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Drink;
@@ -103,6 +104,10 @@ public class AddressBookParserTest {
         assertTrue(command instanceof IngredientViewSingleCommand);
     }
 
+    public void parseCommand_ingredientList() throws Exception {
+        assertTrue(parser.parseCommand(IngredientListCommand.COMMAND_WORD) instanceof IngredientListCommand);
+        assertTrue(parser.parseCommand(IngredientListCommand.COMMAND_WORD + " 3") instanceof IngredientListCommand);
+    }
 
     @Test
     public void parseCommand_salesUpdate() throws Exception {
