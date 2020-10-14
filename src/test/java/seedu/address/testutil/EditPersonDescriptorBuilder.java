@@ -53,6 +53,10 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(new Phone(phone));
         return this;
     }
+
+    /**
+     * Sets the {@code Emergency} of the {@code EditPersonDescriptor} that we are building.
+     */
     public EditPersonDescriptorBuilder withEmergency(String emergency) {
         descriptor.setEmergency(new Phone(emergency));
         return this;

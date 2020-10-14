@@ -2,9 +2,9 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMERGENCY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMERGENCY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -163,12 +163,14 @@ public class EditCommand extends Command {
             this.phone = phone;
         }
 
-        public Optional<Phone> getPhone() {return Optional.ofNullable(phone);}
+        public Optional<Phone> getPhone() {
+            return Optional.ofNullable(phone);
+        }
 
+        public void setEmergency(Phone emergency) { this.emergency = emergency; }
 
-        public void setEmergency(Phone emergency){ this.emergency = emergency; }
+        public Optional<Phone> getEmergency() { return Optional.ofNullable(emergency); }
 
-        public Optional<Phone> getEmergency() {return Optional.ofNullable(emergency);}
         public void setAddress(Address address) {
             this.address = address;
         }
