@@ -92,7 +92,7 @@ public class PersonBuilder {
         this.emergency = new Phone(emergency);
         return this;
     }
-  
+
     /**
      * Sets the {@code Archive} of the {@code Person} that we are building.
      */
