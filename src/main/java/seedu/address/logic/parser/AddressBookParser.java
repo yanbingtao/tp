@@ -86,7 +86,7 @@ public class AddressBookParser {
         case IngredientViewSingleCommand
                 .COMMAND_WORD:
             return new IngredientViewSingleCommandParser().parse(arguments);
-            
+
         case SetDefaultCommand.COMMAND_WORD:
             return new SetDefaultCommand();
 
@@ -101,7 +101,6 @@ public class AddressBookParser {
 
         case SalesListCommand.COMMAND_WORD:
             return new SalesListCommand();
-
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
