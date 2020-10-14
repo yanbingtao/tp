@@ -86,7 +86,7 @@ public class AddressBookParser {
         case IngredientListCommand
                 .COMMAND_WORD:
             return new IngredientListCommand();
-            
+
         case SetDefaultCommand.COMMAND_WORD:
             return new SetDefaultCommand();
 
