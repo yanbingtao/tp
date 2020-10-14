@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.ArchiveStatus;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -19,11 +20,13 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMERGENCY = "97851877";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final boolean DEFAULT_ARCHIVESTATUS = false;
 
     private Name name;
     private Phone phone;
     private Phone emergency;
     private Address address;
+    private ArchiveStatus archiveStatus;
     private Set<Tag> tags;
 
     /**
@@ -34,6 +37,7 @@ public class PersonBuilder {
         phone = new Phone(DEFAULT_PHONE);
         emergency = new Phone(DEFAULT_EMERGENCY);
         address = new Address(DEFAULT_ADDRESS);
+        archiveStatus = new ArchiveStatus(DEFAULT_ARCHIVESTATUS);
         tags = new HashSet<>();
     }
 
@@ -45,6 +49,7 @@ public class PersonBuilder {
         phone = personToCopy.getPhone();
         emergency = personToCopy.getEmergency();
         address = personToCopy.getAddress();
+        archiveStatus = personToCopy.getArchiveStatus();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -87,8 +92,17 @@ public class PersonBuilder {
         this.emergency = new Phone(emergency);
         return this;
     }
+  
+    /**
+     * Sets the {@code Archive} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withArchiveStatus(String state) {
+        this.archiveStatus = new ArchiveStatus(Boolean.valueOf(state));
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, emergency, address, tags);
+        return new Person(name, phone, address, emergency, archiveStatus, tags);
     }
 
 }
