@@ -26,13 +26,6 @@ public class IngredientResetAllCommand extends Command {
     public static final String MESSAGE_NO_CHANGE = "All Ingredient levels are already at 0.";
 
     /**
-     * Constructs an IngredientResetAll command.
-     */
-    public IngredientResetAllCommand() {
-        super();
-    }
-
-    /**
      * Executes the command and returns the result message.
      *
      * @param model {@code Model} which the command should operate on.
@@ -62,7 +55,7 @@ public class IngredientResetAllCommand extends Command {
             Ingredient updatedIngredient = createResetIngredient(i);
             model.setIngredient(ingredientToEdit, updatedIngredient);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS));
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
     private static Ingredient createResetIngredient(Ingredient target) {
