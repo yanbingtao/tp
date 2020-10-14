@@ -20,7 +20,7 @@ class IngredientNameTest {
     }
 
     @Test
-    void isValidIngredientName() {
+    public void isValidIngredientName() {
         // null name
         assertThrows(NullPointerException.class, () -> IngredientName.isValidIngredientName(null));
 

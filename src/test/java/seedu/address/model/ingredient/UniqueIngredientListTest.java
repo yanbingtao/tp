@@ -114,7 +114,6 @@ class UniqueIngredientListTest {
             -> uniqueIngredientList.setIngredients(listWithDuplicateIngredients));
     }
 
-
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()

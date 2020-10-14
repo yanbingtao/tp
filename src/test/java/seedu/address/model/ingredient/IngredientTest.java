@@ -12,7 +12,7 @@ class IngredientTest {
             "Oolong Tea"), new Amount("90"));
 
     @Test
-    void isSameIngredient() {
+    public void isSameIngredient() {
         // same object -> returns true
         assertTrue(OOLONG_TEA.isSameIngredient(OOLONG_TEA));
 
@@ -29,7 +29,7 @@ class IngredientTest {
     }
 
     @Test
-    void testEquals() {
+    public void testEquals() {
         // same values -> returns true
         Ingredient oolongCopy = new Ingredient(new IngredientName("Oolong Tea"));
         assertTrue(OOLONG_TEA.equals(oolongCopy));

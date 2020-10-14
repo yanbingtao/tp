@@ -21,7 +21,7 @@ class AmountTest {
     }
 
     @Test
-    void isValidAmount() {
+    public void isValidAmount() {
         assertThrows(NullPointerException.class, () -> Amount.isValidAmount(null));
 
         // invalid amount numbers
@@ -38,7 +38,7 @@ class AmountTest {
     }
 
     @Test
-    void testToString() {
+    public void testToString() {
         Amount test1 = new Amount("90"); // two digits
         Amount test2 = new Amount("0"); // edge case, 0
         Amount test3 = new Amount("93121543"); // large amounts
