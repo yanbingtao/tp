@@ -75,9 +75,9 @@ public class Person {
     }
 
     /**
-     * Sets the person's archive status to true. It's equivalent to archive the person.
+     * Sets the person's archive status to true. It's equivalent to having archived the person.
      *
-     * @return A Person type with "true" in archive status.
+     * @return A Person whose archive status is true.
      */
     public Person archive() {
         return new Person(this.name, this.phone, this.address, new ArchiveStatus(true),
@@ -87,7 +87,7 @@ public class Person {
     /**
      * Sets the person's archive status to false. It's equivalent to unarchive the person.
      *
-     * @return A Person type with "false" in archive status.
+     * @return A Person whose archive status is false.
      */
     public Person unarchive() {
         return new Person(this.name, this.phone, this.address, new ArchiveStatus(false),

@@ -20,7 +20,7 @@ public class UnarchiveCommand extends Command {
     public static final String COMMAND_WORD = "c-unarchive";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Unarchive the person identified by the index number used in the displayed person list.\n"
+            + ": Unarchives the person identified by the index number used in the displayed person list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
@@ -42,7 +42,6 @@ public class UnarchiveCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
-
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
