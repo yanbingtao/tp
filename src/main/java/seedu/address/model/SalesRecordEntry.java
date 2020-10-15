@@ -11,6 +11,12 @@ public class SalesRecordEntry {
     private final Drink drink;
     private final int numberSold;
 
+    /**
+     * Creates a SalesRecordEntry which records the number of {@Code drink} sold.
+     *
+     * @param drink the type of Drink
+     * @param numberSold the number of drink sold
+     */
     public SalesRecordEntry(Drink drink, int numberSold) {
         this.drink = drink;
         this.numberSold = numberSold;

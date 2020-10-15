@@ -3,6 +3,9 @@ package seedu.address.logic.commands;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +16,6 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.SalesBook;
 import seedu.address.model.SalesRecordEntry;
 import seedu.address.model.UserPrefs;
-
-import java.util.Collections;
-import java.util.List;
 
 public class SalesListCommandTest {
 

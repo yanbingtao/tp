@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.api.Test;
 
 import seedu.address.model.sales.exception.DuplicateSalesRecordException;
 import seedu.address.model.sales.exception.SalesRecordNotFoundException;
@@ -37,9 +37,10 @@ public class UniqueSalesRecordListTest {
     }
 
     @Test
-    public void contains_salesRecordEntrynWithSameDrinkFieldInList_returnsTrue() {
+    public void contains_salesRecordEntryWithSameDrinkInList_returnsTrue() {
         uniqueSalesRecordList.add(entry);
-        SalesRecordEntry entryOfSameDrink = new SalesRecordEntry(entry.getDrink(), entry.getNumberSold()-3);
+        SalesRecordEntry entryOfSameDrink =
+                new SalesRecordEntry(entry.getDrink(), entry.getNumberSold() - 3);
         assertTrue(uniqueSalesRecordList.contains(entryOfSameDrink));
     }
 
@@ -51,7 +52,8 @@ public class UniqueSalesRecordListTest {
     @Test
     public void add_salesRecordEntryWithSameDrinkDifferentNumberSold_replacesOldEntry() {
         uniqueSalesRecordList.add(entry);
-        SalesRecordEntry entryOfSameDrink = new SalesRecordEntry(entry.getDrink(), entry.getNumberSold()-3);
+        SalesRecordEntry entryOfSameDrink =
+                new SalesRecordEntry(entry.getDrink(), entry.getNumberSold() - 3);
         uniqueSalesRecordList.add(entryOfSameDrink);
         assertEquals(entryOfSameDrink, uniqueSalesRecordList.getSalesEntry(entry.getDrink()));
     }
@@ -69,7 +71,8 @@ public class UniqueSalesRecordListTest {
     @Test
     public void setSalesEntry_replaceSalesEntryWithNewEntryOfSameDrink_success() {
         uniqueSalesRecordList.add(entry);
-        SalesRecordEntry entryOfSameDrink = new SalesRecordEntry(entry.getDrink(), entry.getNumberSold()-3);
+        SalesRecordEntry entryOfSameDrink =
+                new SalesRecordEntry(entry.getDrink(), entry.getNumberSold() - 3);
         uniqueSalesRecordList.setSalesEntry(entryOfSameDrink);
         assertEquals(entryOfSameDrink, uniqueSalesRecordList.getSalesEntry(entryOfSameDrink.getDrink()));
     }
@@ -105,8 +108,8 @@ public class UniqueSalesRecordListTest {
 
     @Test
     public void setSalesRecord_nullUniqueSalesRecordList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> uniqueSalesRecordList.setSalesRecord((UniqueSalesRecordList) null));
+        assertThrows(NullPointerException.class, () ->
+                uniqueSalesRecordList.setSalesRecord((UniqueSalesRecordList) null));
     }
 
     @Test
@@ -121,7 +124,8 @@ public class UniqueSalesRecordListTest {
 
     @Test
     public void setSalesRecord_nullList_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueSalesRecordList.setSalesRecord((List<SalesRecordEntry>) null));
+        assertThrows(NullPointerException.class, () ->
+                uniqueSalesRecordList.setSalesRecord((List<SalesRecordEntry>) null));
     }
 
     @Test
@@ -138,14 +142,14 @@ public class UniqueSalesRecordListTest {
     @Test
     public void setSalesRecord_listWithDuplicateSalesRecord_throwsDuplicateSalesRecordException() {
         List<SalesRecordEntry> listWithDuplicateSalesRecord = Arrays.asList(entry, entry);
-        assertThrows(DuplicateSalesRecordException.class,
-                () -> uniqueSalesRecordList.setSalesRecord(listWithDuplicateSalesRecord));
+        assertThrows(DuplicateSalesRecordException.class, () ->
+                uniqueSalesRecordList.setSalesRecord(listWithDuplicateSalesRecord));
     }
 
     @Test
     public void setSalesRecord_nullMap_throwsNullPointerException() {
-        assertThrows(NullPointerException.class,
-                () -> uniqueSalesRecordList.setSalesRecord((Map<Drink, Integer>) null));
+        assertThrows(NullPointerException.class, () ->
+                uniqueSalesRecordList.setSalesRecord((Map<Drink, Integer>) null));
     }
 
     @Test
@@ -161,8 +165,8 @@ public class UniqueSalesRecordListTest {
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, ()
-                -> uniqueSalesRecordList.asUnmodifiableObservableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                uniqueSalesRecordList.asUnmodifiableObservableList().remove(0));
     }
 
 }

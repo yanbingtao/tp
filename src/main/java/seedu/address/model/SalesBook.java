@@ -1,13 +1,13 @@
 package seedu.address.model;
 
-import javafx.collections.ObservableList;
-
 import static java.util.Objects.requireNonNull;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import javafx.collections.ObservableList;
 
 /**
  * Wraps all data related to drink sales at the sales-book level

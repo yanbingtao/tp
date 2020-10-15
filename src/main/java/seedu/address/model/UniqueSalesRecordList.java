@@ -3,15 +3,15 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.model.sales.exception.DuplicateSalesRecordException;
-import seedu.address.model.sales.exception.SalesRecordNotFoundException;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.sales.exception.DuplicateSalesRecordException;
+import seedu.address.model.sales.exception.SalesRecordNotFoundException;
 
 /**
  * A list of sales records that enforces uniqueness between its elements and does not allow nulls.
@@ -145,6 +145,18 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
     }
 
     /**
+     * Replaces the content of the list with the {@Code sales} as a Map.
+     *
+     * @param sales a Map containing sales information of drinks sold
+     */
+    public void setSalesRecord(Map<Drink, Integer> sales) {
+        requireNonNull(sales);
+        ArrayList<SalesRecordEntry> newRecord = new ArrayList<>();
+        sales.forEach((k, v) -> newRecord.add(new SalesRecordEntry(k, v)));
+        internalList.setAll(newRecord);
+    }
+
+    /**
      * Returns true if {@code sales} contains only unique sales record entries.
      */
     private boolean salesRecordEntriesAreUnique(List<SalesRecordEntry> sales) {
@@ -156,18 +168,6 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
             }
         }
         return true;
-    }
-
-    /**
-     * Replaces the content of the list with the {@Code sales} as a Map.
-     *
-     * @param sales a Map containing sales information of drinks sold
-     */
-    public void setSalesRecord(Map<Drink, Integer> sales) {
-        requireNonNull(sales);
-        ArrayList<SalesRecordEntry> newRecord = new ArrayList<>();
-        sales.forEach((k, v) -> newRecord.add(new SalesRecordEntry(k, v)));
-        internalList.setAll(newRecord);
     }
 
     /**
