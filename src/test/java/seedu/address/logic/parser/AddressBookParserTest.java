@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BSBM;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INGREDIENT;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -26,6 +27,9 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.SalesListCommand;
 import seedu.address.logic.commands.SalesUpdateCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientListCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientResetAllCommand;
+import seedu.address.logic.commands.ingredientcommands.IngredientViewSingleCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Drink;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -88,9 +92,29 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_resetAllIngredients() throws Exception {
+        assertTrue(parser.parseCommand(IngredientResetAllCommand.COMMAND_WORD) instanceof IngredientResetAllCommand);
+        assertTrue(parser.parseCommand(IngredientResetAllCommand.COMMAND_WORD + " 3")
+                instanceof IngredientResetAllCommand);
+    }
+
+    @Test
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_ingredientViewSingle() throws Exception {
+        final String userInput = IngredientViewSingleCommand.COMMAND_WORD
+                + " " + PREFIX_INGREDIENT + "Milk ";
+        IngredientViewSingleCommand command = (IngredientViewSingleCommand) parser.parseCommand(userInput);
+        assertTrue(command instanceof IngredientViewSingleCommand);
+    }
+
+    public void parseCommand_ingredientList() throws Exception {
+        assertTrue(parser.parseCommand(IngredientListCommand.COMMAND_WORD) instanceof IngredientListCommand);
+        assertTrue(parser.parseCommand(IngredientListCommand.COMMAND_WORD + " 3") instanceof IngredientListCommand);
     }
 
     @Test
