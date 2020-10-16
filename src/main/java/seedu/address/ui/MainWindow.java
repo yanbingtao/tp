@@ -33,6 +33,8 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
+    private SalesResultDisplay salesResultDisplay;
+    private IngredientResultDisplay ingredientResultDisplay;
     private HelpWindow helpWindow;
 
     @FXML
@@ -46,6 +48,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane resultDisplayPlaceholder;
+
+    @FXML
+    private StackPane salesResultDisplayPlaceholder;
+
+    @FXML
+    private StackPane ingredientResultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -110,6 +118,12 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
+        salesResultDisplay = new SalesResultDisplay();
+        salesResultDisplayPlaceholder.getChildren().add(salesResultDisplay.getRoot());
+
+        ingredientResultDisplay = new IngredientResultDisplay();
+        ingredientResultDisplayPlaceholder.getChildren().add(ingredientResultDisplay.getRoot());
+
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
@@ -170,7 +184,14 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
-            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            if (commandText.startsWith("s-list")) {
+                salesResultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            } else if (commandText.startsWith("i-list")) {
+                ingredientResultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            } else {
+                resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
