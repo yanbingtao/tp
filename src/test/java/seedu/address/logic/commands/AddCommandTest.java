@@ -22,6 +22,7 @@ import seedu.address.model.Drink;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyIngredientBook;
+import seedu.address.model.ReadOnlySalesBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SalesBook;
 import seedu.address.model.ingredient.Ingredient;
@@ -164,12 +165,17 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        public void setSalesBook(SalesBook salesBook) {
+        public void setSalesBook(ReadOnlySalesBook salesBook) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public SalesBook getSalesBook() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean isEmptySalesBook() {
             throw new AssertionError("This method should not be called.");
         }
 
