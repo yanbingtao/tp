@@ -149,7 +149,7 @@ public class ModelManager implements Model {
     //=========== SalesBook ==================================================================================
 
     @Override
-    public void setSalesBook(SalesBook salesBook) {
+    public void setSalesBook(ReadOnlySalesBook salesBook) {
         this.salesBook.resetData(salesBook);
     }
 
@@ -159,8 +159,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean isEmptySalesBook() {
+        return salesBook.isEmptySalesRecord();
+    }
+
+    @Override
     public void overwrite(Map<Drink, Integer> salesInput) {
-        if (salesBook.isEmptySalesBook()) {
+        if (isEmptySalesBook()) {
             salesBook.setRecord(salesInput);
         } else {
             salesBook.overwriteSales(salesInput);

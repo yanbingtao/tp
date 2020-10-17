@@ -103,9 +103,11 @@ public interface Model {
     Ingredient findIngredientByName(IngredientName target);
 
 
-    void setSalesBook(SalesBook salesBook);
+    void setSalesBook(ReadOnlySalesBook salesBook);
 
     SalesBook getSalesBook();
+
+    boolean isEmptySalesBook();
 
     void overwrite(Map<Drink, Integer> salesInput);
 
