@@ -133,6 +133,20 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### \[Completed\] Set ingredients' levels feature
+
+The completed set ingredients' levels feature consists of three commands with slightly different formats, which complement one another, to provide a set of useful commands for enhanced user experiences. The three commands are :
+
+* `i-set i/INGREDIENT_NAME m/AMOUNT` — Sets the level of one specific ingredient to the specified amount.
+* `i-set-default` — Sets the levels of all ingredients defined in the ingredient book to pre-determined amounts.
+* `i-set-all M/AMOUNT_FOR_MILK P/AMOUNT_FOR_PEARL B/AMOUNT_FOR_BOBA O/AMOUNT_FOR_OOLONG_TEA S/AMOUNT_FOR_BROWN_SUGAR` — Sets the levels of all ingredients defined in the ingredient book to different specified amounts for each ingredient.
+
+The completed set ingredients' levels mechanism is facilitated by
+
+
+#### Completed Implementation
+
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
