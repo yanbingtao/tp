@@ -22,7 +22,7 @@ public class HelpWindow extends UiPart<Stage> {
             + "c-list: Shows a list of all persons in the address book.\n"
             + "c-edit INDEX [n/NAME] [e/EMERGENCY_CONTACT] [t/TAG]…: Edits the corresponding contact information in"
             + " the contact list.\n"
-            + "c-search KEYWORD [MORE_KEYWORDS]: Finds all contacts that contain the KEYWORD(s).\n"
+            + "c-find KEYWORD [MORE_KEYWORDS]: Finds all contacts that contain the KEYWORD(s).\n"
             + "c-delete INDEX: Deletes the specified person from the address book.\n"
             + "c-clear: Clears all entries from the contact list.\n"
             + "c-archive INDEX: Archives the specified employee’s contact detail from tCheck.\n"
