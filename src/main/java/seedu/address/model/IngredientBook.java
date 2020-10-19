@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.ingredient.UniqueIngredientList;
+import seedu.address.model.person.Person;
 
 /**
  * Wraps all data at the address-book level
@@ -68,6 +69,14 @@ public class IngredientBook implements ReadOnlyIngredientBook {
     public void setIngredient(Ingredient target, Ingredient newAmount) {
         requireAllNonNull(target, newAmount);
         ingredients.setIngredient(target, newAmount);
+    }
+
+    /**
+     * Adds an ingredient to the ingredient book.
+     * The ingredient must not already exist in the ingredient book.
+     */
+    public void addIngredient(Ingredient p) {
+        ingredients.add(p);
     }
 
     /**

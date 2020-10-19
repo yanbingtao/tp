@@ -48,9 +48,20 @@ public interface Model {
     Path getAddressBookFilePath();
 
     /**
+     * Returns the user prefs' ingredient book file path.
+     */
+    Path getIngredientBookFilePath();
+
+
+    /**
      * Sets the user prefs' address book file path.
      */
     void setAddressBookFilePath(Path addressBookFilePath);
+
+    /**
+     * Sets the user prefs' ingredient book file path.
+     */
+    void setIngredientBookFilePath(Path ingredientBookFilePath);
 
     /**
      * Replaces address book data with the data in {@code addressBook}.
@@ -92,6 +103,12 @@ public interface Model {
     void addPerson(Person person);
 
     /**
+     * Adds an ingredient to the ingredient book.
+     * The ingredient must not already exist in the ingredient book.
+     */
+    public void addIngredient(Ingredient ingredient);
+
+    /**
      * Replaces the given person {@code target} with {@code editedPerson}.
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
@@ -126,4 +143,12 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Updates the filter of the filtered ingredient list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredIngredientList(Predicate<Ingredient> predicate);
+
 }

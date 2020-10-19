@@ -89,9 +89,20 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Path getIngredientBookFilePath() {
+        return userPrefs.getIngredientBookFilePath();
+    }
+
+    @Override
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
+    }
+
+    @Override
+    public void setIngredientBookFilePath(Path ingredientBookFilePath) {
+        requireNonNull(ingredientBookFilePath);
+        userPrefs.setIngredientBookFilePath(ingredientBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
@@ -188,6 +199,12 @@ public class ModelManager implements Model {
         return ingredientBook.findIngredientByName(ingredientName);
     }
 
+    @Override
+    public void addIngredient(Ingredient ingredient) {
+        ingredientBook.addIngredient(ingredient);
+        //updateFilteredIngredientList(PREDICATE_SHOW_ALL_ACTIVE_INGREDIENTS);
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -212,6 +229,12 @@ public class ModelManager implements Model {
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredIngredientList(Predicate<Ingredient> predicate) {
+        requireNonNull(predicate);
+        filteredIngredients.setPredicate(predicate);
     }
 
     @Override

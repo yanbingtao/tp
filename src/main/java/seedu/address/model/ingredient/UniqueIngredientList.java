@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.ingredient.exceptions.DuplicateIngredientException;
 import seedu.address.model.ingredient.exceptions.IngredientNotFoundException;
 import seedu.address.model.ingredient.exceptions.NoChangeIngredientException;
 
@@ -120,5 +121,17 @@ public class UniqueIngredientList implements Iterable<Ingredient> {
         return true;
     }
 
+
+    /**
+     * Adds an ingredient to the list.
+     * The ingredient must not already exist in the list.
+     */
+    public void add(Ingredient toAdd) {
+        requireNonNull(toAdd);
+        if (contains(toAdd)) {
+            throw new DuplicateIngredientException();
+        }
+        internalList.add(toAdd);
+    }
 }
 
