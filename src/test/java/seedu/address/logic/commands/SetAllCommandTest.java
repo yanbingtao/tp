@@ -39,12 +39,6 @@ class SetAllCommandTest {
 
         SetAllCommand setAllCommand = new SetAllCommand(MILK_AMOUNT, PEARL_AMOUNT,
                 BOBA_AMOUNT, OOLONG_TEA_AMOUNT, BROWN_SUGAR_AMOUNT);
-        IngredientBook original = new IngredientBook();
-        original.addIngredient(new Ingredient(new IngredientName("Milk")));
-        original.addIngredient(new Ingredient(new IngredientName("Pearl")));
-        original.addIngredient(new Ingredient(new IngredientName("Boba")));
-        original.addIngredient(new Ingredient(new IngredientName("Oolong Tea")));
-        original.addIngredient(new Ingredient(new IngredientName("Brown Sugar")));
 
         IngredientBook toSet = new IngredientBook();
         toSet.addIngredient(new Ingredient(new IngredientName("Milk")));
@@ -70,10 +64,10 @@ class SetAllCommandTest {
 
         Model expectedModel =
                 new ModelManager(new AddressBook(model.getAddressBook()), model.getSalesBook(),
-                        toSet, new UserPrefs());
+                        model.getIngredientBook(), new UserPrefs());
         expectedModel.setIngredientBook(readOnlyToSet);
 
-        assertCommandSuccess(setAllCommand, expectedModel, expectedMessage, expectedModel);
+        assertCommandSuccess(setAllCommand, model, expectedMessage, expectedModel);
     }
 
     @Test

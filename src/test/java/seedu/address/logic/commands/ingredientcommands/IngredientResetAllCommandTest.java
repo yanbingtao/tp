@@ -1,25 +1,21 @@
 package seedu.address.logic.commands.ingredientcommands;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-
 import org.junit.jupiter.api.Test;
-
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.model.IngredientBook;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyIngredientBook;
+import seedu.address.model.*;
 import seedu.address.model.ingredient.Amount;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.IngredientName;
 
-public class IngredientViewSingleCommandTest {
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+public class IngredientResetAllCommandTest {
 
     @Test
-    public void execute_viewIngredient_success() {
+    public void execute_resetAllIngredients_success() {
         Model model = new ModelManager();
         Model expectedModel = model;
         Amount amount = new Amount ("10");
@@ -44,28 +40,20 @@ public class IngredientViewSingleCommandTest {
 
         expectedModel.setIngredientBook(defaultReadOnlyIngredientBook);
 
-        IngredientViewSingleCommand.ViewIngredientDescriptor descriptor = new
-                IngredientViewSingleCommand.ViewIngredientDescriptor();
-        final IngredientViewSingleCommand standardCommand = new
-                IngredientViewSingleCommand(new IngredientName("Milk"), descriptor);
-        final String MESSAGE_SUCCESS = "Here is the ingredient and its level: "
-                + new Ingredient(new IngredientName("Milk"), amount).toString();
-        assertCommandSuccess(standardCommand, model, MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new IngredientResetAllCommand(), model,
+                IngredientResetAllCommand.MESSAGE_SUCCESS, expectedModel);
 
     }
+
 
     @Test
     public void equals() {
 
-
-        IngredientViewSingleCommand.ViewIngredientDescriptor descriptor = new
-                IngredientViewSingleCommand.ViewIngredientDescriptor();
-        final IngredientViewSingleCommand standardCommand = new
-                IngredientViewSingleCommand(new IngredientName("Milk"), descriptor);
+        final IngredientResetAllCommand standardCommand = new IngredientResetAllCommand();
 
         // same values -> returns true
-        IngredientViewSingleCommand commandWithSameValues = new
-                IngredientViewSingleCommand(new IngredientName("Milk"), descriptor);
+        IngredientResetAllCommand commandWithSameValues = new IngredientResetAllCommand();
+
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -77,11 +65,5 @@ public class IngredientViewSingleCommandTest {
         // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
 
-        // different ingredient names -> returns false
-        IngredientViewSingleCommand commandWithDifferentValues = new
-                IngredientViewSingleCommand(new IngredientName("Boba"), descriptor);
-        assertFalse(standardCommand.equals(commandWithDifferentValues));
-
     }
-
 }
