@@ -58,7 +58,6 @@ public class IngredientViewSingleCommandTest {
                 IngredientViewSingleCommand(new IngredientName("Boba"), descriptor);
         assertFalse(standardCommand.equals(commandWithDifferentValues));
 
-
     }
 
 }
