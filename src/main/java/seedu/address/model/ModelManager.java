@@ -48,7 +48,8 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
                 Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
-        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
+        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList(),
+                Model.PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
     /**
@@ -202,7 +203,7 @@ public class ModelManager implements Model {
     @Override
     public void addIngredient(Ingredient ingredient) {
         ingredientBook.addIngredient(ingredient);
-        //updateFilteredIngredientList(PREDICATE_SHOW_ALL_ACTIVE_INGREDIENTS);
+        updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
 

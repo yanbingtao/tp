@@ -21,6 +21,7 @@ public interface Model {
     /** {@code Predicate} that evaluates to true if person's archive status is true. */
     Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
             person.getArchiveStatus().archiveStatus);
+    Predicate<Ingredient> PREDICATE_SHOW_ALL_INGREDIENTS = ingredient -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.

@@ -14,13 +14,14 @@ import seedu.address.model.ingredient.exceptions.NoChangeIngredientException;
 
 public class UniqueIngredientList implements Iterable<Ingredient> {
 
-    private final ObservableList<Ingredient> internalList = FXCollections.observableArrayList(
+    private final ObservableList<Ingredient> internalList = FXCollections.observableArrayList();
+            /*FXCollections.observableArrayList(
             new Ingredient(new IngredientName("Milk")),
             new Ingredient(new IngredientName("Pearl")),
             new Ingredient(new IngredientName("Boba")),
             new Ingredient(new IngredientName("Oolong Tea")),
             new Ingredient(new IngredientName("Brown Sugar"))
-    );
+    );*/
 
     private final ObservableList<Ingredient> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
