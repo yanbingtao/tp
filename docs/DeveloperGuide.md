@@ -160,8 +160,16 @@ Step 1. The user launches the application. The `IngredientBook` will be initiali
 
 Step 2. The user executes `i-set-default` to set the amounts of all ingredients to the default levels of the system. The `i-set-default` command calls `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)`, causing the initial ingredient book to be replaced by the `ingredientBook` with the amounts of ingredients to be equal to their default levels.
 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)`, so the ingredient book will not be changed in the system.
+
+</div>
+
 Step 3. The user finds that the real amounts for one particular ingredient in his/her stall, milk for example, is different from the default level stored in the application and decides to set the amount for milk by executing the `i-set i/INGREDIENT_NAME m/AMOUNT` command. In this case, the exact command entered is : `i-set i/Milk m/100`.
 The command calls `Model#setIngredient(Ingredient target, Ingredient newAmount)`, causing the `target` in the current ingredient book to be replaced by `newAmount` .
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If `i-set` command fails its execution, it will not call `Model#setIngredient(Ingredient target, Ingredient newAmount)`, so the ingredient book will not be modified in the system.
+
+</div>
 
 Step 4. After some time of operation, the user decides to update the ingredient book with current amounts of ingredients in his/her stall by executing the `i-set-all M/AMOUNT_FOR_MILK P/AMOUNT_FOR_PEARL B/AMOUNT_FOR_BOBA O/AMOUNT_FOR_OOLONG_TEA S/AMOUNT_FOR_BROWN_SUGAR` command. 
 In this case, the exact command entered is :  `i-set-all M/10 P/15 B/20 O/5 S/15`. The command calls `Model#setIngredient(ReadOnlyIngredientBook ingredientBook)`, causing the current ingredient book to be replaced by the `ingredientBook` with different specified amounts for each ingredient.
@@ -182,7 +190,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 * **Alternative 2:** Has only one command :  `i-set i/INGREDIENT_NAME m/AMOUNT`.
   
   * Pros: Easier to implement and test. Theoretically speaking, this one command can achieve the same effect as `i-set-default` and `i-set-all`  by entering it multiple times.
-  * Cons: Does not really suit the user's needs because it can be very tedious to use.
+  * Cons: Does not really suit the user's needs because it can be tedious to set each ingredient individually.
 
 
 ### \[Proposed\] Undo/redo feature
