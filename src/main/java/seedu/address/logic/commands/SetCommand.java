@@ -3,7 +3,6 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_INGREDIENT;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_INGREDIENTS;
 
 import java.util.List;
 import java.util.Optional;
@@ -63,7 +62,6 @@ public class SetCommand extends Command {
         }
 
         model.setIngredient(ingredientToEdit, updatedIngredient);
-        model.updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
         return new CommandResult(String.format(MESSAGE_SUCCESS, updatedIngredient));
     }
 
