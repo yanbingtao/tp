@@ -1,25 +1,21 @@
 package seedu.address.logic.commands.ingredientcommands;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.SetAllCommand;
-import seedu.address.model.*;
-import seedu.address.model.ingredient.Amount;
-import seedu.address.model.ingredient.Ingredient;
-import seedu.address.model.ingredient.IngredientName;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIngredients.getTypicalIngredientBook;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.model.IngredientBook;
+import seedu.address.model.Model;
+import seedu.address.model.ModelManager;
+import seedu.address.model.ReadOnlyIngredientBook;
+import seedu.address.model.ingredient.Amount;
+import seedu.address.model.ingredient.Ingredient;
+import seedu.address.model.ingredient.IngredientName;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for IngredientListCommand.
@@ -58,13 +54,11 @@ public class IngredientListCommandTest {
         final IngredientListCommand standardCommand = new
                 IngredientListCommand();
         String ingredientList = "";
-        final char LINE_SEPARATOR = '\n';
+        final char lineSeparator = '\n';
         List<Ingredient> lastShownList = expectedModel.getFilteredIngredientList();
         for (Ingredient i : lastShownList) {
-            ingredientList += i.toString() + LINE_SEPARATOR;
+            ingredientList += i.toString() + lineSeparator;
         }
-        final String MESSAGE_SUCCESS = "Here is the ingredient and its level: "
-                + new Ingredient(new IngredientName("Milk"), amount).toString();
         assertCommandSuccess(standardCommand, model,
                 IngredientListCommand.MESSAGE_SUCCESS + ingredientList, expectedModel);
 

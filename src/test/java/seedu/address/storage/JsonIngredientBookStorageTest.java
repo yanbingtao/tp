@@ -1,19 +1,24 @@
 package seedu.address.storage;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.IngredientBook;
-import seedu.address.model.ReadOnlyIngredientBook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIngredients.MILK;
+import static seedu.address.testutil.TypicalIngredients.PEARL;
+import static seedu.address.testutil.TypicalIngredients.UPDATED_MILK;
+import static seedu.address.testutil.TypicalIngredients.UPDATED_PEARL;
+import static seedu.address.testutil.TypicalIngredients.getTypicalIngredientBook;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIngredients.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.IngredientBook;
+import seedu.address.model.ReadOnlyIngredientBook;
 
 public class JsonIngredientBookStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
@@ -95,10 +100,10 @@ public class JsonIngredientBookStorageTest {
     /**
      * Saves {@code IngredientBook} at the specified {@code filePath}.
      */
-    private void saveIngredientBook(ReadOnlyIngredientBook IngredientBook, String filePath) {
+    private void saveIngredientBook(ReadOnlyIngredientBook ingredientBook, String filePath) {
         try {
             new JsonIngredientBookStorage(Paths.get(filePath))
-                    .saveIngredientBook(IngredientBook, addToTestDataPathIfNotNull(filePath));
+                    .saveIngredientBook(ingredientBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }

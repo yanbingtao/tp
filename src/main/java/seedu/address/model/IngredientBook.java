@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.IngredientName;
 import seedu.address.model.ingredient.UniqueIngredientList;
-import seedu.address.model.person.Person;
 
 /**
  * Wraps all data at the address-book level
@@ -21,23 +20,18 @@ public class IngredientBook implements ReadOnlyIngredientBook {
 
 
 
-/*
-* The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
-* between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-*
-* Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-*   among constructors.
-*/
+    /*
+    * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
+    * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+    *
+    * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
+    *   among constructors.
+    */
     {
         ingredients = new UniqueIngredientList();
     }
 
     public IngredientBook() {
-       /*ingredients.add(new Ingredient(new IngredientName("Milk")));
-       ingredients.add(new Ingredient(new IngredientName("Pearl")));
-       ingredients.add(new Ingredient(new IngredientName("Boba")));
-       ingredients.add(new Ingredient(new IngredientName("Oolong Tea")));
-       ingredients.add(new Ingredient(new IngredientName("Brown Sugar")));*/
     }
 
     /**

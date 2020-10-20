@@ -1,14 +1,13 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.parser.Parser;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.address.model.IngredientBook;
 import seedu.address.model.ingredient.Amount;
 import seedu.address.model.ingredient.Ingredient;
 import seedu.address.model.ingredient.IngredientName;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class TypicalIngredients {
     public static final Ingredient MILK = new Ingredient(new IngredientName("Milk"),

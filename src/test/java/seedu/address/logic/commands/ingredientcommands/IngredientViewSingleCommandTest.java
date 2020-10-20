@@ -48,16 +48,14 @@ public class IngredientViewSingleCommandTest {
                 IngredientViewSingleCommand.ViewIngredientDescriptor();
         final IngredientViewSingleCommand standardCommand = new
                 IngredientViewSingleCommand(new IngredientName("Milk"), descriptor);
-        final String MESSAGE_SUCCESS = "Here is the ingredient and its level: "
+        final String messageSuccess = "Here is the ingredient and its level: "
                 + new Ingredient(new IngredientName("Milk"), amount).toString();
-        assertCommandSuccess(standardCommand, model, MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(standardCommand, model, messageSuccess, expectedModel);
 
     }
 
     @Test
     public void equals() {
-
-
         IngredientViewSingleCommand.ViewIngredientDescriptor descriptor = new
                 IngredientViewSingleCommand.ViewIngredientDescriptor();
         final IngredientViewSingleCommand standardCommand = new

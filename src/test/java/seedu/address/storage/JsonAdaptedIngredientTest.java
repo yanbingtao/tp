@@ -1,12 +1,12 @@
 package seedu.address.storage;
 
-
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.exceptions.IllegalValueException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIngredients.MILK;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.exceptions.IllegalValueException;
 
 public class JsonAdaptedIngredientTest {
     private static final String VALID_INGREDIENT_NAME = "Milk";
