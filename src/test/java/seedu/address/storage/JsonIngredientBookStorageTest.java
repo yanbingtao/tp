@@ -55,18 +55,6 @@ public class JsonIngredientBookStorageTest {
     }
 
     @Test
-    public void readIngredientBook_invalidIngredientIngredientBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readIngredientBook(
-                "invalidIngredientIngredientBook.json"));
-    }
-
-    @Test
-    public void readIngredientBook_invalidAndValidIngredientIngredientBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readIngredientBook(
-                "invalidAndValidIngredientIngredientBook.json"));
-    }
-
-    @Test
     public void readAndSaveIngredientBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempIngredientBook.json");
         IngredientBook original = getTypicalIngredientBook();
