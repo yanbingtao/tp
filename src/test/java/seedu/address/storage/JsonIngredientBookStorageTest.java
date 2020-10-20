@@ -55,13 +55,13 @@ public class JsonIngredientBookStorageTest {
     }
 
     @Test
-    public void readIngredientBook_invalidPersonAddressBook_throwDataConversionException() {
+    public void readIngredientBook_invalidIngredientIngredientBook_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readIngredientBook(
                 "invalidIngredientIngredientBook.json"));
     }
 
     @Test
-    public void readIngredientBook_invalidAndValidPersonIngredientBook_throwDataConversionException() {
+    public void readIngredientBook_invalidAndValidIngredientIngredientBook_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readIngredientBook(
                 "invalidAndValidIngredientIngredientBook.json"));
     }
