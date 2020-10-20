@@ -20,6 +20,7 @@ Class Person
 Class Address
 Class Name
 Class Phone
+Class Emergency
 Class UniquePersonList
 }
 
@@ -43,6 +44,7 @@ AddressBook *--> "1" UniquePersonList
 UniquePersonList o--> "*" Person
 Person *--> Name
 Person *--> Phone
+Person *--> Emergency
 Person *--> Address
 Person *--> "*" Tag
 
