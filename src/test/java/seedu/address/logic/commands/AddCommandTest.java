@@ -112,12 +112,41 @@ public class AddCommandTest {
         }
 
         @Override
+        public Path getIngredientBookFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setIngredientBookFilePath(Path ingredientBookFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setAddressBookFilePath(Path addressBookFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
+        public Path getSalesBookFilePath() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setSalesBookFilePath(Path ingredientBookFilePath) {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
         public void addPerson(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addSalesRecordEntry(SalesRecordEntry salesRecordEntry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addIngredient(Ingredient ingredient) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -203,6 +232,16 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredSalesList(Predicate<SalesRecordEntry> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredIngredientList(Predicate<Ingredient> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
