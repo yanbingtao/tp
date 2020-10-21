@@ -18,11 +18,12 @@ public interface Model {
     /** {@code Predicate} that evaluates to true if person's archive status is false. */
     Predicate<Person> PREDICATE_SHOW_ALL_ACTIVE_PERSONS = person ->
             !(person.getArchiveStatus().archiveStatus);
+
     /** {@code Predicate} that evaluates to true if person's archive status is true. */
     Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
             person.getArchiveStatus().archiveStatus);
-    Predicate<SalesRecordEntry> PREDICATE_SHOW_ALL_SALES = salesRecordEntry -> true;
-    Predicate<Ingredient> PREDICATE_SHOW_ALL_INGREDIENTS = ingredient -> true;
+
+    Predicate<Ingredient> PREDICATE_SHOW_ALL_INGREDIENTS = unused -> true;
 
     Predicate<SalesRecordEntry> PREDICATE_SHOW_ALL_SALES_RECORD_ENTRY = unused -> true;
 
