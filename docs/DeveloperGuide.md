@@ -169,7 +169,7 @@ The archiving of persons is facilitated by the `ArchiveStatus` attribute of a pe
 
 Given below shows how the `c-archive`, `c-unarchive`, and `c-archive-all` mechanism works in steps based on different scenarios. Two activity diagrams are provided before each detailed explanation to describe how tCheck handles an archiving/unarchiving commands. Three sequence diagrams are attached after the description 
 
-##### Archiving a person
+##### 1. Archiving a person
 
 ![Structure of the Storage Component](images/ArchiveActivityDiagram.png)
 
@@ -189,7 +189,7 @@ Step 4: The current `FilteredList` will be updated to only show active `Persons`
 
 *Figure Archive-3. Sequence diagram representation of archiving a person*
 
-##### Unarchiving a person
+##### 2. Unarchiving a person
 
 ![Structure of the Storage Component](images/UnarchiveActivityDiagram.png)
 
@@ -209,7 +209,7 @@ Step 4: The current `FilteredList` will be updated to only show active `Persons`
 
 *Figure Archive-5. Sequence diagram representation of unarchiving a person*
 
-##### Archiving all persons
+##### 3. Archiving all persons
 User can archive all persons' contact information by entering the `c-archive-all` command. The following steps describe how this behavior is implemented:
 
 Step 1: The user archives all `Person`s in the current observable `PersonList` with command `c-archive-all`. `ArchiveAllCommand` is created with the parsed arguments, and executed.
