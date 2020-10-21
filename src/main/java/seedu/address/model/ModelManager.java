@@ -3,9 +3,11 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.logging.Filter;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -29,6 +31,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Ingredient> filteredIngredients;
+    private final FilteredList<SalesRecordEntry> filteredSalesRecordList;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -49,6 +52,8 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
                 Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
         filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
+        filteredSalesRecordList = new FilteredList<>(this.salesBook.getSalesRecord(),
+                Model.PREDICATE_SHOW_ALL_SALES_RECORD_ENTRY);
     }
 
     /**
@@ -189,7 +194,7 @@ public class ModelManager implements Model {
     }
 
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
@@ -206,6 +211,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Ingredient> getFilteredIngredientList() {
         return filteredIngredients;
+    }
+
+    @Override
+    public ObservableList<SalesRecordEntry> getFilteredSalesRecordList() {
+        return filteredSalesRecordList;
     }
 
     @Override

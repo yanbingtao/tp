@@ -102,10 +102,8 @@ public class SalesBook implements ReadOnlySalesBook {
 
     @Override
     public String toString() {
-        //return record.toString();
         StringBuilder display = new StringBuilder();
 
-        // record.forEach((k, v) -> display.append(k.getName() + " (" + k + ") : " + v + "\n"));
         record.forEach(x -> display.append(x + "\n"));
 
         return display.toString();

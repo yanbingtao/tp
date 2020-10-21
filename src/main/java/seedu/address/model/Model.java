@@ -22,6 +22,8 @@ public interface Model {
     Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
             person.getArchiveStatus().archiveStatus);
 
+    Predicate<SalesRecordEntry> PREDICATE_SHOW_ALL_SALES_RECORD_ENTRY = unused -> true;
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -119,6 +121,11 @@ public interface Model {
      * Returns an unmodifiable view of the filtered ingredient list
      */
     ObservableList<Ingredient> getFilteredIngredientList();
+
+    /**
+     * Returns an unmodifiable view of the sales record list
+     */
+    ObservableList<SalesRecordEntry> getFilteredSalesRecordList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.

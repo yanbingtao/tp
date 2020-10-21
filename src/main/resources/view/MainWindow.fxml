@@ -14,7 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="700" minWidth="1000" onCloseRequest="#handleExit" title="tCheck" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="700" minWidth="1000" onCloseRequest="#handleExit" title="tCheck" type="javafx.stage.Stage"
+         xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -58,12 +59,13 @@
               </rowConstraints>
                <children>
 
-                 <VBox fx:id="salesList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="150.0" styleClass="pane-with-border-orange">
+                 <VBox fx:id="salesList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                       prefHeight="80.0" prefWidth="150.0" styleClass="pane-with-border-orange">
                      <padding>
                         <Insets bottom="10" left="10" right="10" top="10" />
                      </padding>
                      <children>
-                        <StackPane fx:id="salesResultDisplayPlaceholder" prefHeight="78.0" prefWidth="150.0"
+                        <StackPane fx:id="salesRecordListPanelPlaceholder" prefHeight="78.0" prefWidth="150.0"
                                    VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
