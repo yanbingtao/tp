@@ -21,6 +21,7 @@ public interface Model {
     /** {@code Predicate} that evaluates to true if person's archive status is true. */
     Predicate<Person> PREDICATE_SHOW_ALL_ARCHIVED_PERSONS = person -> (
             person.getArchiveStatus().archiveStatus);
+    Predicate<SalesRecordEntry> PREDICATE_SHOW_ALL_SALES = salesRecordEntry -> true;
     Predicate<Ingredient> PREDICATE_SHOW_ALL_INGREDIENTS = ingredient -> true;
 
     /**
@@ -49,15 +50,24 @@ public interface Model {
     Path getAddressBookFilePath();
 
     /**
+     * Returns the user prefs' sales book file path.
+     */
+    Path getSalesBookFilePath();
+
+    /**
      * Returns the user prefs' ingredient book file path.
      */
     Path getIngredientBookFilePath();
-
 
     /**
      * Sets the user prefs' address book file path.
      */
     void setAddressBookFilePath(Path addressBookFilePath);
+
+    /**
+     * Sets the user prefs' sales book file path.
+     */
+    void setSalesBookFilePath(Path salesBookFilePath);
 
     /**
      * Sets the user prefs' ingredient book file path.
@@ -104,6 +114,11 @@ public interface Model {
     void addPerson(Person person);
 
     /**
+     * Adds an SalesRecordEntry to the Salesbook.
+     */
+    void addSalesRecordEntry(SalesRecordEntry salesRecordEntry);
+
+    /**
      * Adds an ingredient to the ingredient book.
      * The ingredient must not already exist in the ingredient book.
      */
@@ -144,6 +159,13 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Updates the filter of the filtered sales list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredSalesList(Predicate<SalesRecordEntry> predicate);
 
     /**
      * Updates the filter of the filtered ingredient list to filter by the given {@code predicate}.
