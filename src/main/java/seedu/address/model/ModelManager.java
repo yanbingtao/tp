@@ -50,9 +50,12 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList(),
                 Model.PREDICATE_SHOW_ALL_ACTIVE_PERSONS);
-        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList());
+        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList(),
+                Model.PREDICATE_SHOW_ALL_INGREDIENTS);
         filteredSales = new FilteredList<>(this.salesBook.getSalesRecord(),
                 Model.PREDICATE_SHOW_ALL_SALES);
+        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList(),
+                Model.PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
     /**
@@ -98,6 +101,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public Path getIngredientBookFilePath() {
+        return userPrefs.getIngredientBookFilePath();
+    }
+
+    @Override
     public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
@@ -107,6 +115,12 @@ public class ModelManager implements Model {
     public void setSalesBookFilePath(Path salesBookFilePath) {
         requireNonNull(salesBookFilePath);
         userPrefs.setSalesBookFilePath(salesBookFilePath);
+    }
+  
+    @Override
+    public void setIngredientBookFilePath(Path ingredientBookFilePath) {
+        requireNonNull(ingredientBookFilePath);
+        userPrefs.setIngredientBookFilePath(ingredientBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
@@ -209,6 +223,12 @@ public class ModelManager implements Model {
         return ingredientBook.findIngredientByName(ingredientName);
     }
 
+    @Override
+    public void addIngredient(Ingredient ingredient) {
+        ingredientBook.addIngredient(ingredient);
+        updateFilteredIngredientList(PREDICATE_SHOW_ALL_INGREDIENTS);
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 
@@ -240,6 +260,12 @@ public class ModelManager implements Model {
     public void updateFilteredSalesList(Predicate<SalesRecordEntry> predicate) {
         requireNonNull(predicate);
         filteredSales.setPredicate(predicate);
+    }
+  
+    @Override
+    public void updateFilteredIngredientList(Predicate<Ingredient> predicate) {
+        requireNonNull(predicate);
+        filteredIngredients.setPredicate(predicate);
     }
 
     @Override

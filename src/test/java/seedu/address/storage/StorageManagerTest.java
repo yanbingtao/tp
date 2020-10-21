@@ -27,7 +27,8 @@ public class StorageManagerTest {
         JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         JsonSalesBookStorage salesBookStorage = new JsonSalesBookStorage(getTempFilePath("sb"));
-        storageManager = new StorageManager(addressBookStorage, salesBookStorage, userPrefsStorage);
+        JsonIngredientBookStorage ingredientBookStorage = new JsonIngredientBookStorage(getTempFilePath("ib"));
+        storageManager = new StorageManager(addressBookStorage, salesBookStorage, userPrefsStorage, ingredientBookStorage);
     }
 
     private Path getTempFilePath(String fileName) {
