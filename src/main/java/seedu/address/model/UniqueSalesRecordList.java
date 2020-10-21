@@ -199,5 +199,4 @@ public class UniqueSalesRecordList implements Iterable<SalesRecordEntry> {
         return internalList.hashCode();
     }
 
-
 }

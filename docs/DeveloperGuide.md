@@ -135,6 +135,155 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 This section describes some noteworthy details on how certain features are implemented.
 
 
+### \[Completed\] Archive person's contact information feature
+
+When employees are no longer working in the store, their contact information would usually be deleted, or kept in
+the archive. tCheck simulates this archive, storing these contact information in the app so that the user can still
+retrieve them back when needed. For example, when an employee is rehired by the manager, the manager(user) can move
+this specific employee's contact information back to the currently active contact information list from the
+archived record.
+
+The completed archive person's contact information feature consists of four commands with slightly different
+formats, which complement one another, to provide a set of useful commands for enhanced user experiences. The four
+commands are :
+
+* `c-archive INDEX` — Archives the person identified by the index number used in the displayed person list.
+* `c-unarchive INDEX` — Unarchives the person identified by the index number used in the displayed person list.
+* `c-archive-all` — Archives all persons in the displayed person list.
+* `c-archive-list` — Shows a list of all archived persons' contact details.
+
+#### Completed Implementation
+
+The archiving of persons is facilitated by the `ArchiveStatus` attribute of a person. The following methods in the
+ `Person` class and the `Model` interface facilitate this feature:
+
+* `Person#archive()` — A method that sets the person's `ArchiveStatus` to `true`. It's equivalent to archive the person.
+* `Person#unarchive()` — A method that sets the person's `ArchiveStatus` to `false`. It's equivalent to unarchive the
+ person.
+* `Model#PREDICATE_SHOW_ALL_ACTIVE_PERSONS` — A `Predicate` function that filters our archived persons from a given
+ `PersonList`.
+* `Model#PREDICATE_SHOW_ALL_ARCHIVED_PERSONS` — A `Predicate` function that filters our active(not archived
+	) persons from a given `PersonList`.
+	
+![Structure of the Archive/Unarchive Component](images/ArchiveClassDiagram.png)
+
+*Figure Archive-1. Overview class diagram representation of the person archiving/unarchiving implementation*
+
+Given below shows how the `c-archive`, `c-unarchive`, and `c-archive-all` mechanism works in steps based on different scenarios. Two activity diagrams are provided before each detailed explanation to describe how tCheck handles an archiving/unarchiving commands. Three sequence diagrams are attached after the description 
+
+##### 1. Archiving a person
+
+![Structure of the Storage Component](images/ArchiveActivityDiagram.png)
+
+*Figure Archive-2. Activity diagram representation of the general flow of archiving of a peron in tCheck*
+
+User can archive a specific person by entering the `c-archive INDEX` command. The following steps describe how this behavior is implemented:
+
+Step 1: The user archives a `Person` in the current observable `PersonList` with command `c-archive 1`. `ArchiveCommand` is created with the parsed arguments, and executed.
+
+Step 2: The `Person` will then be checked if the `ArchiveStatus` is `true`. An error message will be displayed if the user tries to archive a person from the archived person list.
+ 
+Step 3: The `Person` will have a new `ArchivedStatus` value, which will be set to `true` by using the `Person#archive()` method.
+
+Step 4: The current `FilteredList` will be updated to only show active `Persons`, facilitated by the predicate `Model#PREDICATE_SHOW_ALL_ACTIVE_PERSONS`
+
+![Structure of the Storage Component](images/ArchiveSequenceDiagram.png)
+
+*Figure Archive-3. Sequence diagram representation of archiving a person*
+
+##### 2. Unarchiving a person
+
+![Structure of the Storage Component](images/UnarchiveActivityDiagram.png)
+
+*Figure Archive-4. Activity diagram representation of the general flow of unarchiving of a peron in tCheck*
+
+User can unarchive an already-archived person's contact information by entering the `c-unarchive INDEX` command. The following steps describe how this behavior is implemented:
+
+Step 1: The user unarchives a `Person` in the current observable `PersonList` with command `c-unarchive 1`. `UnarchiveCommand` is created with the parsed arguments, and executed.
+
+Step 2: The `Person` will then be checked if the `ArchiveStatus` is `false`. An error message will be displayed if the user tries to unarchive a person from the active person list.
+ 
+Step 3: The `Person` will have a new `ArchivedStatus` value, which will be set to `false` by using the `Person#unarchive()` method.
+
+Step 4: The current `FilteredList` will be updated to only show active `Persons`, facilitated by the predicate `Model#PREDICATE_SHOW_ALL_ACTIVE_PERSONS`
+
+![Structure of the Storage Component](images/UnarchiveSequenceDiagram.png)
+
+*Figure Archive-5. Sequence diagram representation of unarchiving a person*
+
+##### 3. Archiving all persons
+User can archive all persons' contact information by entering the `c-archive-all` command. The following steps describe how this behavior is implemented:
+
+Step 1: The user archives all `Person`s in the current observable `PersonList` with command `c-archive-all`. `ArchiveAllCommand` is created with the parsed arguments, and executed.
+
+Step 2: For each `Person` in the observable 'PersonList', `ArchiveAllCommand` will create a `Person` object, and then set this `Person`'s `ArchiveStatus` to `true` by using the `Person#archive()` method.
+
+Step 3: The current `FilteredList` will be updated to only show the empty active `Persons`, facilitated by the predicate `Model#PREDICATE_SHOW_ALL_ACTIVE_PERSONS`
+
+![Structure of the Storage Component](images/ArchiveAllSequenceDiagram.png)
+
+*Figure Archive-6. Sequence diagram representation of archiving all persons*
+
+#### Design consideration:
+
+##### Aspect: The implementation to store archived persons
+
+* **Alternative 1 (current choice):** `Person` contains an `ArchiveStatus` field.
+
+    * Pros: Easy to implement 
+    * Cons: If the `PersonList` contains a huge number of `Person`s, the processing speech will be slow for certain
+      command (eg: c-archive-list), because it needs to go into each `Person` to check if the `ArchiveStatus` is `true`.
+
+* **Alternative 2:** Storing archived persons in a separate json file.
+
+  * Pros:  Execute `c-archive-list` very fast, even for huge amount of data, because it can just display all the data
+   inside this file.
+  * Cons: Hard to implement and maintain.
+
+Alternative 1 was chosen, because for a bubble tea shop, normally the total number of employees will be less than 100. 
+And the software doesn't need to handle huge amount of data. On the other hand, if alternative 2 were
+used, `Logic` and `Model` have to deal another set of data. Consequently, application's overall complexity will be
+increased. 
+
+
+### \[Completed\] Edit employees's contact information feature
+
+Compared with the original implementation, this feature adds emergency contact information of the employee. It can help
+the user to contact some staff when emergency situation happens. The command is:
+
+- `edit INDEX [n/NAME] [p/PHONE] [e/EMERGENCY_CONTACT] [t/TAG] …​​`
+
+#### Completed Implementation
+
+The completed edit employee's contact information is facilitated by `AddressBook`. It implements `ReadOnlyAddressBook`
+interface and offers method to edit the application's `AddressBook`. Particularly, it changes Person's constructor and 
+function declarations to add emergency there.
+
+Given below is an example usage scenario and how the edit mechanism behaves at each step.
+
+Step 1: The user launches the application for the first time. Because now there isn't any information in addressbook. 
+The user can't edit now.
+
+Step 2: The user executes `add n/Betsy Crowe e/81234567 p/1234567 t/morning shift t/part-time`. The `add` command calls
+`Model#addPerson()` to add Besty's information in the `AddressBook`. The updated `AddressBook` is stored in 
+`addressbook.json`.
+
+Step 3: The user executes `edit 1 n/Besty Crowe e/54749110 p/1234567 t/morning shift t/part-time` to change Besty Crowe's
+phone number. This`edit` command calls `Model#setPerson()` to replace the original Besty Crowe's information in the 
+`Addressbook`, causing the updated `Addressbook` to be stored in `addressbook.json`, overwriting the former one.
+
+#### Design Consideration
+
+##### Aspect: How to display the emergency contact
+
+* **Alternative 1 (current choice):** Displays the emergency contact of the similar format
+with phone number, using a prefix to identify them.
+  * Pros: Easy to implement.
+  * Cons: May seem a little redundancy.
+* **Alternative 2:** Use different icons to represent phone and emergency contact 
+  * Pros: Will be easy to tell from.
+  * Cons: Need more work.
+
 ### \[Completed\] Set ingredients' levels feature
 
 The completed set ingredients' levels feature consists of three commands with slightly different formats, which complement one another, to provide a set of useful commands for enhanced user experiences. The three commands are :
@@ -203,6 +352,11 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 ### \[Completed\] List ingredients' levels feature
 
+List ingredients' levels feature allows the user to view all the ingredient levels to check if any ingredient should
+be restocked. The command is:
+  
+*`i-list` - Lists the ingredients' levels of all ingredients.
+
 #### Completed Implementation
 
 The completed list ingredients' levels mechanism is facilitated by `IngredientBook`. It implements 
@@ -238,42 +392,46 @@ ingredients showing their ingredient names and levels.
 * **Alternative 2:** Maintain a field in `ingredientbook` that stores the string representing the list of ingredients in
 terms of their ingredient names and levels.
 
-  * Pros: Clearer implementation. `IngredientListCommand` will not need to manipulate the list of ingredients during
-  execution.
-  * Cons: This may result in a slower response of the application since the field would be updated every time the 
-  ingredient list is updated.
+ * Pros: Clearer implementation. `IngredientListCommand` will not need to manipulate the list of ingredients during
+ execution.
+ * Cons: This may result in a slower response of the application since the field would be updated every time the 
+ ingredient list is updated.
   
-  ## \[Completed\] View a single ingredient's level feature
+## \[Completed\] View a single ingredient's level feature
   
-  #### Completed Implementation
+View a single ingredients' level feature allows the user to view the level of a particular ingredient when the need
+arises. The command is:
   
-  The completed view a single ingredient's level mechanism is facilitated by `IngredientBook`. It implements 
-  `ReadOnlyIngredientBook` interface and offers methods to view the ingredients' levels from the application's 
-  `ingredientBook`. Particularly, it implements the following operation:
+*`i-view-single i/INGREDIENT_NAME` - Views the ingredient's level of the ingredient with the specified ingredient name.
+  
+#### Completed Implementation
+  
+The completed view a single ingredient's level mechanism is facilitated by `IngredientBook`. It implements 
+`ReadOnlyIngredientBook` interface and offers methods to view the ingredients' levels from the application's 
+`ingredientBook`. Particularly, it implements the following operation:
   
   * `IngredientBook#findIngredientByName(IngredientName ingredientName)` — Returns the ingredient with the target 
   ingredient name. 
   
-  This operation is exposed in the `Model` interface as `Model#findIngredientByName(IngredientName ingredientName)`.
+This operation is exposed in the `Model` interface as `Model#findIngredientByName(IngredientName ingredientName)`.
   
-  Given below is an example usage scenario and how the view a single ingredient's level mechanism behaves at each step.
+Given below is an example usage scenario and how the view a single ingredient's level mechanism behaves at each step.
   
-  Step 1. The user launches the application. If the storage file for the ingredient book is empty, `IngredientBook` will 
-  be initialized with the five pre-defined ingredients, namely `Milk`, `Pearl`, `Boba`, `Oolong Tea` and `Brown Suagr`, 
-  with an amount of 0 for all. If the storage file for the ingredient book is not empty, `IngredientBook` will read the  
-  data from the storage file.
+Step 1. The user launches the application. If the storage file for the ingredient book is empty, `IngredientBook` will 
+be initialized with the five pre-defined ingredients, namely `Milk`, `Pearl`, `Boba`, `Oolong Tea` and `Brown Suagr`, 
+with an amount of 0 for all. If the storage file for the ingredient book is not empty, `IngredientBook` will read the  
+data from the storage file.
   
-  Step 2. The user executes `i-view-single i/Milk` to view milk's current level. The `i-view-single i/Milk` command is
-  parsed by `IngredientViewSingleCommandParser` which parses the ingredient to get the ingredient name and 
-  returns an  `IngredientViewSingleCommand`. Logic executes the `IngredientViewSingleCommand` and calls 
-  `Model#findIngredientByName(IngredientName ingredientName)`, which returns the ingredient with the ingredient name
-  entered by the user.
+Step 2. The user executes `i-view-single i/Milk` to view milk's current level. The `i-view-single i/Milk` command is
+parsed by `IngredientViewSingleCommandParser` which parses the ingredient to get the ingredient name and 
+returns an  `IngredientViewSingleCommand`. Logic executes the `IngredientViewSingleCommand` and calls 
+`Model#findIngredientByName(IngredientName ingredientName)`, which returns the ingredient with the ingredient name
+entered by the user.
   
-  The following activity diagram shows how the view a single ingredient level operation works:
-  ![View a Single Ingredient Activity Diagram](images/IngredientViewSingleActivityDiagram.png)
-  #### Design consideration:
+The following activity diagram shows how the view a single ingredient level operation works:
+![View a Single Ingredient Activity Diagram](images/IngredientViewSingleActivityDiagram.png) #### Design consideration:
   
-  ##### Aspect: How find the ingredient's level executes
+##### Aspect: How find the ingredient's level executes
   
   * **Alternative 1 (current choice):** Obtain the ingredient name of the ingredient entered by the user, and use the
   ingredient name to find the ingredient by looping through the ingredient list.
@@ -287,36 +445,41 @@ terms of their ingredient names and levels.
     * Cons: Code may be less readable.
     
 ## \[Completed\] Reset all ingredients' levels feature
+
+Reset all ingredients' levels feature allows the user to reset all the ingredient levels to zero. It helps the user to
+remove data that are no longer needed. The command is:
   
-  #### Completed Implementation
+*`i-reset-all` - Resets the ingredients' levels of all ingredients to zero.
   
-  The completed reset all ingredients' levels mechanism is facilitated by `IngredientBook`. It implements 
-  `ReadOnlyIngredientBook` interface and offers methods to view the ingredients' levels from the application's 
-  `ingredientBook`. Particularly, it implements the following operation:
+#### Completed Implementation
+  
+The completed reset all ingredients' levels mechanism is facilitated by `IngredientBook`. It implements 
+ReadOnlyIngredientBook` interface and offers methods to view the ingredients' levels from the application's 
+ingredientBook`. Particularly, it implements the following operation:
   
   * `IngredientBook#getFilteredIngredientList()` — Returns the list of ingredients consisting of ingredient names and 
   ingredient levels in the ingredient book.
   
-  This operation is exposed in the `Model` interface as `Model#getFilteredIngredientList()`.
+This operation is exposed in the `Model` interface as `Model#getFilteredIngredientList()`.
   
-  Given below is an example usage scenario and how the reset all ingredients' levels mechanism behaves at each step.
+Given below is an example usage scenario and how the reset all ingredients' levels mechanism behaves at each step.
   
-  Step 1. The user launches the application. If the storage file for the ingredient book is empty, `IngredientBook` will 
-  be initialized with the five pre-defined ingredients, namely `Milk`, `Pearl`, `Boba`, `Oolong Tea` and `Brown Suagr`, 
-  with an amount of 0 for all. If the storage file for the ingredient book is not empty, `IngredientBook` will read the  
-  data from the storage file.
+Step 1. The user launches the application. If the storage file for the ingredient book is empty, `IngredientBook` will 
+be initialized with the five pre-defined ingredients, namely `Milk`, `Pearl`, `Boba`, `Oolong Tea` and `Brown Suagr`, 
+with an amount of 0 for all. If the storage file for the ingredient book is not empty, `IngredientBook` will read the  
+data from the storage file.
   
-  Step 2. The user executes `i-reset-all` to reset all ingredients' levels. The `i-reset-all` command calls
-  `Model#getFilteredIngredientList()`, which returns the list of ingredients in `IngredientBook`. The list of 
-  ingredients is checked to see whether all ingredient levels are already at zero. If it is true, the user will 
-  be informed that all ingredient levels are already at zero. Otherwise, ingredients that have levels not at zero
-  would be replaced by a new ingredient object with the same ingredient name and a zero ingredient level.
+Step 2. The user executes `i-reset-all` to reset all ingredients' levels. The `i-reset-all` command calls
+`Model#getFilteredIngredientList()`, which returns the list of ingredients in `IngredientBook`. The list of 
+ingredients is checked to see whether all ingredient levels are already at zero. If it is true, the user will 
+be informed that all ingredient levels are already at zero. Otherwise, ingredients that have levels not at zero
+would be replaced by a new ingredient object with the same ingredient name and a zero ingredient level.
   
-  The following activity diagram shows how the reset all ingredients' levels operation works:
-  ![Reset all Ingredients' Levels Activity Diagram](images/IngredientResetAllActivityDiagram.png)
-  #### Design consideration:
+The following activity diagram shows how the reset all ingredients' levels operation works:
+![Reset all Ingredients' Levels Activity Diagram](images/IngredientResetAllActivityDiagram.png)
+#### Design consideration:
   
-  ##### Aspect: How reset the ingredients' levels executes
+##### Aspect: How reset the ingredients' levels executes
   
   * **Alternative 1 (current choice):** Loop through the ingredient list twice, the first time to check if all 
   ingredient levels are at zero, the second time to replace the original ingredient that has a non-zero ingredient 
