@@ -158,6 +158,8 @@ Given below is an example usage scenario and how the set ingredients' levels mec
 
 Step 1. The user launches the application. The `IngredientBook` will be initialized with the five pre-defined ingredients, namely `Milk`, `Pearl`, `Boba`, `Oolong Tea` and `Brown Suagr`, with an amount of 0 for all.
 
+![IngredientBookState0](images/IngredientBookState0.png)
+
 Step 2. The user executes `i-set-default` to set the amounts of all ingredients to the default levels of the system. The `i-set-default` command calls `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)`, causing the initial ingredient book to be replaced by the `ingredientBook` with the amounts of ingredients to be equal to their default levels.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)`, so the ingredient book will not be changed in the system.
@@ -174,9 +176,13 @@ The command calls `Model#setIngredient(Ingredient target, Ingredient newAmount)`
 Step 4. After some time of operation, the user decides to update the ingredient book with current amounts of ingredients in his/her stall by executing the `i-set-all M/AMOUNT_FOR_MILK P/AMOUNT_FOR_PEARL B/AMOUNT_FOR_BOBA O/AMOUNT_FOR_OOLONG_TEA S/AMOUNT_FOR_BROWN_SUGAR` command. 
 In this case, the exact command entered is :  `i-set-all M/10 P/15 B/20 O/5 S/15`. The command calls `Model#setIngredient(ReadOnlyIngredientBook ingredientBook)`, causing the current ingredient book to be replaced by the `ingredientBook` with different specified amounts for each ingredient.
 
-The following sequence diagram shows how the set ingredients operation works:
+The following sequence diagram shows how the set ingredients operation works, using `i-set i/INGREDIENT m/AMOUNT` as an example:
 
-The following activity diagram summarizes what happens when a user executes a new command:
+![SetSequenceDiagram](images/SetSequenceDiagram.png)
+
+The following activity diagram summarizes what happens when a user executes a new `i-set`  command:
+
+![SetActivityDiagram](images/SetActivityDiagram.png)
 
 #### Design consideration:
 
