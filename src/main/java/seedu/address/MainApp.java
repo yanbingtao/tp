@@ -108,9 +108,6 @@ public class MainApp extends Application {
             initialSalesBookData = new SalesBook();
         }
 
-        // salesBook not saved in storage yet. An empty salesBook will be used instead.
-//        SalesBook record = new SalesBook();
-
         IngredientBook sample = new IngredientBook();
 
         return new ModelManager(initialAddressBookData, initialSalesBookData, sample, userPrefs);

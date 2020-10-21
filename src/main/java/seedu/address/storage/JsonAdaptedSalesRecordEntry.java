@@ -2,13 +2,12 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.Drink;
 import seedu.address.model.SalesRecordEntry;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-
-import static seedu.address.model.Drink.valueOf;
 
 /**
  * Jackson-friendly version of {@link SalesRecordEntry}.

@@ -58,12 +58,12 @@ public class SampleDataUtil {
 
     public static SalesRecordEntry[] getSampleSales() {
         return new SalesRecordEntry[]{
-                new SalesRecordEntry(Drink.BSBM, 0),
-                new SalesRecordEntry(Drink.BSBBT, 0),
-                new SalesRecordEntry(Drink.BSBGT, 0),
-                new SalesRecordEntry(Drink.BSPM, 0),
-                new SalesRecordEntry(Drink.BSPBT, 0),
-                new SalesRecordEntry(Drink.BSPGT, 0)
+            new SalesRecordEntry(Drink.BSBM, 0),
+            new SalesRecordEntry(Drink.BSBBT, 0),
+            new SalesRecordEntry(Drink.BSBGT, 0),
+            new SalesRecordEntry(Drink.BSPM, 0),
+            new SalesRecordEntry(Drink.BSPBT, 0),
+            new SalesRecordEntry(Drink.BSPGT, 0)
         };
     }
 

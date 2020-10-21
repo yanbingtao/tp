@@ -1,7 +1,5 @@
 package seedu.address.model;
 
-import java.util.Arrays;
-
 import static java.util.Objects.requireNonNull;
 
 /**
@@ -15,12 +13,13 @@ public enum Drink {
     BSPBT ("Brown Sugar Pearl Black Tea"),
     BSPGT ("Brown Sugar Pearl Green Tea");
 
-    // TODO: drink ingredients?
-    private final String name;
-
     public static final String MESSAGE_CONSTRAINTS =
             "Drink Names should only be chosen from the given list,"
                     + " and it should not be blank";
+
+    // TODO: drink ingredients?
+    private final String name;
+
 
     Drink(String name) {
         this.name = name;
@@ -31,9 +30,9 @@ public enum Drink {
     }
 
     public String getShortFormName() {
-        String shortFromName ="";
-        for (int i = 0; i < name.length(); i++){
-            if (Character.isUpperCase(name.charAt(i))){
+        String shortFromName = "";
+        for (int i = 0; i < name.length(); i++) {
+            if (Character.isUpperCase(name.charAt(i))) {
                 shortFromName += name.charAt(i);
             }
         }
