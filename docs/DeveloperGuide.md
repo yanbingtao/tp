@@ -284,6 +284,71 @@ with phone number, using a prefix to identify them.
   * Pros: Will be easy to tell from.
   * Cons: Need more work.
 
+### \[Completed\] Set ingredients' levels feature
+
+The completed set ingredients' levels feature consists of three commands with slightly different formats, which complement one another, to provide a set of useful commands for enhanced user experiences. The three commands are :
+
+* `i-set i/INGREDIENT_NAME m/AMOUNT` — Sets the level of one specific ingredient to the specified amount.
+* `i-set-default` — Sets the levels of all ingredients defined in the ingredient book to pre-determined amounts.
+* `i-set-all M/AMOUNT_FOR_MILK P/AMOUNT_FOR_PEARL B/AMOUNT_FOR_BOBA O/AMOUNT_FOR_OOLONG_TEA S/AMOUNT_FOR_BROWN_SUGAR` — Sets the levels of all ingredients defined in the ingredient book to different specified amounts for each ingredient.
+
+#### Completed Implementation
+
+The completed set ingredients' levels mechanism is facilitated by `IngredientBook`. It implements `ReadOnlyIngredientBook` interface and offers methods to set the application's `ingredientBook`. Particularly, it implements the following three operations:
+
+* `IngredientBook#setIngredient(Ingredient target, Ingredient newAmount)` — Changes the amount the `target` ingredient in the ingredient book to the specified new amount.
+* `IngredientBook#setIngredients(List<Ingredient> ingredients)` — Changes the amounts of all ingredients defined in the ingredient book to the specified amounts in `ingredients` list.
+* `IngredientBook#setData(ReadOnlyIngredientBook newAmount)` — Changes the amounts of all ingredients defined in the ingredient book according to the `newAmount` ingredient book.
+
+These operations are exposed in the `Model` interface as `Model#setIngredient(Ingredient target, Ingredient newAMount)` and `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)` respectively.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The `IngredientBook#setIngredients(List<> ingredients)` is not exposed in model because it is only used to change the internal states of `ReadOnlyIngredientBook ingredientBook` quickly.
+</div>
+
+Given below is an example usage scenario and how the set ingredients' levels mechanism behaves at each step.
+
+Step 1. The user launches the application. The `IngredientBook` will be initialized with the five pre-defined ingredients, namely `Milk`, `Pearl`, `Boba`, `Oolong Tea` and `Brown Suagr`, with an amount of 0 for all.
+
+![IngredientBookState0](images/IngredientBookState0.png)
+
+Step 2. The user executes `i-set-default` to set the amounts of all ingredients to the default levels of the system. The `i-set-default` command calls `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)`, causing the initial ingredient book to be replaced by the `ingredientBook` with the amounts of ingredients to be equal to their default levels.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#setIngredientBook(ReadOnlyIngredientBook ingredientBook)`, so the ingredient book will not be changed in the system.
+
+</div>
+
+Step 3. The user finds that the real amounts for one particular ingredient in his/her stall, milk for example, is different from the default level stored in the application and decides to set the amount for milk by executing the `i-set i/INGREDIENT_NAME m/AMOUNT` command. In this case, the exact command entered is : `i-set i/Milk m/100`.
+The command calls `Model#setIngredient(Ingredient target, Ingredient newAmount)`, causing the `target` in the current ingredient book to be replaced by `newAmount` .
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If `i-set` command fails its execution, it will not call `Model#setIngredient(Ingredient target, Ingredient newAmount)`, so the ingredient book will not be modified in the system.
+
+</div>
+
+Step 4. After some time of operation, the user decides to update the ingredient book with current amounts of ingredients in his/her stall by executing the `i-set-all M/AMOUNT_FOR_MILK P/AMOUNT_FOR_PEARL B/AMOUNT_FOR_BOBA O/AMOUNT_FOR_OOLONG_TEA S/AMOUNT_FOR_BROWN_SUGAR` command. 
+In this case, the exact command entered is :  `i-set-all M/10 P/15 B/20 O/5 S/15`. The command calls `Model#setIngredient(ReadOnlyIngredientBook ingredientBook)`, causing the current ingredient book to be replaced by the `ingredientBook` with different specified amounts for each ingredient.
+
+The following sequence diagram shows how the set ingredients operation works, using `i-set i/INGREDIENT m/AMOUNT` as an example:
+
+![SetSequenceDiagram](images/SetSequenceDiagram.png)
+
+The following activity diagram summarizes what happens when a user executes a new `i-set`  command:
+
+![SetActivityDiagram](images/SetActivityDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How set ingredients' levels executes
+
+* **Alternative 1 (current choice):** Differentiates into three commands to be able to set one ingredient's amount, set all ingredients' amounts to default levels and set all ingredients' amounts to different levels.
+  * Pros: Different commands can suit the needs of the user at different times. In the first few times of usage, the user is still not very familiar with the application and thus may only use `i-set-default` together with `i-set i/INGREDIENT m/AMOUNT` to make adjustments.
+  When the user becomes an expert user, he/she can utilize the `i-set-all` command to complete the task of setting ingredients' levels with greater efficiency.
+  * Cons: More implementation and testing work required to ensure all commands are working as expected.
+
+* **Alternative 2:** Has only one command :  `i-set i/INGREDIENT_NAME m/AMOUNT`.
+  
+  * Pros: Easier to implement and test. Theoretically speaking, this one command can achieve the same effect as `i-set-default` and `i-set-all`  by entering it multiple times.
+  * Cons: Does not really suit the user's needs because it can be tedious to set each ingredient individually.
+
 
 ### \[Completed\] List ingredients' levels feature
 
