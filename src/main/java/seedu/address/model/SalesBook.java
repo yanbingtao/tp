@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.LogsCenter;
 
 /**
  * Wraps all data related to drink sales at the sales-book level
@@ -16,6 +18,8 @@ import javafx.collections.ObservableList;
 public class SalesBook implements ReadOnlySalesBook {
 
     private UniqueSalesRecordList record;
+
+    private final Logger logger = LogsCenter.getLogger(SalesBook.class);
 
     public SalesBook() {
         record = new UniqueSalesRecordList();
@@ -52,7 +56,10 @@ public class SalesBook implements ReadOnlySalesBook {
      */
     public void setRecord(Map<Drink, Integer> sales) {
         requireNonNull(sales);
+        assert !sales.isEmpty();
+        logger.fine("SalesBook is being initialised with the first user input.");
         record.setSalesRecord(sales);
+        assert !record.isEmpty();
     }
 
     public UniqueSalesRecordList getRecord() {
@@ -67,6 +74,8 @@ public class SalesBook implements ReadOnlySalesBook {
      */
     public void overwriteSales(Map<Drink, Integer> sales) {
         requireNonNull(sales);
+        assert !sales.isEmpty();
+        logger.fine("SalesBook is being overwritten with the new user input.");
         HashMap<Drink, Integer> newRecord = new HashMap<>();
         // for all the sales items in sales, overwrite them in record
         for (Drink key : sales.keySet()) {
@@ -77,6 +86,7 @@ public class SalesBook implements ReadOnlySalesBook {
             newRecord.put(key, changedValue.get());
         }
         record.setSalesRecord(newRecord);
+        assert !record.isEmpty();
     }
 
     /**

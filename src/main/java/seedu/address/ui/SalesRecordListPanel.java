@@ -33,6 +33,7 @@ public class SalesRecordListPanel extends UiPart<Region> {
         header.setText("Sales Tracker");
         salesRecordEntryListView.setItems(salesRecordEntries);
         salesRecordEntryListView.setCellFactory(listView -> new SalesRecordListViewCell());
+        logger.fine("SalesRecordListPanel was successfully set up.");
     }
 
     /**
