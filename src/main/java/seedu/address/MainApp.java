@@ -92,7 +92,6 @@ public class MainApp extends Application {
 
         ReadOnlyAddressBook initialAddressBookData;
         ReadOnlyIngredientBook initialIngredientBookData;
-        ReadOnlyAddressBook initialAddressBookData;
         ReadOnlySalesBook initialSalesBookData;
 
         try {

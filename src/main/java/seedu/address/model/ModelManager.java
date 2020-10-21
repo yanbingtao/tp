@@ -54,8 +54,6 @@ public class ModelManager implements Model {
                 Model.PREDICATE_SHOW_ALL_INGREDIENTS);
         filteredSales = new FilteredList<>(this.salesBook.getSalesRecord(),
                 Model.PREDICATE_SHOW_ALL_SALES);
-        filteredIngredients = new FilteredList<>(this.ingredientBook.getIngredientList(),
-                Model.PREDICATE_SHOW_ALL_INGREDIENTS);
     }
 
     /**
@@ -116,7 +114,7 @@ public class ModelManager implements Model {
         requireNonNull(salesBookFilePath);
         userPrefs.setSalesBookFilePath(salesBookFilePath);
     }
-  
+
     @Override
     public void setIngredientBookFilePath(Path ingredientBookFilePath) {
         requireNonNull(ingredientBookFilePath);
@@ -261,7 +259,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredSales.setPredicate(predicate);
     }
-  
+
     @Override
     public void updateFilteredIngredientList(Predicate<Ingredient> predicate) {
         requireNonNull(predicate);
