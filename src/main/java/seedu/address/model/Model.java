@@ -118,7 +118,7 @@ public interface Model {
 
     void setIngredient(Ingredient target, Ingredient newAmount);
 
-    Ingredient findIngredientByName(IngredientName target);
+    Ingredient findIngredientByName(IngredientName ingredientName);
 
 
     void setSalesBook(ReadOnlySalesBook salesBook);
