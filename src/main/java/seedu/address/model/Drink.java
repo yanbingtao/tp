@@ -30,6 +30,16 @@ public enum Drink {
         return name;
     }
 
+    public String getShortFormName() {
+        String shortFromName ="";
+        for (int i = 0; i < name.length(); i++){
+            if (Character.isUpperCase(name.charAt(i))){
+                shortFromName += name.charAt(i);
+            }
+        }
+        return shortFromName;
+    }
+
     /**
      * Returns true if the given drink is a valid drink name.
      * @param drinkToTest a given string of drink name
