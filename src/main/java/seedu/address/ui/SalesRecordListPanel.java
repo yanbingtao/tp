@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
@@ -20,6 +21,8 @@ public class SalesRecordListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(SalesRecordListPanel.class);
 
     @FXML
+    private Label header;
+    @FXML
     private ListView<SalesRecordEntry> salesRecordEntryListView;
 
     /**
@@ -27,12 +30,14 @@ public class SalesRecordListPanel extends UiPart<Region> {
      */
     public SalesRecordListPanel(ObservableList<SalesRecordEntry> salesRecordEntries) {
         super(FXML);
+        header.setText("Sales Tracker");
         salesRecordEntryListView.setItems(salesRecordEntries);
         salesRecordEntryListView.setCellFactory(listView -> new SalesRecordListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the details of a {@code SalesRecordEntry}.
+     * Custom {@code ListCell} that displays the details of a {@code SalesRecordEntry} using a
+     * {@code SalesRecordEntryCard}.
      */
     class SalesRecordListViewCell extends ListCell<SalesRecordEntry> {
         @Override
@@ -43,8 +48,7 @@ public class SalesRecordListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                // setGraphic(new PersonCard(person, getIndex() + 1).getRoot());
-                setText(entry.toString());
+                setGraphic(new SalesRecordEntryCard(entry).getRoot());
             }
         }
     }

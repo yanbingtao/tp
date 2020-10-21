@@ -15,7 +15,6 @@ import javafx.collections.ObservableList;
  */
 public class SalesBook implements ReadOnlySalesBook {
 
-    // private Map<Drink, Integer> record; // TODO: change to List<SalesRecord>
     private UniqueSalesRecordList record;
 
     public SalesBook() {
