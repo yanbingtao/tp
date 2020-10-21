@@ -68,6 +68,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyAddressBook> readAddressBook(Path filePath) throws DataConversionException, IOException {
+        assert filePath.toString().length() > 0 : "filePath should not be empty.";
         logger.fine("Attempting to read data from file: " + filePath);
         return addressBookStorage.readAddressBook(filePath);
     }
@@ -79,6 +80,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
+        assert filePath.toString().length() > 0 : "filePath should not be empty.";
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveAddressBook(addressBook, filePath);
     }
@@ -98,6 +100,7 @@ public class StorageManager implements Storage {
     @Override
     public Optional<ReadOnlySalesBook> readSalesBook(Path filePath) throws DataConversionException,
             IOException {
+        assert filePath.toString().length() > 0 : "filePath should not be empty.";
         logger.fine("Attempting to read data from file: " + filePath);
         return salesBookStorage.readSalesBook(filePath);
     }
@@ -109,6 +112,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveSalesBook(ReadOnlySalesBook salesBook, Path filePath) throws IOException {
+        assert filePath.toString().length() > 0 : "filePath should not be empty.";
         logger.fine("Attempting to write to data file: " + filePath);
         salesBookStorage.saveSalesBook(salesBook, filePath);
     }
