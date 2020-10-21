@@ -217,6 +217,101 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### \[Completed\] Recording/ Updating Sales Data
+
+tCheck allows users to record and update the sales information on the drink sold. The command to use this feature is:
+`s-update A/NUM B/NUM ...` where:
+* `A`, `B`, `C` are abbreviations for the drink types.
+* `NUM` refers to the number of drinks sold.
+
+Currently, tCheck can only record 6 types of `Drink`s.
+* `BSBM`  : Brown Sugar Boba Milk
+* `BSBBT` : Brown Sugar Boba Black Tea
+* `BSBGT` : Brown Sugar Boba Green Tea
+* `BSPM`  : Brown Sugar Pearl Milk
+* `BSPBT` : Brown Sugar Pearl Black Tea
+* `BSPGT` : Brown Sugar Pearl Green Tea
+
+#### Completed Implementation
+    
+The completed mechanism to record the sales data is facilitated by the `SalesBook`. It implements the
+`ReadOnlySalesBook` interface, which will allow the sales data to be displayed graphically (to be implemented).
+The sales data is stored in a `UniqueSalesRecordList`, which is a list of `SalesRecordEntry`. A `SalesRecordEntry`
+contains the `numberSold` for a type of `Drink`. The `SalesBook` implements the following operations:
+ 
+ * `SalesBook#setRecord(Map<Drink, Integer> sales)`  —  Sets the sales record with the given sales data
+ * `SalesBook#overwriteSales(Map<Drink, Integer> sales)`  —  Overwrites the sales record with the given sales data
+ * `SalesBook#isEmptySalesRecord()`  —  Returns true if the sales record is empty
+
+If the `SalesBook` has not been initialised with the user's sales data, which means that the `SalesBook` is empty, then
+the first sales record will set the sales record with the user input. Subsequent sales update will overwrite existing
+sales record for the particular `Drink`.
+
+These operations are exposed in the `Model` interface as `Model#overwrite(Map<Drink, Integer> salesInput)` and 
+`Model#isEmptySalesBook()`. 
+
+Given below is an example usage scenario and how the recording sales data mechanism behaves at each step.
+
+Step 1: The user launches the application for the first time. The `SalesBook` will be initialized with an empty
+`SalesBook` as no sales information has been recorded yet. The `UniqueSalesRecordList` is currently empty.
+
+Step 2: The user executes the `s-update BSBM/100 BSBGT/120` command to record that 100 Brown Sugar Boba Milk (BSBM) and
+120 Brown Sugar Boba Green Tea (BSBGT) were sold. The `s-update` command will initialise the sales record in `SalesBook`
+when it is executed. This is because the current `SalesBook` is empty. It calls 
+`Model#overwrite(Map<Drink, Integer> salesInput)`, which will save the sales data into the `UniqueSalesRecordList` in 
+the `SalesBook`. The other `Drink` types whose sales data were not given will be initialised to 0.
+
+Step 3: The user realises he left out some sales data. He executes the `s-update BSBBT/180 BSPM/64` command to record
+that 180 Brown Sugar Boba Black Tea (BSBBT) and 64 Brown Sugar Pearl Milk (BSPM) were sold. Since the `SalesBook` has 
+already been initialised, when the `s-update` command executes, it calls 
+`Model#overwrite(Map<Drink, Integer> salesInput)` which will only overwrite the sales data for the `Drink` items that
+were given in the user input will be overwritten.
+ 
+Step 4: The user then realises that he had made an error in recording the number of Brown Sugar Boba Milk (BSBM) sold. 
+He then executes the `s-update BSBM/110` to correct this error. The `s-update` command will call 
+`Model#overwrite(Map<Drink, Integer> salesInput)` to overwrite the sales data for Brown Sugar Boba Milk (BSBM) only.
+
+The following sequence diagram shows how the sales update operation works:
+
+![SalesUpdateSequenceDiagram](images/SalesUpdateSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for 
+`SalesUpdateCommand` and `SalesUpdateCommandParser` should end at the destroy marker (X) but due to a limitation of
+ PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+The following activity diagram summarises what happens when a user executes the `s-update` command.
+
+![SalesUpdateActivityDiagram](images/SalesUpdateActivityDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How the sales record updates
+* **Alternative 1 (current choice)**: Overwrite the sales data only for the drink items specified by the
+user in the `s-update` command
+    *  Pros: More intuitive and convenient for the user. If the user made any error or miss out any details, he can
+     correct the sales data with a shorter command.
+    *  Cons: Less easy to implement
+
+* **Alternative 2**: Replace the sales record based on what has been given by the user, for every
+  `s-update` command
+    * Pros: Easy to implement
+    * Cons: May not be intuitive and convenient for the user, as the user would have to ensure that his command has
+     no error and contains all information. If he made an error or left something out, he would have to retype the
+      entire command again.
+
+#### Aspect: How to implement `Drink` types
+* **Alternative 1 (current choice)**: Implement `Drink` type as an Enumeration class
+    * Pros: Simple to implement. Since there is only a fixed set of drink items to represent, we can use an Enumeration
+     class to represent the types of `Drink`s. It is also easier to add more types of drinks in the future.
+    * Cons: If more functionalities are required from `Drink` in the future, then it may not be feasible to use an
+     Enumeration class.
+* **Alternative 2**: Implement `Drink` type as a normal class, where the fields could include a String to identify
+ the type of Drink. The various Drink type would then inherit from this class.
+    * Pros: It can can be extended more easily if there is a greater variety of drinks to store in the future.
+    * Cons: There are not many operations to do with `Drink`s. It is only used to represent a constant set of
+     drink types.
 
 --------------------------------------------------------------------------------------------------------------------
 
