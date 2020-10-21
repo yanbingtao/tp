@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySalesBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 
@@ -18,15 +19,18 @@ public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
+    private SalesBookStorage salesBookStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage) {
+    public StorageManager(AddressBookStorage addressBookStorage, SalesBookStorage salesBookStorage,
+                          UserPrefsStorage userPrefsStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
+        this.salesBookStorage = salesBookStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -74,6 +78,36 @@ public class StorageManager implements Storage {
     public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveAddressBook(addressBook, filePath);
+    }
+
+    // ================ SalesBook methods ==============================
+
+    @Override
+    public Path getSalesBookFilePath() {
+        return salesBookStorage.getSalesBookFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlySalesBook> readSalesBook() throws DataConversionException, IOException {
+        return readSalesBook(salesBookStorage.getSalesBookFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlySalesBook> readSalesBook(Path filePath) throws DataConversionException,
+            IOException {
+        logger.fine("Attempting to read data from file: " + filePath);
+        return salesBookStorage.readSalesBook(filePath);
+    }
+
+    @Override
+    public void saveSalesBook(ReadOnlySalesBook salesBook) throws IOException {
+        saveSalesBook(salesBook, salesBookStorage.getSalesBookFilePath());
+    }
+
+    @Override
+    public void saveSalesBook(ReadOnlySalesBook salesBook, Path filePath) throws IOException {
+        logger.fine("Attempting to write to data file: " + filePath);
+        salesBookStorage.saveSalesBook(salesBook, filePath);
     }
 
 }

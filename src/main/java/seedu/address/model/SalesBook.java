@@ -56,6 +56,21 @@ public class SalesBook implements ReadOnlySalesBook {
         record.setSalesRecord(sales);
     }
 
+    /**
+     * Adds a salesRecordEntry to the salesbook.
+     */
+    public void addSalesRecordEntry(SalesRecordEntry p) {
+        record.add(p);
+    }
+
+    /**
+     * Returns true if a salesRecordEntry with the same identity as {@code salesRecordEntry} exists in the record.
+     */
+    public boolean hasSalesRecordEntry(SalesRecordEntry salesRecordEntry) {
+        requireNonNull(salesRecordEntry);
+        return record.contains(salesRecordEntry);
+    }
+
     public UniqueSalesRecordList getRecord() {
         return record;
     }

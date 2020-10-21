@@ -20,13 +20,16 @@ import seedu.address.model.IngredientBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySalesBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.SalesBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonSalesBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.SalesBookStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
@@ -59,7 +62,9 @@ public class MainApp extends Application {
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        SalesBookStorage salesBookStorage = new JsonSalesBookStorage(
+                userPrefs.getSalesBookFilePath());
+        storage = new StorageManager(addressBookStorage, salesBookStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -77,27 +82,38 @@ public class MainApp extends Application {
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        Optional<ReadOnlySalesBook> salesBookOptional;
+
+        ReadOnlyAddressBook initialAddressBookData;
+        ReadOnlySalesBook initialSalesBookData;
+
         try {
             addressBookOptional = storage.readAddressBook();
+            salesBookOptional = storage.readSalesBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            if (!salesBookOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample SalesBook");
+            }
+            initialSalesBookData = salesBookOptional.orElseGet(SampleDataUtil::getSampleSalesBook);
+            initialAddressBookData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            initialAddressBookData = new AddressBook();
+            initialSalesBookData = new SalesBook();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            initialAddressBookData = new AddressBook();
+            initialSalesBookData = new SalesBook();
         }
 
         // salesBook not saved in storage yet. An empty salesBook will be used instead.
-        SalesBook record = new SalesBook();
+//        SalesBook record = new SalesBook();
 
         IngredientBook sample = new IngredientBook();
 
-        return new ModelManager(initialData, record, sample, userPrefs);
+        return new ModelManager(initialAddressBookData, initialSalesBookData, sample, userPrefs);
     }
 
     private void initLogging(Config config) {

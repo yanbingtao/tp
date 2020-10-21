@@ -5,7 +5,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.Drink;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlySalesBook;
+import seedu.address.model.SalesBook;
+import seedu.address.model.SalesRecordEntry;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.ArchiveStatus;
 import seedu.address.model.person.Name;
@@ -52,6 +56,17 @@ public class SampleDataUtil {
         };
     }
 
+    public static SalesRecordEntry[] getSampleSales() {
+        return new SalesRecordEntry[]{
+                new SalesRecordEntry(Drink.BSBM, 0),
+                new SalesRecordEntry(Drink.BSBBT, 0),
+                new SalesRecordEntry(Drink.BSBGT, 0),
+                new SalesRecordEntry(Drink.BSPM, 0),
+                new SalesRecordEntry(Drink.BSPBT, 0),
+                new SalesRecordEntry(Drink.BSPGT, 0)
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
@@ -60,6 +75,13 @@ public class SampleDataUtil {
         return sampleAb;
     }
 
+    public static ReadOnlySalesBook getSampleSalesBook() {
+        SalesBook sampleSb = new SalesBook();
+        for (SalesRecordEntry sampleSalesRecordEntry : getSampleSales()) {
+            sampleSb.addSalesRecordEntry(sampleSalesRecordEntry);
+        }
+        return sampleSb;
+    }
     /**
      * Returns a tag set containing the list of strings given.
      */
