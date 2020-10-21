@@ -165,15 +165,15 @@ The archiving of persons is facilitated by the `ArchiveStatus` attribute of a pe
 	
 ![Structure of the Archive/Unarchive Component](images/ArchiveClassDiagram.png)
 
-*Figure 11. Overview class diagram representation of the person archiving/unarchiving implementation*
+*Figure Archive-1. Overview class diagram representation of the person archiving/unarchiving implementation*
 
 Given below shows how the `c-archive`, `c-unarchive`, and `c-archive-all` mechanism works in steps based on different scenarios. Two activity diagrams are provided before each detailed explanation to describe how tCheck handles an archiving/unarchiving commands. Three sequence diagrams are attached after the description 
 
-#####Archiving a person
+##### Archiving a person
 
 ![Structure of the Storage Component](images/ArchiveActivityDiagram.png)
 
-*Figure 12. Activity diagram representation of the general flow of archiving of a peron in tCheck*
+*Figure Archive-2. Activity diagram representation of the general flow of archiving of a peron in tCheck*
 
 User can archive a specific person by entering the `c-archive INDEX` command. The following steps describe how this behavior is implemented:
 
@@ -187,13 +187,13 @@ Step 4: The current `FilteredList` will be updated to only show active `Persons`
 
 ![Structure of the Storage Component](images/ArchiveSequenceDiagram.png)
 
-*Figure 13. Sequence diagram representation of archiving a person*
+*Figure Archive-3. Sequence diagram representation of archiving a person*
 
-#####Unarchiving a person
+##### Unarchiving a person
 
 ![Structure of the Storage Component](images/UnarchiveActivityDiagram.png)
 
-*Figure 14. Activity diagram representation of the general flow of unarchiving of a peron in tCheck*
+*Figure Archive-4. Activity diagram representation of the general flow of unarchiving of a peron in tCheck*
 
 User can unarchive an already-archived person's contact information by entering the `c-unarchive INDEX` command. The following steps describe how this behavior is implemented:
 
@@ -207,9 +207,9 @@ Step 4: The current `FilteredList` will be updated to only show active `Persons`
 
 ![Structure of the Storage Component](images/UnarchiveSequenceDiagram.png)
 
-*Figure 15. Sequence diagram representation of unarchiving a person*
+*Figure Archive-5. Sequence diagram representation of unarchiving a person*
 
-#####Archiving all persons
+##### Archiving all persons
 User can archive all persons' contact information by entering the `c-archive-all` command. The following steps describe how this behavior is implemented:
 
 Step 1: The user archives all `Person`s in the current observable `PersonList` with command `c-archive-all`. `ArchiveAllCommand` is created with the parsed arguments, and executed.
@@ -220,7 +220,7 @@ Step 3: The current `FilteredList` will be updated to only show the empty active
 
 ![Structure of the Storage Component](images/ArchiveAllSequenceDiagram.png)
 
-*Figure 16. Sequence diagram representation of archiving all persons*
+*Figure Archive-6. Sequence diagram representation of archiving all persons*
 
 #### Design consideration:
 
