@@ -301,7 +301,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 List ingredients' levels feature allows the user to view all the ingredient levels to check if any ingredient should
 be restocked. The command is:
   
-*`i-list` - Lists the ingredients' levels of all ingredients.
+* `i-list` - Lists the ingredients' levels of all ingredients.
 
 #### Completed Implementation
 
@@ -348,7 +348,7 @@ terms of their ingredient names and levels.
 View a single ingredients' level feature allows the user to view the level of a particular ingredient when the need
 arises. The command is:
   
-*`i-view-single i/INGREDIENT_NAME` - Views the ingredient's level of the ingredient with the specified ingredient name.
+* `i-view-single i/INGREDIENT_NAME` - Views the ingredient's level of the ingredient with the specified ingredient name.
   
 #### Completed Implementation
   
@@ -375,7 +375,9 @@ returns an  `IngredientViewSingleCommand`. Logic executes the `IngredientViewSin
 entered by the user.
   
 The following activity diagram shows how the view a single ingredient level operation works:
-![View a Single Ingredient Activity Diagram](images/IngredientViewSingleActivityDiagram.png) #### Design consideration:
+![View a Single Ingredient Activity Diagram](images/IngredientViewSingleActivityDiagram.png) 
+
+#### Design consideration:
   
 ##### Aspect: How find the ingredient's level executes
   
@@ -395,7 +397,7 @@ The following activity diagram shows how the view a single ingredient level oper
 Reset all ingredients' levels feature allows the user to reset all the ingredient levels to zero. It helps the user to
 remove data that are no longer needed. The command is:
   
-*`i-reset-all` - Resets the ingredients' levels of all ingredients to zero.
+* `i-reset-all` - Resets the ingredients' levels of all ingredients to zero.
   
 #### Completed Implementation
   
